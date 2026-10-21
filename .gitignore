@@ -1,0 +1,4 @@
+# Raw session transcripts quote private repositories and conversations.
+# Keep them local; commit a redacted excerpt instead if one is ever needed.
+docs/prospects/*/sources/*transcript*
+.DS_Store
