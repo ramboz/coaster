@@ -1,16 +1,21 @@
 # prospect (placeholder name)
 
-A lean skill pack for the stretch before a project exists: capture a hunch,
-scout the field, read the evidence through six lenses, optionally
-pressure-test it, decide, name it, and hand it off to jig and shaper. It
-reuses what the user already has: research runs in Claude's Research mode or
-`/deep-research`, and the challenge uses an installed grilling skill when
-there is one. See
+> A light-weight front door for the ai-pegboard: the whole idea-to-handoff
+> workflow in plain Markdown, nothing to install or run, deferring to richer
+> skills when you have them.
+
+For the stretch before a project exists: capture a hunch, scout the field,
+read the evidence through six lenses, optionally pressure-test it, decide,
+name it, and hand it off to jig and shaper. Like jig, it provides the floor
+and lets you bring your own depth: scout hands research to an installed
+research skill such as BMAD's Deep Recon, and the challenge to an installed
+grilling skill, when you have them. See
 [PITCH.md](PITCH.md) for the one-page description.
 
-**Status:** draft pack. The first dogfood run, on the pack's own idea, is in
-[docs/prospects/field-research/](docs/prospects/field-research/); what it
-taught is in [docs/dogfood/2026-10-21-first-run.md](docs/dogfood/2026-10-21-first-run.md).
+**Status:** draft pack, decided go on 2026-10-21. Two dogfood runs on its own
+idea: [field-research](docs/prospects/field-research/dossier.md), then
+[prospect](docs/prospects/prospect/dossier.md) after the slimming. What each
+taught is in [docs/dogfood/](docs/dogfood/).
 
 ## Layout
 
@@ -18,9 +23,9 @@ taught is in [docs/dogfood/2026-10-21-first-run.md](docs/dogfood/2026-10-21-firs
 skills/
   _shared/           evidence rules, the six lenses, the three hats
   capture/           start a dossier from a hunch, in the user's words
-  scout/             research briefs for the user's own research tool; turns reports into cited evidence
+  scout/             defers research to a richer skill, or runs a quick pass; turns results into cited evidence
   frame/             six lenses, shape options, where it stands, the user's decision
-  challenge/         opt-in; an installed grilling skill, or three independent hats
+  challenge/         opt-in; defers to an installed grilling skill, or runs three independent hats
   name/              naming brief, candidates, collisions, a shortlist of five or more
   handoff/           kickoff brief and vision seeds for jig and shaper
 templates/           dossier, research brief, challenge round, naming, handoff
@@ -33,7 +38,19 @@ Markdown skills and templates, plus two standard-library Python helpers that
 need network access and run only in Claude Code or a terminal:
 `skills/scout/scripts/link_check.py` and `skills/name/scripts/name_check.py`.
 No hooks, no connectors, no agents, and no research engine of its own:
-research runs in the user's own tool, and scout checks what comes back.
+research goes to a richer installed skill, a quick pass, or the user's own
+research tool, and scout checks what comes back.
+
+## Where it works
+
+- **claude.ai, Free:** Projects and web search work, so scout's quick pass
+  does too. Installing plugins in chat is for paid plans, and whether a
+  single-skill upload works on Free is unconfirmed.
+- **claude.ai, Pro and above:** install from a GitHub marketplace under
+  Customize > Plugins. Research mode is there for deeper scouting, and one run
+  can take most of a Pro session.
+- **Claude Code:** install as a plugin. An installed research or grilling
+  skill is used when scout or challenge needs depth.
 
 ## Using it in a Claude Project
 

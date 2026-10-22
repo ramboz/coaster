@@ -38,6 +38,8 @@ its own._
 
 **Suggested call (a suggestion, not the decision):**
 
+**Evidence opened:** _N of M lane entries `grounded`._
+
 **Freshness:**
 
 ## Intent

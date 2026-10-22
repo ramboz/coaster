@@ -550,6 +550,9 @@ _Append-only. Each entry dated._
 - 2026-10-21: the pack slimmed to six skills: scout drafts research briefs for
   the user's own research tool and processes the report; verdict folded into
   frame; challenge uses an installed grilling skill when present.
+- 2026-10-21: round 1 closed as superseded by the
+  [prospect dossier](../prospect/dossier.md), at Julien's agreement. That
+  dossier carries the live tests and the go decision.
 
 ## Hand-offs
 

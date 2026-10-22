@@ -20,7 +20,10 @@ import urllib.error
 import urllib.request
 
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh) dossier-link-check/0.1"}
-URL = re.compile(r"https?://[^\s)\]>\"']+")
+# Stops at whitespace, closing brackets, quotes and backticks. A ">" inside a
+# query (for example numericFilters=created_at_i>123) is kept; a trailing one
+# from an <autolink> is stripped below.
+URL = re.compile(r"https?://[^\s)\]\"'`]+")
 
 
 def check(url):
@@ -47,7 +50,7 @@ def main(folder):
         if "transcript" in md.name:
             continue
         for match in URL.findall(md.read_text(encoding="utf-8")):
-            urls.add(match.rstrip(".,;:"))
+            urls.add(match.rstrip(".,;:>"))
     with cf.ThreadPoolExecutor(16) as pool:
         results = list(pool.map(check, sorted(urls)))
     counts = collections.Counter()

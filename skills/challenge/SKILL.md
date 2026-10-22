@@ -3,9 +3,11 @@ name: challenge
 description: >
   Opt-in, constructive hardening of a framed idea from three angles: a skeptic
   who checks the evidence is robust, a rival who shows how an incumbent would
-  respond, and a customer who says what would make them switch. Uses a
-  grilling or pressure-testing skill the user already has when one is
-  installed, and its own three-hat review otherwise. Run only when the user
+  respond, and a customer who says what would make them switch. Defers to
+  any other installed skill whose description identifies it as grilling,
+  interviewing, or pressure-testing a plan or idea, but asks the user first
+  before using one that issues verdicts on the idea; uses its own three-hat
+  review otherwise. Run only when the user
   explicitly asks: "challenge this", "pressure-test it", "harden the idea",
   "poke holes", "play devil's advocate", "run the hats". Never run it
   unprompted. Do not use for a go or no-go (use frame), for research (use
@@ -31,12 +33,23 @@ early. The aim is a stronger idea and a motivated user, never a dead one.
 this session for one whose description says it grills, interviews, or
 pressure-tests a plan or idea. If there is one, offer it first:
 
-- brief it with the dossier's At a glance block, its readings, and the three
-  angles from `../_shared/hats.md` as the agenda;
-- let it run its interview with the user;
-- afterwards, capture what surfaced in the round file, in the same shape as a
-  hat round. A live interview runs inside the conversation, so it is not
-  independent of it. Say so in the round file.
+- **check its stance.** Read its instructions. If it issues a verdict on the
+  idea, such as a kill, no-go, or hardened stamp (BMAD's Forge Idea does), say
+  so and ask the user before using it, because this pack never gives one. If
+  several qualify, prefer one that gives no verdict;
+- write the hand-off as the **last** thing challenge does: a short prompt the
+  user sends to start the grilling skill, carrying the dossier's At a glance
+  block, its readings, the three angles from `../_shared/hats.md` as the
+  agenda, and the hats' shared rules: lead with what holds up, five concerns
+  at most, no verdict, a constructive voice. A skill called from another skill
+  does not return control to it, so challenge must not plan to continue after
+  the hand-off;
+- tell the user to say "challenge: process the grilling" when the interview
+  ends. That second run reads the conversation and writes the round file, in
+  the same shape as a hat round;
+- a live interview runs inside the conversation, so it is not independent of
+  it. Say so in the round file. In chat, a grilling skill that relies on
+  sub-agents will skip that part.
 
 **2. The three hats, otherwise, or when the user prefers them.** The hats see
 only the dossier and earlier rounds, never the conversation. That

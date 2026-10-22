@@ -74,6 +74,8 @@ top. It should carry the decision on its own:
 - the shape, picked or leading;
 - the first three risks to retire, each with its cheapest test;
 - what the user still owes: unanswered questions, pending dispositions;
+- how many lane entries are `grounded` out of the total, so the reader knows
+  how much was opened;
 - how fresh the evidence is, and what could not be read;
 - a **suggested call** with two or three reasons, labeled as a suggestion.
 
