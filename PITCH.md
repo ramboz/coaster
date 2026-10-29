@@ -1,4 +1,4 @@
-# Prospect (working name): triage a project idea before you build it
+# coaster: triage a project idea before you build it
 
 > A one-page description of something I am exploring. I would like your honest
 > reaction, especially to the questions at the end. Nothing is built yet.

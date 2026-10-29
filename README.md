@@ -1,4 +1,7 @@
-# prospect (placeholder name)
+# coaster
+
+**coaster** (noun): the card under your cup where an idea gets its first
+honest sketch, before anyone builds anything.
 
 > A light-weight front door for the ai-pegboard: the whole idea-to-handoff
 > workflow in plain Markdown, nothing to install or run, deferring to richer
@@ -14,7 +17,7 @@ grilling skill, when you have them. See
 
 **Status:** draft pack, decided go on 2026-10-21. Two dogfood runs on its own
 idea: [field-research](docs/prospects/field-research/dossier.md), then
-[prospect](docs/prospects/prospect/dossier.md) after the slimming. What each
+[prospect](docs/prospects/prospect/dossier.md), the working name, after the slimming. What each
 taught is in [docs/dogfood/](docs/dogfood/).
 
 ## Layout

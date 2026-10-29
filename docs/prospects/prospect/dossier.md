@@ -50,7 +50,7 @@ jig does (Julien, 2026-10-21). A three-skill variant is still open.
 **Evidence opened:** 14 of 36 lane entries are `grounded`; the rest are
 `unverified`.
 
-**Owed by Julien:** the income question (R-07) and a name.
+**Owed by Julien:** the income question (R-07).
 
 **Decision:** go, on Julien's own light-weight version that complements jig
 and the other pegboard tools. The suggested call had been "go, narrowly, and
@@ -391,8 +391,19 @@ _Append-only. Each entry dated._
   pass, with the Research brief as the deeper option. Variant 2 held; variant
   3 folded into the picked shape. R-10 added. The first dossier's round 1 was
   closed as superseded.
+- 2026-10-29: `name` ran. Brief answered by Julien: workshop, surveying and
+  drafting registers, not mining; plain and crafty; test before committing,
+  probe the gaps, find promising ground; only same-space collisions rule a
+  name out; the napkin image added mid-brief. Shortlist of six in
+  [naming.md](naming.md), led by beermat. Pick pending.
+- 2026-10-29: **Name picked: coaster** (Julien), chosen over the top
+  shortlist entry, beermat, after a same-space check: no AI or agent tool uses
+  it; a small, active Flask library holds the PyPI name. Details in
+  [naming.md](naming.md). Next, per the pack: `handoff`.
 
 ## Hand-offs
+
+- Naming: [naming.md](naming.md); picked **coaster**.
 
 - Challenge: [challenge/round-1.md](challenge/round-1.md), dispositions
   pending.
