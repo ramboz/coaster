@@ -114,4 +114,6 @@ Ranked. Each with its strongest argument and its main risk.
 
 ## Pick
 
-_Julien's call. Not yet made._
+_Superseded._ A second naming pass, run from Julien's own brief on 2026-10-29,
+ruled out the mining register (and with it "prospect" and "assay") and
+picked **coaster**. See the [coaster naming file](../coaster/naming.md).

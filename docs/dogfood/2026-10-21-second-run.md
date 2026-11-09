@@ -1,8 +1,9 @@
-# Dogfood: the slimmed pack's run on the prospect project
+# Dogfood: the slimmed pack's run on itself
 
-_2026-10-21. The six-skill pack ran on the prospect project as it stands after
+_2026-10-21. The six-skill pack ran on its own project, then named prospect and
+now coaster, as it stood after
 the slimming commit, in a second dossier,
-[docs/prospects/prospect/](../prospects/prospect/dossier.md). The first dossier
+[docs/prospects/coaster/](../prospects/coaster/dossier.md). The first dossier
 counted as Julien's own record, so only the lanes the slimming changed were
 re-scouted._
 
@@ -11,8 +12,8 @@ re-scouted._
 | Step | How | Output |
 |---|---|---|
 | capture | Live conversation | Intent; income still unstated |
-| scout: draft | `templates/research-brief.md` | [brief.md](../prospects/prospect/scout/brief.md), nine questions over three lanes |
-| scout: run | The `anthropic-skills:deep-research` skill, called by Claude | three research notes and [a cited report](../prospects/prospect/scout/reports/Lean%20idea%20triage%20skill%20landscape.md) |
+| scout: draft | `templates/research-brief.md` | [brief.md](../prospects/coaster/scout/brief.md), nine questions over three lanes |
+| scout: run | The `anthropic-skills:deep-research` skill, called by Claude | three research notes and [a cited report](../prospects/coaster/scout/reports/Lean%20idea%20triage%20skill%20landscape.md) |
 | scout: process | Extract, open twelve load-bearing sources, link check, file | 36 entries in three lane files; 178 links, none broken |
 | frame | Six lenses, three variants of the picked shape, At a glance | Suggested call: go, narrowly, keep it thin |
 | challenge | Offered, not run | Opt-in respected |
@@ -72,7 +73,7 @@ three-skill variant. Those are the dossier's first risks.
 Run at Julien's request with the three hats, since no grilling skill is
 installed in this session. About 0.66M subagent tokens, 7 to 14 minutes per
 hat in parallel. Round file:
-[challenge/round-1.md](../prospects/prospect/challenge/round-1.md).
+[challenge/round-1.md](../prospects/coaster/challenge/round-1.md).
 
 What the challenge caught that scout and frame missed:
 
@@ -117,3 +118,14 @@ Not changed: chat still uses one paste-in prompt per hat. The one-chat,
 three-hats idea is a test (R-09), and the pack changes only if it works. The
 three-skill variant is held until the activation test (R-04). The first
 dossier's round was closed as superseded.
+
+## Since then
+
+- **2026-10-29, naming.** The name skill ran from Julien's own brief. It
+  excluded the mining register, found "napkin" taken by AI and agent tools,
+  and shortlisted six names. Julien picked **coaster**.
+- **2026-10-29, renames.** The project folder became `~/Projects/misc/coaster`
+  and this run's dossier moved to `docs/prospects/coaster/`. The brief and the
+  challenge round keep their original wording, with a dated note.
+- **2026-10-29, docs.** The README and the pitch were brought up to date, and
+  the first dossier and its drafts were marked as superseded.

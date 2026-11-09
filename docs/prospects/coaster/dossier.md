@@ -1,6 +1,6 @@
 ---
-prospect: prospect
-title: prospect, the lean idea-triage pack for the ai-pegboard
+prospect: coaster
+title: coaster, the lean idea-triage pack for the ai-pegboard
 status: decided      # hunch | scouted | framed | decided. Describes; never gates.
 decision: go         # pending | go | no-go | park | pivot. The user's call.
 goal:                # lean and complementary to the ai-pegboard tools; income unstated
@@ -9,12 +9,15 @@ last_scouted: 2026-10-21
 recheck:
 ---
 
-# prospect, the lean idea-triage pack for the ai-pegboard
+# coaster, the lean idea-triage pack for the ai-pegboard
 
 > Three voices, kept apart. **Intent** is the user's own words. **Evidence**
 > carries a provenance tag on every line, and a source and date where the tag
 > needs one. **Readings** are judgment and say so. Every section is optional.
 > An empty section means "not looked at", never "fine".
+>
+> Opened on 2026-10-21 under the working name "prospect"; the pack was named
+> coaster on 2026-10-29 and this dossier renamed with it.
 >
 > Second dossier on this idea. Captured by `capture` from the live
 > conversation on 2026-10-21, after the pack was slimmed and committed
@@ -23,7 +26,7 @@ recheck:
 
 ## At a glance
 
-_Refreshed by `frame` on 2026-10-21. **Decision: go (Julien, 2026-10-21).**_
+_Refreshed on 2026-10-29. **Decision: go (Julien, 2026-10-21). Name: coaster (Julien, 2026-10-29).**_
 
 | Lens | Reading |
 |---|---|
@@ -51,6 +54,9 @@ jig does (Julien, 2026-10-21). A three-skill variant is still open.
 `unverified`.
 
 **Owed by Julien:** the income question (R-07).
+
+**Next:** `handoff`, then jig's `scaffold-init` and `vision-elicitation`
+reading it, then shaper's `shape-release` for a Claude-only first release.
 
 **Decision:** go, on Julien's own light-weight version that complements jig
 and the other pegboard tools. The suggested call had been "go, narrowly, and
@@ -400,6 +406,10 @@ _Append-only. Each entry dated._
   shortlist entry, beermat, after a same-space check: no AI or agent tool uses
   it; a small, active Flask library holds the PyPI name. Details in
   [naming.md](naming.md). Next, per the pack: `handoff`.
+- 2026-10-29: the project folder was renamed to `~/Projects/misc/coaster`, and
+  this dossier moved from `docs/prospects/prospect/` to
+  `docs/prospects/coaster/`. The README and the pitch now describe the current
+  state. Next, per the pack: `handoff`.
 
 ## Hand-offs
 

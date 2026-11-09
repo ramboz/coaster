@@ -1,8 +1,8 @@
 ---
 prospect: field-research
 title: A field-research harness for project ideas
-status: framed       # hunch | scouted | framed | decided. Describes; never gates.
-decision: pending    # pending | go | no-go | park | pivot. The user's call.
+status: decided      # hunch | scouted | framed | decided. Describes; never gates.
+decision: go         # recorded in ../coaster/dossier.md on 2026-10-21; pending | go | no-go | park | pivot. The user's call.
 goal:                # lean and complementary to the ai-pegboard tools (2026-10-21); whether income matters is unstated
 created: 2026-10-21
 last_scouted: 2026-10-21
@@ -10,6 +10,12 @@ recheck:
 ---
 
 # A field-research harness for project ideas
+
+> **Superseded on 2026-10-21** by the [coaster dossier](../coaster/dossier.md),
+> opened under the working name "prospect" after the pack was slimmed. That
+> dossier records the go decision (2026-10-21) and the name coaster
+> (2026-10-29), and carries the live risks. This one is kept as the record of
+> the first run; its pending items below were settled there.
 
 > Three voices, kept apart. **Intent** is the user's own words. **Evidence**
 > carries a provenance tag on every line, and a source and date where the tag
@@ -23,7 +29,7 @@ recheck:
 
 ## At a glance
 
-_Refreshed on 2026-10-21 after Julien's direction. **Go or no-go: pending, Julien's call.**_
+_Last refreshed on 2026-10-21. **Superseded: decided go and named coaster in the [coaster dossier](../coaster/dossier.md).**_
 
 | Lens | Reading |
 |---|---|
@@ -48,8 +54,8 @@ stays is the dossier, the six lenses, and the handoff to jig and shaper.
 3. **R-03.** Install the pack in claude.ai from a GitHub marketplace and run
    `capture` in a Project.
 
-**Owed by Julien:** the go or no-go call, the income question, the round-1
-dispositions, and a name.
+**Owed by Julien:** nothing here. The go call, the dispositions and the name
+were settled in the coaster dossier; the income question is tracked there.
 
 **Suggested call (a suggestion, not the decision):** go, narrowly. Build the
 thin layer as a Claude-only proof of concept for your next real idea and for
@@ -551,7 +557,7 @@ _Append-only. Each entry dated._
   the user's own research tool and processes the report; verdict folded into
   frame; challenge uses an installed grilling skill when present.
 - 2026-10-21: round 1 closed as superseded by the
-  [prospect dossier](../prospect/dossier.md), at Julien's agreement. That
+  [coaster dossier](../coaster/dossier.md), opened as "prospect", at Julien's agreement. That
   dossier carries the live tests and the go decision.
 
 ## Hand-offs

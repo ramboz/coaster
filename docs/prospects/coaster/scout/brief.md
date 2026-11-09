@@ -1,5 +1,8 @@
 # Research brief: prospect, landscape, timing & enablers, and reach
 
+_The brief as it was sent on 2026-10-21, under the pack's working name. The
+pack is now named coaster._
+
 _Drafted by `scout` on 2026-10-21 from `templates/research-brief.md`. Paste
 this into Claude's Research mode, Claude Code's `/deep-research`, or another
 deep-research tool. Bring the full report back to `scout`._

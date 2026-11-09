@@ -1,5 +1,5 @@
 ---
-prospect: prospect
+prospect: coaster
 date: 2026-10-29
 ---
 

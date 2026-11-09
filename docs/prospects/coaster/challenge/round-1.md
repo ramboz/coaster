@@ -8,6 +8,9 @@ engine: three hats (no grilling skill installed in this session)
 
 # Challenge round 1
 
+_Run on 2026-10-21, when the pack's working name was prospect; the hats'
+wording is kept as written. The pack is now named coaster._
+
 > Opt-in, run at Julien's request. The hats read only the dossier, its scout
 > folder, and the first dossier as the user's own record, never the
 > conversation. Their concerns are risks worth retiring, never verdicts.

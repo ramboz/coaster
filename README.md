@@ -15,10 +15,12 @@ research skill such as BMAD's Deep Recon, and the challenge to an installed
 grilling skill, when you have them. See
 [PITCH.md](PITCH.md) for the one-page description.
 
-**Status:** draft pack, decided go on 2026-10-21. Two dogfood runs on its own
-idea: [field-research](docs/prospects/field-research/dossier.md), then
-[prospect](docs/prospects/prospect/dossier.md), the working name, after the slimming. What each
-taught is in [docs/dogfood/](docs/dogfood/).
+**Status:** draft pack, decided go on 2026-10-21 and named coaster on
+2026-10-29 (working name: prospect). It has run twice on its own idea: the
+[field-research dossier](docs/prospects/field-research/dossier.md), now
+superseded, then the [coaster dossier](docs/prospects/coaster/dossier.md),
+after the slimming. What each run taught is in [docs/dogfood/](docs/dogfood/).
+Next: the handoff into jig and shaper.
 
 ## Layout
 
@@ -32,7 +34,8 @@ skills/
   name/              naming brief, candidates, collisions, a shortlist of five or more
   handoff/           kickoff brief and vision seeds for jig and shaper
 templates/           dossier, research brief, challenge round, naming, handoff
-docs/prospects/      one folder per idea
+docs/prospects/      one dossier folder per idea (a "prospect dossier")
+docs/dogfood/        what each run on its own idea taught
 ```
 
 ## What's inside
@@ -66,6 +69,9 @@ When I describe a new project idea or ask whether something is worth building, u
 
 ## Not done yet
 
+- The handoff for coaster itself, into jig's vision step and shaper.
+- The dossier's first tests: BMAD's toolbox with no setup, the chat path end
+  to end, and the grilling hand-off with and without the hats' rules.
 - Packaging as a plugin. The skills point at `skills/_shared/`, which a
   claude.ai skill may not be able to read from outside its own folder; a build
   step will copy the shared references into each skill.

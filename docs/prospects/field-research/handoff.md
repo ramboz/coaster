@@ -1,11 +1,16 @@
 ---
 prospect: field-research
 date: 2026-10-21
-decision: pending   # draft; shape picked 2026-10-21, go or no-go still pending
+decision: go        # superseded draft; the decision and name are in ../coaster/dossier.md
 ---
 
-# Handoff: field-research harness (name pending)
+# Handoff draft: field-research harness (superseded; now coaster)
 
+> **Superseded draft.** The pack was decided go on 2026-10-21 and named
+> coaster on 2026-10-29, in the [coaster dossier](../coaster/dossier.md). The
+> real handoff will be written from that dossier. Kept as the record of the
+> first run.
+>
 > **Draft.** Written ahead of the go or no-go call because the dogfood run
 > asked for it. Julien picked the shape on 2026-10-21: the pegboard's front
 > door, slimmed to a thin layer. It changes if the call goes the other way.
