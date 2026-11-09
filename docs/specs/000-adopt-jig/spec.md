@@ -1,0 +1,42 @@
+---
+status: DONE
+skill: scaffold-init
+---
+
+# Spec 000: Adopt jig
+
+## Overview
+
+This is the worked-example spec that `scaffold-init` seeds into a fresh
+project so the very first turn has a faithful pattern to imitate. It
+records the genuine first unit of work in `coaster`: adopting
+jig by running `scaffold-init` to lay down the docs tree, CLAUDE.md, the
+status board, and a wired-up, runnable jig workflow. (Where the machinery
+itself lives depends on the mode chosen at scaffold time — by default it is
+expected to come from an installed jig plugin; `--in-repo` copies it into
+`.claude/` instead.
+`scaffold.json`'s `scaffold_mode` field records which one this project got.)
+
+It is **real project history**, not a labelled-deletable demo: scaffolding
+genuinely was the first thing that happened here, so `000-adopt-jig` is the
+genesis spec and is kept by default. Once coaster has its own specs
+you may remove it with `workflow.py retire-genesis`. Read
+[slice-01-bootstrap.md](slice-01-bootstrap.md) for the full slice shape —
+Goal, DoR, Acceptance Criteria, DoD, anti-horizontal-phasing check, and a
+short real deviation log — and use it as the template for your own slices.
+
+Your next step is `/jig:spec-workflow new <slug>`: it reserves your first
+real spec, which will be spec `001`.
+
+## Decomposition
+
+**SPIDR axis: Interface.** Adoption is a one-shot interface change: the
+project goes from "no workflow scaffold" to "jig docs present and the
+workflow wired." A single vertical slice delivers it end-to-end.
+
+### Slices
+
+1. **`000-01 bootstrap`** — Run `scaffold-init` so the project opens
+   with the jig docs tree, CLAUDE.md, an honest status board, and a
+   runnable jig workflow. DONE — see
+   [slice-01-bootstrap.md](slice-01-bootstrap.md).

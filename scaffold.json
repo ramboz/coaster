@@ -1,0 +1,38 @@
+{
+  "jig_version": "2.17.0",
+  "timestamp": "2026-11-09T16:50:48Z",
+  "project_name": "coaster",
+  "installed_tiers": [
+    "tier-0"
+  ],
+  "installed_skills": [
+    "tier-0/scaffold-init",
+    "tier-0/memory-sync",
+    "tier-0/spec-workflow",
+    "tier-0/independent-review",
+    "tier-0/migrate",
+    "tier-0/vision-elicitation",
+    "tier-0/contracts"
+  ],
+  "scaffold_signals": {
+    "has_llm_agent_files": true,
+    "has_ci": false,
+    "has_tests": false,
+    "is_team": false
+  },
+  "hook_profile": "standard",
+  "protected_paths": [
+    "docs/conventions.md",
+    "docs/decisions/**",
+    "oracle.sh",
+    ".servo/**/config.json",
+    ".github/workflows/**",
+    "CODEOWNERS"
+  ],
+  "offered_tiers": [
+    "tier-2"
+  ],
+  "project_runtime": "python",
+  "scaffold_mode": "plugin-only",
+  "host_renderer": "claude"
+}
