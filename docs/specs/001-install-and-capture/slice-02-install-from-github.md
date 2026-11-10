@@ -75,7 +75,9 @@ Code can add its marketplace, install it, and get a correct dossier from
    `@ramboz` and holds no `@OWNER`. `git check-ignore .claude/worktrees` exits 0.
 5. **The README says where coaster runs.** "Where it works" leads with Claude
    Code and marks claude.ai as untested, and the README gives the two install
-   commands. Julien's call on "nothing to install or run" is applied to
+   commands. Its layout section and links read correctly in the packaged copy,
+   which holds no `docs/`, `templates/` or `PITCH.md`, and it no longer says the
+   handoff is still to come. Julien's call on "nothing to install or run" is applied to
    `README.md`, `PITCH.md` and `docs/product-vision.md`, and recorded against
    that entry in `docs/refinement-todo.md`.
 6. **The marketplace manifest validates.** `.claude-plugin/marketplace.json` has

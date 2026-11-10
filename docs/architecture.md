@@ -16,8 +16,11 @@
 
 ```
 coaster/
+├── .claude-plugin/    # the source manifest; the root is not a supported plugin target
 ├── skills/            # the six skills, _shared/ (evidence rules, lenses, hats), two Python helpers
 ├── templates/         # dossier, research brief, challenge round, naming, handoff
+├── scripts/           # build_host_packages.py renders hosts/claude from source
+├── hosts/claude/      # the generated, committed Claude Code package; never edit by hand
 ├── docs/prospects/    # one dossier folder per idea
 ├── docs/dogfood/      # what each run on its own idea taught
 └── docs/              # jig's vision, architecture, specs, decisions
@@ -32,8 +35,9 @@ coaster/
   Locked.
 - **Platform commitments:** "Claude Chat/Code first, then Codex/Copilot later
   as v1." Locked.
-- **Package manager:** none. Packaging is open; the family convention is a
-  generated `hosts/claude`.
+- **Package manager:** none. The Claude Code package is a generated
+  `hosts/claude`, rendered by a standard-library script
+  ([ADR-0001](decisions/adr-0001-rendered-claude-package.md)).
 - **Database / state:** none.
 - **Key external services:** GitHub for marketplace install; claude.ai Projects
   and Research; npm, PyPI, crates.io and GitHub for name checks.
@@ -46,7 +50,16 @@ coaster/
 > (technical detail). This section is the running summary; decisions
 > themselves live in `docs/decisions/`._
 
-_(No decisions recorded yet. Add the first H3 when the first ADR accepts.)_
+### Rendered Claude package ([ADR-0001](decisions/adr-0001-rendered-claude-package.md))
+
+**Principle:** one place to edit, and an installed skill that needs no extra
+permission to read its own text.
+
+**Mechanics:** `scripts/build_host_packages.py` renders `hosts/claude/` from
+`skills/` and `templates/`, appending each skill's packaged files under
+`## Packaged:` headings from an explicit map. After any change to `skills/`,
+`templates/`, `README.md` or the manifest, run the script and commit the result.
+`--check` fails when the committed package is stale.
 
 ## Module boundaries
 
@@ -56,9 +69,11 @@ _(No decisions recorded yet. Add the first H3 when the first ADR accepts.)_
 - **_shared:** the rules every skill follows
 - **templates:** the file shapes the skills write
 - **helpers:** link and name-collision checks
+- **package:** the generated `hosts/claude`, built only from the source above
 
-Coupling: skills couple only through the dossier and by relative paths to
-`_shared/` and `templates/`. No formal contracts yet.
+Coupling: in source, skills couple only through the dossier and by relative
+paths to `_shared/` and `templates/`. In the package those paths are replaced by
+text built into each skill.
 
 ## Data model
 
@@ -78,6 +93,8 @@ Claude Project.
 - **Internal data shapes** (artifact: handoff template at
   `templates/handoff.md`) — `handoff.md`, read by jig's vision step and shaper
 - **CLI output** (no artifact yet) — `link_check.py` and `name_check.py`
+- **Plugin manifest** (artifact: `.claude-plugin/plugin.json`) — the plugin name,
+  the version installers update on, and the `/coaster:<skill>` commands
 
 ## Open questions
 

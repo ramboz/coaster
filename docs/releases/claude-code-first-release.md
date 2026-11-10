@@ -131,10 +131,11 @@ review — not here.
   - `claude plugin validate --strict` passes on the package.
   - A fresh install from GitHub runs the whole loop.
   - R-04's activation test has a result, and the six or three call is made.
+  - A `challenge` run's log shows each hat received the packaged rules intact.
   - LICENSE, CHANGELOG and CI are in place, and CODEOWNERS has no placeholder.
   - `docs/prospects/` has been reviewed before going public.
   - The README says the chat path is untested.
-- Evidence to inspect: The plugin validation output, a dossier from the installed run, and the `claude plugin eval` result.
+- Evidence to inspect: The plugin validation output, a dossier from the installed run, the `claude plugin eval` result, and a trimmed comparison of the hat prompts with the packaged rules.
 - Known missing signals: No servo signals were found; release-check criteria remain advisory.
 
 _Last shaped: 2026-11-09_

@@ -52,13 +52,15 @@ its own._
 
 ### Constraints I already know
 
+### Anything close that I know of
+
 ### Unstated
 
 _Questions asked and not answered. Never filled by inference._
 
 ## Evidence
 
-_Ledger rules: `skills/_shared/evidence.md`. IDs are prefixed by source and
+_Ledger rules: the evidence rules. IDs are prefixed by source and
 append-only. Full entries live in the lane files under `scout/` and the round
 files under `challenge/`; this section indexes the entries the readings rest
 on, one line each. In a chat project, keep everything in this one artifact,
@@ -66,13 +68,15 @@ with a heading per lane._
 
 **Link check:** _not run yet._
 
+### Reported at capture
+
 ### Field notes
 
 _Conversations with real people: who (by role), when, what they said._
 
 ## Readings
 
-_Six lenses, all optional: `skills/_shared/lenses.md`._
+_Six lenses, all optional: the lenses `frame` offers._
 
 ### Timely
 

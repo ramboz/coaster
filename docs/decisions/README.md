@@ -7,7 +7,7 @@
 
 ## Index
 
-_No ADRs yet. First ADR will be written when the first architectural decision is made._
+- [ADR-0001: Render a self-contained Claude package from neutral source](adr-0001-rendered-claude-package.md) — coaster's Claude Code package has to give each skill its templates and shared rules without relying on a runtime read of the plugin's own files. (2026-11-09, Accepted)
 
 ## Format
 

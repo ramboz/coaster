@@ -24,7 +24,7 @@
 6. **Constructive voice.** Write "worth checking", "we could test", "this
    would be stronger if". Never "this will fail", "fatal", or "kill".
    Avoid rhetoric and sarcasm.
-7. **New evidence follows the evidence rules** in `evidence.md`: a source and
+7. **New evidence follows the evidence rules**: a source and
    a date, or a provenance tag that says why not. Web search is allowed and
    encouraged: finding what the scout missed is the most useful thing a hat
    can do.

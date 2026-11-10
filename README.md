@@ -72,9 +72,6 @@ When I describe a new project idea or ask whether something is worth building, u
 - The handoff for coaster itself, into jig's vision step and shaper.
 - The dossier's first tests: BMAD's toolbox with no setup, the chat path end
   to end, and the grilling hand-off with and without the hats' rules.
-- Packaging as a plugin. The skills point at `skills/_shared/`, which a
-  claude.ai skill may not be able to read from outside its own folder; a build
-  step will copy the shared references into each skill.
 - The chat path is untested: install from a GitHub marketplace, the paste-in
   challenge prompts, and moving a dossier from a Project into a repository.
 - Codex and Copilot.

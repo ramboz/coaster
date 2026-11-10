@@ -156,9 +156,10 @@ happens here, before anything is pushed.
   parent passing packaged text to `challenge`'s hats. Only `capture` has been
   run in this form. Scope 2 runs the rest, and this spec checks only their
   rendered text.
-- **A3.** Running the privacy search by hand before each push is enough until CI
-  arrives in scope 4. No hook or workflow enforces it, and a search cannot catch
-  private prose that nobody has identified. This is an accepted residual.
+- **A3.** Running the privacy search, `build_host_packages.py --check` and the
+  pre-release bump by hand before each push is enough until CI arrives in scope
+  4. No hook or workflow enforces them, and a search cannot catch private prose
+  that nobody has identified. This is an accepted residual.
 
 ## Decomposition
 

@@ -61,7 +61,7 @@ Rules:
   from Research mode, `/deep-research`, or any other tool is `unverified`
   until its source is opened and says it.
 - **Check the links before reading the evidence.** In Claude Code, run
-  `skills/scout/scripts/link_check.py <dossier-folder>` and record the result
+  scout's `link_check.py` helper on the dossier folder and record the result
   in the Evidence section. A resolving link only proves the page exists; a
   quote still has to match its source, qualifiers included.
 - **Quote sparingly.** Paraphrase sources. A direct quote stays under fifteen

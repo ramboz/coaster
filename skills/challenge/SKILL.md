@@ -55,11 +55,12 @@ pressure-tests a plan or idea. If there is one, offer it first:
 only the dossier and earlier rounds, never the conversation. That
 independence is what they add.
 
-- **In Claude Code:** start three fresh read-only subagents in parallel. Give
-  each `../_shared/hats.md`, its own hat section, the evidence rules, the
-  dossier path, earlier round files, and today's date. Web search is allowed.
-  Each writes its own section file in the shape of
-  `templates/challenge-round.md`.
+- **In Claude Code:** start three fresh read-only subagents in parallel. Paste
+  into each hat's prompt the full text of `../_shared/hats.md`,
+  `../_shared/evidence.md` and `templates/challenge-round.md`, and name that
+  hat's own section. Also give it the dossier path, earlier round files, and
+  today's date. Web search is allowed. Each writes its own section file in the
+  shape of `templates/challenge-round.md`.
 - **In a chat project:** write one paste-in prompt per hat. The user opens a
   new conversation in the same Project, where the dossier is in project
   knowledge, pastes the prompt, and brings the answer back.

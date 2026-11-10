@@ -7,17 +7,18 @@
 
 ## Architecture
 
-### Decision: Tech stack
-**Deferred:** Markdown skills and standard-library Python helpers are recorded as locked in [architecture.md](architecture.md#tech-stack), but no ADR records them yet. Packaging is still open.
+### ~~Decision: Tech stack~~ — RESOLVED 2026-11-09
+~~**Deferred:** Markdown skills and standard-library Python helpers are recorded as locked in [architecture.md](architecture.md#tech-stack), but no ADR records them yet. Packaging is still open.~~
 **Resolution trigger:** First spec that touches packaging. Record decision via an ADR.
+**Resolved by:** [ADR-0001: Render a self-contained Claude package from neutral source](decisions/adr-0001-rendered-claude-package.md).
 
 ### Decision: Module boundaries
-**Deferred:** Concerns are named in [architecture.md](architecture.md#module-boundaries); skills couple through the dossier and relative paths, with no formal contracts yet.
-**Resolution trigger:** First spec that introduces a contract or interface.
+**Deferred:** Concerns are named in [architecture.md](architecture.md#module-boundaries). Spec 001 recorded the plugin manifest and the source-versus-package boundary there. Skills still couple through the dossier and relative paths, with no formal contracts between them.
+**Resolution trigger:** First spec that introduces a contract between skills.
 
 ### Decision: Skill file access in claude.ai
-**Deferred:** Whether a skill in a claude.ai plugin can read `skills/_shared/` and the root `templates/`, or each skill must carry its own copies. In Claude Code, an assembled plugin found its template after a search in 3 of 3 runs on 2026-11-09.
-**Resolution trigger:** R-02's chat-path run, or the first packaging spec.
+**Deferred:** Whether a skill in a claude.ai plugin can read `skills/_shared/` and the root `templates/`, or each skill must carry its own copies. In Claude Code, [ADR-0001](decisions/adr-0001-rendered-claude-package.md) builds the text into each skill. Whether those self-contained skills also suit chat is untested.
+**Resolution trigger:** R-02's chat-path run.
 
 ### Decision: Marketplace source form in claude.ai
 **Deferred:** Whether `git-subdir` marketplace sources, which the pegboard's generated manifests use, install in claude.ai.
@@ -82,5 +83,5 @@
 ## Operations
 
 ### Decision: CI/CD setup
-**Deferred:** No signal that CI is set up.
-**Resolution trigger:** First spec that crosses a deploy boundary.
+**Deferred:** No CI yet. Spec 001 crosses a deploy boundary without it, and the privacy search, `--check` and the pre-release bump run by hand until then.
+**Resolution trigger:** Scope 4 of the Claude Code first release, before the `v0.1.0` tag.

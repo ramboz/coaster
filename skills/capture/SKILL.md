@@ -65,11 +65,14 @@ move on.
 1. Pick a short kebab-case slug from the user's words. Set `status: hunch`,
    `decision: pending`, `created`, and `goal` if stated.
 2. Write answers into `## Intent` under the matching heading. Quote; use
-   bullets only where the user listed things.
+   bullets only where the user listed things. The answer to question 5 goes
+   under `### Anything close that I know of`.
 3. Anything the user states as a fact about the world goes to `## Evidence`
-   tagged `reported` (see `../_shared/evidence.md`), not into Intent.
+   under `### Reported at capture`, tagged `reported` (see
+   `../_shared/evidence.md`), not into Intent.
 4. Under `### Unstated`, list each question that was asked and not answered,
-   or that the source does not answer. **Never infer an answer.** If you
+   or that the source does not answer. A question the user answered, even
+   briefly, is not unstated. **Never infer an answer.** If you
    suspect one, offer it as a question: "You did not mention X; is that
    intentional?" Add it only on an explicit yes.
 
@@ -83,3 +86,6 @@ End with a short summary:
 - what was captured and what is unstated;
 - the suggested next step, usually `scout`;
 - one line noting that a challenge round exists and runs only if asked.
+
+The summary makes no comment on the market, the competition or the idea's
+prospects, because `capture` never researches or judges.

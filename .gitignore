@@ -37,3 +37,6 @@ credentials/
 .jig/decision-scratch/
 .jig/decision-suppressions.log
 # <<< jig runtime state <<<
+
+# jig review sidecars hold absolute paths; keep them out of the repository
+docs/specs/*/reviews/.candidates/
