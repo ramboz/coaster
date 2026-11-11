@@ -79,7 +79,7 @@ happens here, before anything is pushed.
   of them absolute. All five commits contain at least one of them, including
   the first.
 - The sensitive material is in the prose as well.
-  `docs/prospects/field-research/scout/own-record.md` says to keep the detail of
+  `docs/prospects/field-research/scout/own-record.md` said to keep the detail of
   its `local` entries out of anything shared. **Amended by Julien,
   2026-11-11:** every repository that file cites (airlockjs, ai-pegboard, jig
   and shaper) is public, so it is published with each `local` citation replaced

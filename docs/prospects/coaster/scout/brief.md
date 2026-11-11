@@ -10,9 +10,8 @@ deep-research tool. Bring the full report back to `scout`._
 ## The idea
 
 A lean skill pack for Claude that helps a builder triage a project idea before
-building it or writing a business plan. In its author's words, the point is
-"to be lean and complementary to the rest of the tools in the ai-pegboard
-project", a family of small open-source plugins for spec-driven building,
+building it or writing a business plan. The point is to be lean and
+complementary to the rest of the tools in the ai-pegboard project, a family of small open-source plugins for spec-driven building,
 evaluation, and release shaping. It reuses what the user already has instead
 of bundling its own machinery: it writes research briefs for the user's own
 deep-research tool and turns the report into a cited evidence ledger, and its
