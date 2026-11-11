@@ -59,7 +59,7 @@ the cost moves to the user's Research mode allowance.
 | The link checker cut a URL at a `>` in its query and kept a trailing backtick | Fixed in `skills/scout/scripts/link_check.py` |
 | Scout said Claude Code runs `/deep-research`; only the user can | The run step now says who presses the button on each surface, and that Claude may call a deep-research skill directly |
 | The narrative report dropped qualifiers that the notes kept | Process prefers structured notes when the tool leaves them |
-| The brief's fields did not match the research tool's | The template now has a one-line question, an objective, and suggested sources, matching the deep-research skill's fields |
+| The brief's fields did not match the research tool's | The template now has a one-line question, an objective, and suggested sources, so one brief suits both one-line and structured research tools |
 | Challenge planned to continue after handing off to grilling, which cannot return control | The hand-off is the last step; a second challenge run processes the interview |
 | Re-scouting after a pivot was not covered | Scout cites an earlier dossier as the user's own record and briefs only what changed |
 
@@ -99,8 +99,8 @@ not applied, until Julien confirms them.
 ## Dispositions accepted, and what changed in the pack
 
 Julien accepted the first disposition and decided go, then accepted the other
-eleven as recommended. Two were modified to fit the positioning, "the value is
-in the broader scope and workflow, not the depth" (Julien), which is jig's
+eleven as recommended. Two were modified to fit the positioning: the value is
+in the breadth of the workflow, not the depth of any step, which is jig's
 "bring your own depth; jig provides the floor".
 
 | Change | Where |
@@ -124,8 +124,8 @@ dossier's round was closed as superseded.
 - **2026-10-29, naming.** The name skill ran from Julien's own brief. It
   excluded the mining register, found "napkin" taken by AI and agent tools,
   and shortlisted six names. Julien picked **coaster**.
-- **2026-10-29, renames.** The project folder became `~/Projects/misc/coaster`
-  and this run's dossier moved to `docs/prospects/coaster/`. The brief and the
+- **2026-10-29, renames.** The project folder was renamed to coaster, and
+  this run's dossier moved to `docs/prospects/coaster/`. The brief and the
   challenge round keep their original wording, with a dated note.
 - **2026-10-29, docs.** The README and the pitch were brought up to date, and
   the first dossier and its drafts were marked as superseded.

@@ -12,17 +12,17 @@ unstated ones live.
 
 - **What it does, in one line:** triages a project idea before anyone builds
   it: field research, six lenses, an opt-in challenge, a decision, a handoff.
-- **Metaphor family or register:** "a name that matches the pegboard/workshop
-  terminology essentially" (Julien, transcript, 2026-10-20).
+- **Metaphor family or register:** a name that matches the pegboard and
+  workshop terminology.
 - **Brand feel:** unstated.
 - **Language, root, or etymology to build on:** unstated. Two hooks surfaced
   while generating: the mining pair *prospect* (find the claim) and *assay*
   (test the ore), and Roman augury, the root of "inaugurate".
 - **Constraints:**
-  - fits beside jig, servo, shaper, vellum, gauge. Observed pattern: one
-    lowercase common noun of three to six letters, each README opening with a
-    "(noun):" definition line;
-  - avoids `scout`, already the name of Julien's code-search tool;
+  - fits beside jig, servo, shaper, gauge and an unreleased sibling pack.
+    Observed pattern: one lowercase common noun of three to six letters, each
+    README opening with a "(noun):" definition line;
+  - avoids `scout`, a name Julien already uses for another tool;
   - reads well as `<name>@ai-pegboard` and as a skill prefix such as
     `/<name>:capture`.
 - **Unstated:**

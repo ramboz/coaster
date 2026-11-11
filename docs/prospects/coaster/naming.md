@@ -13,12 +13,12 @@ Asked by `name` on 2026-10-29; answers are Julien's.
   ai-pegboard, taking an idea from hunch to handoff in plain Markdown and
   deferring to richer skills for depth.
 - **Metaphor family or register:** workshop tools, surveying and navigation,
-  and drafting, the family vellum comes from. In Julien's words: "it should
-  kinda fit into the workshop overall though… like mining and prospecting seem
-  really disjoint from it". So the working name "prospect" and its mining
-  cousins are out.
-- **Image added mid-brief:** "I like the "napkin" drafting idea. Something
-  you'd do over a coffee chat at starbucks."
+  and drafting, the register an unreleased sibling pack's name comes from.
+  The name should fit the workshop overall; mining and prospecting feel
+  disjoint from it. So the working name "prospect" and its mining cousins are
+  out.
+- **Image added mid-brief:** the napkin drafting idea, a sketch made over a
+  coffee chat.
 - **Brand feel:** plain and crafty: a common noun with a one-line "(noun):"
   definition, like the siblings.
 - **Meaning to carry:** test before committing; probe the gaps; find
@@ -26,8 +26,9 @@ Asked by `name` on 2026-10-29; answers are Julien's.
 - **Collision tolerance:** only a use in the same space rules a name out:
   AI, agent, or developer tooling. Registry collisions elsewhere are fine, as
   with servo.
-- **Fixed constraints:** fits beside jig, servo, shaper, vellum and gauge;
-  avoids `scout`; reads as `<name>@ai-pegboard` and `/<name>:capture`.
+- **Fixed constraints:** fits beside jig, servo, shaper, gauge and an
+  unreleased sibling pack; avoids `scout`; reads as `<name>@ai-pegboard` and
+  `/<name>:capture`.
 
 ## Candidates
 
@@ -121,8 +122,8 @@ an idea-to-blueprint engine for coding agents already use it.
 ## Pick
 
 **coaster**, picked by Julien on 2026-10-29, after weighing it against
-beermat. It keeps the napkin image Julien asked for, "Something you'd do over a
-coffee chat", in a word that reads naturally outside the UK. Accepted
+beermat. It keeps the napkin image Julien asked for, a sketch made over a
+coffee chat, in a word that reads naturally outside the UK. Accepted
 trade-offs: it has no idiom of its own, unlike "the back of a beermat"; it
 shares its PyPI name with a small, active Flask library, which the family's
 servo precedent tolerates; and "coasting" and "roller coaster" are side

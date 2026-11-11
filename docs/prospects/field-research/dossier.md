@@ -22,10 +22,10 @@ recheck:
 > needs one. **Readings** are judgment and say so. Every section is optional.
 > An empty section means "not looked at", never "fine".
 >
-> Captured from the session transcript of 2026-10-20 and 2026-10-21
-> (`sources/2026-10-20-session-transcript.md`, local only). All quotes below
-> are Julien's turns in that transcript. Where an element was proposed by the
-> assistant, it appears here only with Julien's agreement quoted.
+> Captured from the session transcript of 2026-10-20 and 2026-10-21, which is
+> not published. For publication, the Intent section restates Julien's answers
+> as plain statements instead of quoting them. Where an element was proposed by
+> the assistant, it appears here only because Julien agreed to it.
 
 ## At a glance
 
@@ -76,103 +76,86 @@ surface.
 
 ### The hunch
 
-> "we are missing a piece/tool to identify new project opportunities, do
-> initial field research to find competitors, refine the idea, and identify a
-> viable "product" or "service" to be built. Not the engineering research on
-> how to build thing, but really more the initial market/field research for
-> the viability side." (transcript, 2026-10-20)
+A tool is missing for identifying new project opportunities: initial field
+research to find competitors, refining the idea, and identifying a viable
+product or service to build. It covers the market and field research on
+viability, not the engineering research on how to build it.
 
-> "Recent projects I worked on where I'd have needed this is "airlock""
-> (transcript, 2026-10-20)
+airlock is a recent project that would have needed it.
 
-> "it's mostly meant to triage idea before an entrepreneur would even waste
-> time on crafting a full business plan to convince investors."
-> (transcript, 2026-10-20)
+It triages an idea before anyone spends time on a full business plan to
+convince investors.
 
-The questions it should answer, in Julien's words (transcript, 2026-10-20):
+The questions it should answer:
 
-- "does the technology exist" that I can build on top of
-- "is there an opportunity" in the market, or has this already been done over
-  and over again
-- "does this have an monetization possibility" for me to eventually make money
-  from it or not (which could be fine for non-profit work, open source, etc.)
-- "is there a demand" in the market, or am I addressing either a lost cause
-  or breaching open a new market with an innovative idea
-- on Open: "what exists, what are the gaps in the existing solutions, what
-  doesn't exist yet."
+- Does the technology exist to build on?
+- Is there an opportunity in the market, or has this been done over and over
+  again?
+- Is there a way to make money from it? Making none can be fine, for example
+  for non-profit or open-source work.
+- Is there demand in the market, or is the idea a lost cause, or a new market
+  opened by an innovative idea?
+- On Open: what exists, what gaps the existing solutions have, and what does
+  not exist yet.
 
-Agreed refinements (assistant proposals, accepted with the quoted reply):
+Agreed refinements (assistant proposals that Julien accepted):
 
-- Six lenses: Timely, Open, Wanted, Monetizable, Feasible, Adoptable. Julien
-  on Timely, Fit and Adoptable: "Sounds pretty good." Then: "let's drop the
-  "fit"".
-- Three challenge hats, skeptic, rival, customer: "I'd do the 3 hats
-  initially, I think. they make sense to me and ask the right questions
-  upfront."
-- Draft loosely, dogfood, then formalize with jig: "Yes. Draft the skill
-  pack, templates and references into /Users/ramboz/Projects/misc/prospect in
-  the final layout, export this transcript into it, and run the dogfood".
+- Six lenses: Timely, Open, Wanted, Monetizable, Feasible, Adoptable. Timely
+  and Adoptable were accepted as proposed; a proposed Fit lens was dropped.
+- Three challenge hats to start with, skeptic, rival and customer, because
+  they ask the right questions up front.
+- Draft loosely, dogfood, then formalize with jig: draft the skill pack,
+  templates and references in the project folder in their final layout, then
+  run the dogfood.
 
 ### Who has the problem
 
-> "I feel most will start in a "chat" session, more than a "code" session."
-> (transcript, 2026-10-20)
+Most users are expected to start in a chat session rather than a code
+session.
 
-> "using a Project with artifacts that ultimately can be exported to the code
-> project when it starts. It's how I started most projects actually."
-> (transcript, 2026-10-20)
+They use a chat Project whose artifacts can be exported to the code project
+when it starts.
 
-> "before an entrepreneur would even waste time on crafting a full business
-> plan to convince investors." (transcript, 2026-10-20)
+It is for the stage before anyone spends time on a full business plan to
+convince investors.
 
 ### What I want out of it
 
-> "the point of mine is to be lean and complementary to the rest of the tools
-> in the ai-pegboard project" (transcript, 2026-10-21)
+The point is to be lean and complementary to the rest of the tools in the
+ai-pegboard project.
 
-> "If there are already create tools that do this out there, I could just
-> leverage them." (transcript, 2026-10-21)
+Where good tools already do this, reuse them.
 
-Julien on the posture the tool must have:
-
-> "The intent is still to encourage ideas and exploration, and not become an
-> aggressive destroyer of ideas, right." (transcript, 2026-10-20)
+The posture the tool must have: it encourages ideas and exploration and never
+becomes an aggressive destroyer of ideas.
 
 ### Constraints I already know
 
-- "Claude Chat/Code first, then Codex/Copilot later as v1. Initial POC is
-  fine against Claude alone." (transcript, 2026-10-20)
-- "The point is not to establish a full business plan, plan product tiers,
-  subscriptions, operational costs, etc. That feels likely like a dedicated
-  new tool instead." (transcript, 2026-10-20)
-- "all those categories should be "nudges" and not forcibly enforced. some
-  questions can be skipped and they should not slow down the brainstorming of
-  the end user." (transcript, 2026-10-21)
-- "The challenges specifically should really be opt-in only since they can
-  potentially be "aggressively" destroying the idea and kill the motivation
-  behind the brainstorming session" (transcript, 2026-10-21)
-- "make sure the challenges are there as constructive brainstorming to harden
-  the idea, and never seen and perceived as an adversary stone walling an idea
-  with perceived blockers or hurdles." (transcript, 2026-10-21)
-- "the skeptic should not throw away the idea of the project, but really just
-  make sure the evidence we have is robust." (transcript, 2026-10-21)
-- Monetizable: "the goal is make recommendations with possible alternative
-  options, what's the art in the industry, and what constraints do I want (or
-  don't)… like I never want ads, or I absolutely want paypal, etc."
-  (transcript, 2026-10-21)
-- No framework packs: "I just don't want the full spec kit or any mega pack
-  like that." (transcript, 2026-10-21)
-- Agreed slimming (assistant proposal, accepted with the quoted reply): "Yes.
-  Slim the pack to the thin-layer shape: scout delegates research to built-in
-  Research or /deep-research with a draft-then-process flow, verdict folds
-  into frame, challenge defers to an installed grilling skill when present."
-  (transcript, 2026-10-21)
-- Naming: "a name that matches the pegboard/workshop terminology
-  essentially. maybe finding a proper project name (internal codename) could
-  be part of the skill pack we build." (transcript, 2026-10-20)
-- Naming: "we'll need to ask things like metaphors the end user wants, or
-  mythology they want, etc. ... I'd also give more than just 3… at least 5"
-  (transcript, 2026-10-21)
+- Claude chat and Claude Code first, then Codex and Copilot later, as v1. An
+  initial proof of concept against Claude alone is fine.
+- Not a full business plan: no product tiers, subscriptions or operational
+  costs. That would be a separate tool.
+- Every category is a nudge, never enforced. Questions can be skipped, and
+  they must not slow down the user's brainstorming.
+- The challenges are opt-in only, since they can aggressively tear down the
+  idea and kill the motivation behind the brainstorming session.
+- The challenges are constructive brainstorming that hardens the idea, never
+  an adversary stonewalling it with blockers or hurdles.
+- The skeptic does not throw away the idea; it checks that the evidence is
+  robust.
+- Monetizable: recommend options and alternatives, show the state of the art
+  in the industry, and start from the constraints the user wants or rejects,
+  such as never showing ads or requiring PayPal.
+- No framework packs: not the full Spec Kit or any similar mega pack.
+- Agreed slimming (assistant proposal that Julien accepted on 2026-10-21):
+  slim the pack to the thin-layer shape. scout delegates research to built-in
+  Research or `/deep-research` with a draft-then-process flow, verdict folds
+  into frame, and challenge defers to an installed grilling skill when
+  present.
+- Naming: a name that matches the pegboard and workshop terminology. Finding
+  a project name, an internal codename, could be part of the pack.
+- Naming: ask for the metaphors or mythology the user wants, and give at least
+  five candidates, not three.
 
 ### Unstated
 
@@ -181,9 +164,9 @@ Julien on the posture the tool must have:
   anything. _Answered in part on 2026-10-21; the money half is still open._
 - **Known alternatives.** Julien did not name any existing tool that does
   this or comes close. _Asked by capture, not answered._
-- **Monetization constraints for this tool.** "never want ads" and "absolutely
-  want paypal" were given as examples of what a user might say, not as
-  constraints on this tool. _Not inferred._
+- **Monetization constraints for this tool.** Never showing ads and requiring
+  PayPal were given as examples of what a user might say, not as constraints
+  on this tool. _Not inferred._
 
 ## Evidence
 
@@ -195,9 +178,9 @@ append-only. The full ledger, about 175 entries, lives in the lane files under
 [the user's own record](scout/own-record.md) `OWN`. This index lists the
 entries the readings rest on._
 
-- **E-01** [reported] Julien is unsure whether Codex and Copilot have an
-  equivalent of a chat project: "I'm not sure they have them to be fair".
-  — transcript, 2026-10-20.
+- **E-01** [reported] Whether Codex and Copilot have an equivalent of a chat
+  project was unknown to Julien. — design-session transcript, not published,
+  2026-10-20.
 
 **Link check, 2026-10-21.** All 178 URLs cited in the lane files were
 requested: 176 resolve, 2 refuse automated requests (`MON-03`'s AlternativeTo
@@ -319,10 +302,10 @@ resolve, 1 refuses automated requests (`DEM-19`).
 
 ### The user's own record
 
-- **OWN-01 to OWN-04** airlock: the brainstorm was not preserved; the 1.0
-  viability question was answered by a reframe eleven days after kickoff; the
-  real-stack field research was filed as engineering research; server-side
-  tagging was missing from the landscape.
+- **OWN-01 to OWN-04** airlock: the brainstorm that seeded its design is not
+  in the repository; the 1.0 viability question was answered by a reframe
+  eleven days after kickoff; the real-stack field research was filed as
+  engineering research; server-side tagging was missing from the landscape.
 - **OWN-05** jig's vision-elicitation defers to a richer discovery skill that
   does not exist in the family.
 
@@ -425,8 +408,8 @@ AI made building cheap without making it succeed (`DEM-09`), a plan-grilling
 skill has 1.4M installs (`RCH-12`), and incumbents report real usage
 (`DEM-24`, `DEM-25`). Demand for one more validation tool is weak: launches
 draw almost nothing (`DEM-27`, `DEM-31`), nobody commits to pay (`DEM-29`),
-and a vocal camp says launching is the test (`DEM-32`, `DEM-33`). Julien has
-the problem, by their own record (`OWN-01` to `OWN-04`). The sycophancy premise needs
+and a vocal camp says launching is the test (`DEM-32`, `DEM-33`). Julien's
+own record shows the problem (`OWN-01` to `OWN-04`). The sycophancy premise needs
 current numbers: Claude's rate is far lower than the 2023–2025 headlines
 (`DEM-16`, `DEM-17`). _Round 1 proposes:_ "wanted as a habit, served today by general grilling
 skills" (`S-08`, `S-09`).
@@ -436,9 +419,9 @@ and whether Julien reaches for the pack on the next real idea.
 
 ### Monetizable
 
-_Julien's stated purpose, "lean and complementary to the rest of the tools in
-the ai-pegboard project", points to option 1. Whether income matters is still
-unstated, so the other branches stay listed._
+_Julien's stated purpose, to be lean and complementary to the rest of the
+tools in the ai-pegboard project, points to option 1. Whether income matters
+is still unstated, so the other branches stay listed._
 
 - **Industry practice.** Validators sell reports or credits (`MON-01` to
   `MON-03`). Open-source packs earn around the pack, never from it (`MON-06`
@@ -550,9 +533,9 @@ _Append-only. Each entry dated._
 - 2026-10-21: `handoff` drafted [handoff.md](handoff.md) ahead of the
   decision because this dogfood run asked for it; it is marked draft.
 - 2026-10-21: Julien set the direction: reuse existing tools where possible,
-  no framework packs, "lean and complementary to the rest of the tools in the
-  ai-pegboard project". Shape 1 picked, slimmed to a thin layer. Go or no-go
-  still pending.
+  no framework packs, and stay lean and complementary to the rest of the tools
+  in the ai-pegboard project. Shape 1 picked, slimmed to a thin layer. Go or
+  no-go still pending.
 - 2026-10-21: the pack slimmed to six skills: scout drafts research briefs for
   the user's own research tool and processes the report; verdict folded into
   frame; challenge uses an installed grilling skill when present.

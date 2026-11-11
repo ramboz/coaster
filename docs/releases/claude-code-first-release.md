@@ -10,14 +10,14 @@ decision.
 
 ## Problem / Baseline
 
-- Current baseline: A six-skill draft has run twice on its own idea, and 14 of its 36 lane entries are `grounded`. jig is scaffolded, and the vision and architecture are elicited. On 2026-11-09 the repository had no GitHub remote, tag, plugin manifest, licence, changelog or CI. A plain plugin copy of the skills passed `claude plugin validate --strict`, and `capture` wrote a correct dossier from its template in 3 of 3 Claude Code runs. The chat path has never been run.
-- Problem this release addresses: coaster exists only as a local draft, so nobody can install it. In Julien's words: "In the family of jig, servo, shaper, etc., I want to release coaster as well."
+- Current baseline: A six-skill draft has run twice on its own idea, and 13 of its 36 lane entries are `grounded`. jig is scaffolded, and the vision and architecture are elicited. On 2026-11-09 the repository had no GitHub remote, tag, plugin manifest, licence, changelog or CI. A plain plugin copy of the skills passed `claude plugin validate --strict`, and `capture` wrote a correct dossier from its template in 3 of 3 Claude Code runs. The chat path has never been run.
+- Problem this release addresses: coaster exists only as a local draft, so nobody can install it. The goal is to release coaster alongside jig, servo, shaper and the rest of the family.
 - Why now: The gap is open today, in packaging, defaults and breadth rather than capability. BMAD's standalone toolbox plugin still needs `uv` (`S-01`, `V-01`), and the window narrows if that changes or BMAD reaches claude.ai (`V-08`, `V-10`).
 
 ## Appetite
 
 - Time or attention this release is worth: One or two sessions.
-- Fixed constraints: Claude Code only. "Initial POC is fine against Claude alone." Time is fixed, and scope gets cut to fit it.
+- Fixed constraints: Claude Code only; an initial proof of concept against Claude alone is fine. Time is fixed, and scope gets cut to fit it.
 - Variable scope: Scope 3, deferral to richer skills, is the first to cut if time runs out.
 
 ## Solution Outline
@@ -88,7 +88,7 @@ The full register, R-01 to R-10, is in the [dossier](../prospects/coaster/dossie
 |---|---|---|
 | claude.ai chat path (R-02), UC-7 and UC-8 | Julien's decision, 2026-11-09; never run | It becomes the next release |
 | R-09 and R-10 | Both depend on the chat path | They move with it |
-| Codex and Copilot | "then Codex/Copilot later as v1" | Claude first |
+| Codex and Copilot | Planned for later, as v1 | Claude first |
 | Three-skill variant | Held until R-04 | Returns only if the activation test calls for it |
 | R-01, the BMAD toolbox test | Not a ship criterion | It does not block an install; run it if time allows |
 | Community marketplace listing and the essay (R-06) | Not in the delivery order | The pegboard listing comes first |
@@ -103,7 +103,7 @@ The full register, R-01 to R-10, is in the [dossier](../prospects/coaster/dossie
 
 | Item | Evidence | Rationale |
 |---|---|---|
-| Review `docs/prospects/` before the repository goes public | `own-record.md` cites airlock's local notes, and nine lines hold a home directory path | Scope 1 publishes the repository, so this comes first |
+| Review `docs/prospects/` before the repository goes public | Research notes held local paths and paraphrases of a non-public skill; `own-record.md` turned out to cite only public sources | Scope 1 publishes the repository, so this comes first |
 | R-04 activation test | `S-06`, `V-02`, `RCH-03` | Its result can change the shape, so it lands before the tag |
 
 ## JIG Handoff

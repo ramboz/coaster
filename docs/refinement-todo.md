@@ -29,7 +29,7 @@
 **Resolution trigger:** The first test of the grilling hand-off in a claude.ai Project.
 
 ### Decision: One brief for both research tools
-**Deferred:** How to make a brief fit both the deep-research skill's four fields and a one-line `/deep-research` question.
+**Deferred:** How to make a brief fit both a structured research brief and a one-line `/deep-research` question.
 **Resolution trigger:** R-08's check of which skills a CLI-only session has.
 
 ### Decision: Research report into the dossier

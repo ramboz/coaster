@@ -33,8 +33,8 @@ coaster/
 - **Runtime / language:** Markdown skills and templates, plus two
   standard-library Python helpers that run only in Claude Code or a terminal.
   Locked.
-- **Platform commitments:** "Claude Chat/Code first, then Codex/Copilot later
-  as v1." Locked.
+- **Platform commitments:** Claude chat and Claude Code first, then Codex
+  and Copilot later, as v1. Locked.
 - **Package manager:** none. The Claude Code package is a generated
   `hosts/claude`, rendered by a standard-library script
   ([ADR-0001](decisions/adr-0001-rendered-claude-package.md)).

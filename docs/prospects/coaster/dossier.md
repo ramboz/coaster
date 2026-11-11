@@ -22,7 +22,9 @@ recheck:
 > Second dossier on this idea. Captured by `capture` from the live
 > conversation on 2026-10-21, after the pack was slimmed and committed
 > (`fd473ab`). The first dossier, [field-research](../field-research/dossier.md),
-> is part of Julien's own record and is cited as `OWN` evidence.
+> is part of Julien's own record and is cited as `OWN` evidence. For
+> publication, the Intent section restates Julien's answers as plain
+> statements instead of quoting them.
 
 ## At a glance
 
@@ -50,7 +52,8 @@ jig does (Julien, 2026-10-21). A three-skill variant is still open.
 3. **R-03.** Hand off to grilling with and without the hats' rules, and check
    the dossier still gets updated.
 
-**Evidence opened:** 14 of 36 lane entries are `grounded`; the rest are
+**Evidence opened:** 14 of 36 lane entries. 13 are `grounded`; `ENB-04` is
+`reported`, because its only source is unpublished; the rest are
 `unverified`.
 
 **Owed by Julien:** the income question (R-07).
@@ -78,54 +81,48 @@ screens were not observed.
 
 ### The hunch
 
-> "we are missing a piece/tool to identify new project opportunities, do
-> initial field research to find competitors, refine the idea, and identify a
-> viable "product" or "service" to be built." (conversation, 2026-10-20)
+A tool is missing for identifying new project opportunities: initial field
+research to find competitors, refining the idea, and identifying a viable
+product or service to build.
 
-> "the point of mine is to be lean and complementary to the rest of the tools
-> in the ai-pegboard project" (conversation, 2026-10-21)
+The point is to be lean and complementary to the rest of the tools in the
+ai-pegboard project.
 
-> "If there are already create tools that do this out there, I could just
-> leverage them." (conversation, 2026-10-21)
+Where good tools already do this, reuse them.
 
-The shape as it stands, agreed in the conversation (assistant proposal,
-accepted with the quoted reply): "Yes. Slim the pack to the thin-layer shape:
-scout delegates research to built-in Research or /deep-research with a
-draft-then-process flow, verdict folds into frame, challenge defers to an
-installed grilling skill when present." (conversation, 2026-10-21)
+The shape as it stands, agreed in the conversation on 2026-10-21 (an assistant
+proposal that Julien accepted): slim the pack to the thin-layer shape. scout
+delegates research to built-in Research or `/deep-research` with a
+draft-then-process flow, verdict folds into frame, and challenge defers to an
+installed grilling skill when present.
 
 ### Who has the problem
 
-> "I feel most will start in a "chat" session, more than a "code" session."
-> (conversation, 2026-10-20)
+Most users are expected to start in a chat session rather than a code
+session.
 
-> "it's mostly meant to triage idea before an entrepreneur would even waste
-> time on crafting a full business plan to convince investors."
-> (conversation, 2026-10-20)
+It triages an idea before anyone spends time on a full business plan to
+convince investors.
 
 ### What I want out of it
 
-> "the point of mine is to be lean and complementary to the rest of the tools
-> in the ai-pegboard project" (conversation, 2026-10-21)
+The point is to be lean and complementary to the rest of the tools in the
+ai-pegboard project.
 
-> "if this is really the only independently running option out there, I'm
-> fine spinning my own version that complements jig, etc. it's meant to be
-> light-weight and defer to richer skills anyway. I think the value is in the
-> broader scope and "workflow", I cover, and not on the depth itself (like
-> with jig)" (conversation, 2026-10-21)
+If no other option runs independently, build a version that complements jig
+and the other pegboard tools. It is light-weight and defers to richer skills.
+Its value is in the breadth of the workflow it covers, not in the depth of any
+step, as with jig.
 
 ### Constraints I already know
 
-- "I just don't want the full spec kit or any mega pack like that."
-  (conversation, 2026-10-21)
-- "Claude Chat/Code first, then Codex/Copilot later as v1. Initial POC is fine
-  against Claude alone." (conversation, 2026-10-20)
-- "all those categories should be "nudges" and not forcibly enforced."
-  (conversation, 2026-10-21)
-- "The challenges specifically should really be opt-in only" (conversation,
-  2026-10-21)
-- "The point is not to establish a full business plan, plan product tiers,
-  subscriptions, operational costs, etc." (conversation, 2026-10-20)
+- No framework packs: not the full Spec Kit or any similar mega pack.
+- Claude chat and Claude Code first, then Codex and Copilot later, as v1. An
+  initial proof of concept against Claude alone is fine.
+- Every category is a nudge, never enforced.
+- The challenges are opt-in only.
+- Not a full business plan: no product tiers, subscriptions or operational
+  costs.
 
 ### Unstated
 
@@ -177,8 +174,8 @@ same day ([own-record.md](scout/own-record.md)).
 
 - **ENB-01, ENB-02** [grounded] The user starts Research mode and
   `/deep-research`; no skill can.
-- **ENB-04** [grounded] The deep-research skill can be called by Claude, but
-  only where subagents run.
+- **ENB-04** [reported] A deep-research skill in this setup can be called by
+  Claude; no public source lists it.
 - **ENB-05** No documented way to save a Research report into a Project.
 - **ENB-06, ENB-07** [grounded] Nested skill calls lose the parent's flow, and
   `disable-model-invocation` blocks parent calls too; both issues open.
@@ -252,7 +249,7 @@ one watch on BMAD releases.
 ### Open
 
 **A gap in packaging, defaults and breadth, not in capability.** The
-positioning, combining Julien's words with round 1:
+positioning, combining the stated intent with round 1:
 
 > A light-weight front door for the ai-pegboard: the whole idea-to-handoff
 > workflow in plain Markdown, nothing to install or run, deferring to richer
@@ -379,18 +376,18 @@ _Append-only. Each entry dated._
   Fifteen concerns in twelve groups, with proposed dispositions, are in
   [challenge/round-1.md](challenge/round-1.md), awaiting Julien. Three ledger
   corrections were applied as facts.
-- 2026-10-21: Julien accepted round 1's first disposition: "let's accept that
-  deep recon already does something similar." R-01 rewritten as a test of
-  BMAD's toolbox without setup. Eleven dispositions remain pending.
-- 2026-10-21: **Decision: go.** In Julien's words: "if this is really the only
-  independently running option out there, I'm fine spinning my own version
-  that complements jig, etc. it's meant to be light-weight and defer to richer
-  skills anyway. I think the value is in the broader scope and "workflow", I
-  cover, and not on the depth itself (like with jig)". The condition holds on
-  this evidence: Deep Recon's toolbox is the only maintained standalone
-  option, and the other kits have 0 to 2 stars and no triage workflow
-  (`S-01`, `S-03`, `LND-04`). Open risks carried, each with its test in the
-  register: R-01 to R-09. Next, per the pack: `name`, then `handoff`.
+- 2026-10-21: Julien accepted round 1's first disposition: Deep Recon already
+  does something similar. R-01 rewritten as a test of BMAD's toolbox without
+  setup. Eleven dispositions remain pending.
+- 2026-10-21: **Decision: go** (Julien). If no other option runs
+  independently, build a light-weight version that complements jig and the
+  other pegboard tools and defers to richer skills. Its value is in the
+  breadth of the workflow, not the depth of any step, as with jig. The
+  condition holds on this evidence: Deep Recon's toolbox is the only
+  maintained standalone option, and the other kits have 0 to 2 stars and no
+  triage workflow (`S-01`, `S-03`, `LND-04`). Open risks carried, each with
+  its test in the register: R-01 to R-09. Next, per the pack: `name`, then
+  `handoff`.
 - 2026-10-21: Julien accepted the remaining eleven round-1 dispositions as
   recommended, two modified: descriptions defer to a richer installed skill
   the jig way, and scout defers to an installed research skill or runs a quick
@@ -406,10 +403,10 @@ _Append-only. Each entry dated._
   shortlist entry, beermat, after a same-space check: no AI or agent tool uses
   it; a small, active Flask library holds the PyPI name. Details in
   [naming.md](naming.md). Next, per the pack: `handoff`.
-- 2026-10-29: the project folder was renamed to `~/Projects/misc/coaster`, and
-  this dossier moved from `docs/prospects/prospect/` to
-  `docs/prospects/coaster/`. The README and the pitch now describe the current
-  state. Next, per the pack: `handoff`.
+- 2026-10-29: the project folder was renamed to coaster, and this dossier
+  moved from `docs/prospects/prospect/` to `docs/prospects/coaster/`. The
+  README and the pitch now describe the current state. Next, per the pack:
+  `handoff`.
 
 ## Hand-offs
 
@@ -419,7 +416,7 @@ _Append-only. Each entry dated._
   pending.
 - Engineering unknowns, for the project's own research:
   - whether grilling's batched questions and sub-agent work in chat;
-  - how to make a brief fit both the deep-research skill's four fields and a
-    one-line `/deep-research` question;
+  - how to make a brief fit both a structured research brief and a one-line
+    `/deep-research` question;
   - how a claude.ai Research report gets into the dossier without a manual
     download and upload.

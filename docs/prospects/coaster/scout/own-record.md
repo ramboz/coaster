@@ -23,7 +23,9 @@ re-researched. They are current as of 2026-10-21.
   — `FR:ENB-11`, `FR:ENB-13`, `FR:ENB-14`.
 - **OWN-06** [grounded] Unprompted skill activation is about 40% to 55%.
   — `FR:C-01` to `FR:C-03`.
-- **OWN-07** [grounded] The airlock record: the brainstorm was lost, the 1.0
-  viability question was answered by a reframe eleven days in, and real-stack
-  field research was filed as engineering research. — `FR:OWN-01` to
-  `FR:OWN-04`.
+- **OWN-07** [grounded] The airlock record: the brainstorm that seeded its
+  design is not in the repository, the 1.0 viability question was answered by
+  a reframe eleven days in, and real-stack field research was filed as
+  engineering research. — `FR:OWN-01` to `FR:OWN-04`, each linked to its
+  public source in the first dossier's
+  [own record](../../field-research/scout/own-record.md).

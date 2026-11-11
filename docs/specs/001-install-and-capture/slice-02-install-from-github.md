@@ -71,6 +71,12 @@ Code can add its marketplace, install it, and get a correct dossier from
    found after the repository is public. The remedy for a leak is to delete the
    repository and recreate it from a cleaned tree, and even that cannot reach
    clones already on installers' disks, which is why these checks come first.
+   **Amended by Julien, 2026-11-11:**
+   `docs/prospects/field-research/scout/own-record.md` is published, with each
+   citation linked to its public source, instead of being held back. The
+   clauses on the held-back file (its absence, the ban on relative links to
+   it, the `reported` re-tags of entries that rest only on it, and keeping it
+   on `pre-publication`) no longer apply.
 4. **The repository has a licence and a real owner.** `LICENSE` is MIT with
    "Copyright (c) 2026 Julien Ramboz", as in jig and servo. `CODEOWNERS` names
    `@ramboz` and holds no `@OWNER`. `git check-ignore .claude/worktrees` exits 0.
@@ -131,7 +137,7 @@ that was installed. Raw run logs stay out of the repository, as in 001-01.
 | Step | AC | Expected | Observed | Outcome | Evidence |
 |------|----|----------|----------|---------|----------|
 | 1 | 1, 2 | The review and both independent reads exist, with dispositions applied and a dated go-ahead | _not run_ | not-run | |
-| 2 | 3 | Checks pass on local `main` and on the private remote: one commit, only `main`, same tree, no held-back file, no home paths or listed terms | _not run_ | not-run | |
+| 2 | 3 | Checks pass on local `main` and on the private remote: one commit, only `main`, same tree, no home paths or listed terms | _not run_ | not-run | |
 | 3 | 4 | `LICENSE` present, no `@OWNER`, worktrees ignored | _not run_ | not-run | |
 | 4 | 5 | README reads as described | _not run_ | not-run | |
 | 5 | 6 | Strict validation and `--check` exit 0 | _not run_ | not-run | |

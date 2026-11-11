@@ -7,8 +7,8 @@ decision: go
 # Handoff: coaster
 
 > Written by `handoff` from the [dossier](dossier.md), [naming](naming.md) and
-> [challenge round 1](challenge/round-1.md). Quotes are Julien's. Facts dated
-> 2026-11-09 come from a release-readiness check of this repository that day.
+> [challenge round 1](challenge/round-1.md). Facts dated 2026-11-09 come from
+> a release-readiness check of this repository that day.
 
 ## Kickoff brief
 
@@ -17,20 +17,19 @@ _Paste this into the first session of the new project._
 ### What we are building
 
 coaster is a light Claude plugin in the ai-pegboard family, for the stretch
-before a project exists. In Julien's words: "we are missing a piece/tool to
-identify new project opportunities, do initial field research to find
-competitors, refine the idea, and identify a viable "product" or "service" to
-be built." Six Markdown skills take one idea from hunch to handoff: `capture`
-records the hunch in the user's own words, `scout` turns research into a cited,
-dated evidence ledger, `frame` reads it through six optional lenses and records
-the user's decision, `challenge` hardens the idea only when asked, `name` finds
-a name, and `handoff` writes the starting kit for jig and shaper. Each idea
-gets one plain-Markdown dossier.
+before a project exists. It identifies new project opportunities, does initial
+field research to find competitors, refines the idea, and identifies a viable
+product or service to build. Six Markdown skills take one idea from hunch to
+handoff: `capture` records the hunch in the user's own words, `scout` turns
+research into a cited, dated evidence ledger, `frame` reads it through six
+optional lenses and records the user's decision, `challenge` hardens the idea
+only when asked, `name` finds a name, and `handoff` writes the starting kit
+for jig and shaper. Each idea gets one plain-Markdown dossier.
 
 The shape is a thin front door, valued for the breadth of the workflow and not
 the depth of any step, deferring to richer installed skills where they exist.
-The point, in Julien's words: "the point of mine is to be lean and
-complementary to the rest of the tools in the ai-pegboard project".
+The point is to be lean and complementary to the rest of the tools in the
+ai-pegboard project.
 
 The positioning, from the dossier's Open reading:
 
@@ -56,20 +55,19 @@ _Readings, with the evidence they rest on._
 
 ### Who it is for
 
-- Builders who start ideas in chat: "I feel most will start in a "chat"
-  session, more than a "code" session."
-- People triaging an idea early: "it's mostly meant to triage idea before an
-  entrepreneur would even waste time on crafting a full business plan to
-  convince investors."
+- Builders who start ideas in chat: most are expected to start in a chat
+  session rather than a code session.
+- People triaging an idea early, before anyone spends time on a full business
+  plan to convince investors.
 - Julien first (`OWN-07`).
 
 ### Settled decisions
 
-- **Go** (Julien, 2026-10-21): "if this is really the only independently
-  running option out there, I'm fine spinning my own version that complements
-  jig, etc. it's meant to be light-weight and defer to richer skills anyway. I
-  think the value is in the broader scope and "workflow", I cover, and not on
-  the depth itself (like with jig)". Recorded in the dossier's Decisions.
+- **Go** (Julien, 2026-10-21): with no other option running independently,
+  build a light-weight version that complements jig and the other pegboard
+  tools and defers to richer skills. Its value is in the breadth of the
+  workflow, not the depth of any step, as with jig. Recorded in the dossier's
+  Decisions.
 - **Name: coaster** (Julien, 2026-10-29). See [naming.md](naming.md). Not
   trademark clearance.
 - **Shape: the thin front door, six skills** (Julien, 2026-10-21). The
@@ -77,21 +75,19 @@ _Readings, with the evidence they rest on._
 - **The positioning leads with what does not run**, not with the lenses, which
   a BMAD user can reproduce with one config file (round 1, Rival 2; `V-06`,
   `V-13`).
-- **Claude first:** "Claude Chat/Code first, then Codex/Copilot later as v1.
-  Initial POC is fine against Claude alone."
-- **Lenses are nudges:** "all those categories should be "nudges" and not
-  forcibly enforced."
-- **The challenge is opt-in:** "The challenges specifically should really be
-  opt-in only". It defers to an installed grilling skill, asks first before
-  using one that issues verdicts, and carries the hats' rules in the hand-off
-  (round 1, Rival 3 and Customer 3; `V-15`, `C-07`).
+- **Claude first:** Claude chat and Claude Code first, then Codex and
+  Copilot later, as v1. An initial proof of concept against Claude alone is
+  fine.
+- **Lenses are nudges,** never enforced.
+- **The challenge is opt-in only.** It defers to an installed grilling skill,
+  asks first before using one that issues verdicts, and carries the hats'
+  rules in the hand-off (round 1, Rival 3 and Customer 3; `V-15`, `C-07`).
 - **Research by deferral:** scout uses a richer installed research skill, else
   a quick pass, with a Research-mode or `/deep-research` brief as the deeper
   option (round 1, Skeptic 3, as modified by Julien).
-- **No mega pack:** "I just don't want the full spec kit or any mega pack like
-  that."
-- **Not a business plan:** "The point is not to establish a full business plan,
-  plan product tiers, subscriptions, operational costs, etc."
+- **No mega pack:** not the full Spec Kit or any similar mega pack.
+- **Not a business plan:** no full business plan, product tiers,
+  subscriptions or operational costs.
 - **Chat keeps one paste-in prompt per hat**, and changes only if R-09's
   one-chat test works (round 1, Customer 2).
 
@@ -131,26 +127,28 @@ Owed by Julien: whether income matters (R-07).
 
 **coaster** (noun): the card under your cup where an idea gets its first honest
 sketch, before anyone builds anything. A workshop-register name beside jig,
-servo, shaper and vellum, read as `coaster@ai-pegboard` and `/coaster:capture`.
+servo, shaper and an unreleased sibling pack, read as `coaster@ai-pegboard`
+and `/coaster:capture`.
 
 ### Target users
 
-- **For:** builders who start in chat ("I feel most will start in a "chat"
-  session, more than a "code" session."); people deciding whether an idea
-  deserves a business plan; Julien first (`OWN-07`).
+- **For:** builders who start in chat, where most are expected to start
+  rather than in a code session; people deciding whether an idea deserves a
+  business plan; Julien first (`OWN-07`).
 - **Not for:** people who want a full business plan, product tiers or
   subscriptions; people who want a full framework. _Inferred from the
   constraints; confirm in vision-elicitation._
 
 ### Core problem
 
-"we are missing a piece/tool to identify new project opportunities, do initial
-field research to find competitors, refine the idea, and identify a viable
-"product" or "service" to be built."
+A tool is missing for identifying new project opportunities: initial field
+research to find competitors, refining the idea, and identifying a viable
+product or service to build.
 
-The airlock record shows the cost: the brainstorm was lost, the 1.0 viability
-question was answered by a reframe eleven days in, and real-stack field
-research was filed as engineering research (`OWN-07`). The job is wanted, but
+The airlock record shows the cost: the brainstorm that seeded its design is
+not in the repository, the 1.0 viability question was answered by a reframe
+eleven days in, and real-stack field research was filed as engineering
+research (`OWN-07`). The job is wanted, but
 demand for another tool is weak (`OWN-02`), and research delegated to an
 outside tool draws little pull (`S-10`).
 
@@ -173,24 +171,24 @@ user decides.
 
 ### Scope
 
-Julien's stated jobs, in Julien's words:
+The stated jobs:
 
-- "identify new project opportunities"
-- "do initial field research to find competitors"
-- "refine the idea"
-- "identify a viable "product" or "service" to be built"
-- From the first dossier: "maybe finding a proper project name (internal
-  codename) could be part of the skill pack we build."
-- From the first dossier: "using a Project with artifacts that ultimately can
-  be exported to the code project when it starts."
+- identify new project opportunities;
+- do initial field research to find competitors;
+- refine the idea;
+- identify a viable product or service to build;
+- from the first dossier: find a project name, an internal codename, as part
+  of the pack;
+- from the first dossier: work in a chat Project whose artifacts can be
+  exported to the code project when it starts.
 
 **Picked shape:** `capture`, `scout`, `frame`, `challenge`, `name` and
 `handoff`.
 
-**Out:** "The point is not to establish a full business plan, plan product
-tiers, subscriptions, operational costs, etc."
+**Out:** a full business plan, product tiers, subscriptions and operational
+costs.
 
-**Later:** Codex and Copilot, "later as v1".
+**Later:** Codex and Copilot, as v1.
 
 ### Use cases
 
@@ -207,8 +205,8 @@ _Only use cases Julien stated; vision-elicitation assigns the IDs._
 
 ### Stack
 
-"Claude Chat/Code first, then Codex/Copilot later as v1. Initial POC is fine
-against Claude alone."
+Claude chat and Claude Code first, then Codex and Copilot later, as v1. An
+initial proof of concept against Claude alone is fine.
 
 Today: Markdown skills and templates, plus two standard-library Python helpers
 for link and name-collision checks, which run only in Claude Code or a
@@ -216,15 +214,14 @@ terminal. No hooks, connectors or agents. Anything else is TBD.
 
 ### Design principles and constraints
 
-- Nudges, not gates: "all those categories should be "nudges" and not forcibly
-  enforced."
-- The challenge is opt-in and constructive: "The challenges specifically should
-  really be opt-in only". It finds risks to retire and never issues a verdict.
+- Nudges, not gates: no category is enforced.
+- The challenge is opt-in and constructive. It finds risks to retire and never
+  issues a verdict.
 - The user decides; the tool suggests.
-- Breadth over depth: "the value is in the broader scope and "workflow", I
-  cover, and not on the depth itself (like with jig)".
-- Defer to richer skills: "it's meant to be light-weight and defer to richer
-  skills anyway."
+- Breadth over depth: the value is in the breadth of the workflow, not the
+  depth of any step, as with jig.
+- Defer to richer skills: the pack is light-weight and defers to richer
+  skills.
 - Three voices kept apart: Intent, Evidence and Readings. Every claim is
   tagged, and sourced and dated where its tag needs it
   (`skills/_shared/evidence.md`).
@@ -252,7 +249,7 @@ TBD.
 ## Release-shaping seeds
 
 - **Problem and baseline:** a six-skill draft has run twice on its own idea,
-  and 14 of its 36 lane entries are `grounded`. On 2026-11-09 the repository
+  and 13 of its 36 lane entries are `grounded`. On 2026-11-09 the repository
   had no GitHub remote, tag, plugin manifest, licence, changelog or CI. A plain
   plugin copy of the skills passed `claude plugin validate --strict`, and
   `capture` wrote a correct dossier from its template in 3 of 3 Claude Code
@@ -280,8 +277,8 @@ _For the project's own research notes. Not researched here._
 - Whether `git-subdir` marketplace sources, which the pegboard's generated
   manifests use, install in claude.ai. _Noted 2026-11-09._
 - Whether grilling's batched questions and sub-agent work in chat.
-- How to make a brief fit both the deep-research skill's four fields and a
-  one-line `/deep-research` question.
+- How to make a brief fit both a structured research brief and a one-line
+  `/deep-research` question.
 - How a claude.ai Research report gets into the dossier without a manual
   download and upload.
 - How a chat Project's dossier reaches a repository in one step. _Carried from

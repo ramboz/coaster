@@ -6,19 +6,19 @@
 
 ## The itch
 
-Most of my projects start as a conversation with an AI assistant. The idea
-takes shape in the chat, the chat is abandoned, and a few days later I am
-scaffolding a repository around a vision that was never checked against the
-outside world. The research that should have happened first happens later,
-piecemeal, and usually because something went wrong:
+A project can start as a conversation with an AI assistant. The idea takes
+shape in the chat, the chat is abandoned, and a few days later a repository is
+scaffolded around a vision that was never checked against the outside world.
+The research that should have happened first happens later, piecemeal, and
+usually because something went wrong. For example:
 
-- I find the competitor category I missed weeks in, not on day one.
-- I discover who actually has to say yes to adoption, and that it is not my
-  user, after the architecture is settled.
-- I learn from the first prototype that my "performance win" was really an
-  "isolation win", and reposition.
-- I re-research an idea I quietly dropped six months earlier, because nothing
-  recorded why.
+- a missed competitor category turns up weeks in, not on day one;
+- who actually has to say yes to adoption, and that it is not the user,
+  becomes clear only after the architecture is settled;
+- the first prototype shows that the expected "performance win" was really an
+  "isolation win", and the project repositions;
+- an idea quietly dropped months earlier gets researched again, because
+  nothing recorded why.
 
 AI assistants are agreeable by design, and an idea discussed in chat rarely
 leaves with sources you can click. Tools that ask the hard questions do exist,
@@ -116,15 +116,15 @@ pretending it has none.
 - Not an idea backlog.
 - Not a gate. Nothing stops you from moving on with open questions.
 
-## Where I am
+## Where it stands
 
 A six-skill draft exists. It has run twice on its own idea, and those runs
-changed it. The first found the space more crowded than I thought, so the
-pack was slimmed to a thin layer that defers to the research and grilling
-tools people already have. The second, with its opt-in challenge, sharpened
-the positioning and caught a few design flaws. The next steps are to hand it
-off into my build tools, test it in a real claude.ai Project, and hear whether
-it resonates with anyone other than me.
+changed it. The first found the space more crowded than expected, so the pack
+was slimmed to a thin layer that defers to the research and grilling tools
+people already have. The second, with its opt-in challenge, sharpened the
+positioning and caught a few design flaws. The next steps are to hand it off
+into the family's build tools, test it in a real claude.ai Project, and hear
+whether it resonates with other builders.
 
 ## What I would like from you
 

@@ -80,12 +80,18 @@ happens here, before anything is pushed.
   the first.
 - The sensitive material is in the prose as well.
   `docs/prospects/field-research/scout/own-record.md` says to keep the detail of
-  its `local` entries out of anything shared. In coaster's research, `ENB-04` in
+  its `local` entries out of anything shared. **Amended by Julien,
+  2026-11-11:** every repository that file cites (airlockjs, ai-pegboard, jig
+  and shaper) is public, so it is published with each `local` citation replaced
+  by a link to the public file, after a check that the file supports the entry.
+  In coaster's research, `ENB-04` in
   `scout/enablers.md`, seven lines in the `research_notes` copy of `enablers.md`
   and line 74 of the landscape report paraphrase a skill with no public source
   (`S-04`).
   `field-research/dossier.md` quotes Julien's turns from a session transcript
-  that is kept local.
+  that is kept local. **Amended by Julien, 2026-11-11:** those quotes, and his
+  quoted words elsewhere in the tree, are removed or restated as plain
+  statements of intent, constraints and decisions.
 - coaster's evidence depends on field-research. All seven `OWN` entries are
   `grounded` and cite only field-research IDs, and the first dogfood note links
   to it for five steps. Outside `own-record.md`, airlock appears on 9 lines in
@@ -95,22 +101,27 @@ happens here, before anything is pushed.
   is limited to `hosts/claude`.
 - A disposable `CLAUDE_CONFIG_DIR` does not carry the sign-in over. A model run
   there stops with "Not logged in".
-- Every commit carries `ramboz@adobe.com`, which is already public in the jig,
-  servo and shaper histories, so it needs no action here.
 
 ## Decisions
 
-- **What goes public (Julien, 2026-11-09).** `docs/prospects/coaster/`,
+- **What goes public (Julien, 2026-11-09).** ~~`docs/prospects/coaster/`,
   `docs/prospects/field-research/` and `docs/dogfood/` go public after a content
   review, except `docs/prospects/field-research/scout/own-record.md`, which holds
-  the private airlock record and is held back. Julien first chose to hold back
-  the whole folder, and changed that once the review showed coaster's evidence
-  cites it. Holding back all of the research was also set aside, because the
-  README, vision and release plan cite it.
+  the private airlock record and is held back.~~ **Amended by Julien,
+  2026-11-11:** `docs/prospects/coaster/`, `docs/prospects/field-research/` and
+  `docs/dogfood/` go public after a content review, and field-research is
+  published in full, `own-record.md` included. The airlock, ai-pegboard, jig
+  and shaper files it cites are public, so each of its citations links to the
+  public file, after a check that the file supports the entry. Julien first
+  chose to hold back the whole folder, and changed that once the review showed
+  coaster's evidence cites it. Holding back all of the research was also set
+  aside, because the README, vision and release plan cite it.
 - **How the history goes public (Julien, 2026-11-09).** The reviewed tree is
   published as one new first commit. The five existing commits, the held-back
   file and `publication-review.md` stay on a local `pre-publication` branch that
-  is never pushed.
+  is never pushed. **Amended by Julien, 2026-11-11:** no file is held back any
+  more (see What goes public), so that branch keeps only the earlier commits,
+  `publication-review.md` and its search terms.
 - **How the package is produced (Julien, 2026-11-09).** A standard-library script
   renders neutral source into a generated, committed `hosts/claude`. This goes
   beyond the family's copy-only Claude builds and relaxes the release plan's

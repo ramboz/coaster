@@ -14,7 +14,6 @@ decision: go        # superseded draft; the decision and name are in ../coaster/
 > **Draft.** Written ahead of the go or no-go call because the dogfood run
 > asked for it. Julien picked the shape on 2026-10-21: the pegboard's front
 > door, slimmed to a thin layer. It changes if the call goes the other way.
-> Quotes are Julien's, from the session transcript.
 
 ## Kickoff brief
 
@@ -23,19 +22,19 @@ _Paste this into the first session of the new project._
 ### What we are building
 
 A Claude plugin in the ai-pegboard family that triages a project idea before
-anyone builds it. In Julien's words, the tool should "identify new project
-opportunities, do initial field research to find competitors, refine the idea,
-and identify a viable "product" or "service" to be built. Not the engineering
-research on how to build thing". It captures the hunch in the user's own
-words, drafts research briefs for the research tool the user already has and
-turns the report into a cited, dated evidence ledger, reads the evidence
+anyone builds it. The tool identifies new project opportunities, does initial
+field research to find competitors, refines the idea, and identifies a viable
+product or service to build. It does not do engineering research on how to
+build it. It captures the hunch in the user's own words, drafts research
+briefs for the research tool the user already has and turns the report into
+a cited, dated evidence ledger, reads the evidence
 through six optional lenses, runs a constructive challenge only when asked,
 records the user's decision, finds a name, and hands off to jig and shaper. It
 starts in a claude.ai Project and moves to Claude Code with the repository.
 
-The point, in Julien's words: "to be lean and complementary to the rest of the
-tools in the ai-pegboard project". No framework packs: "I just don't want the
-full spec kit or any mega pack like that."
+The point is to be lean and complementary to the rest of the tools in the
+ai-pegboard project. No framework packs: not the full Spec Kit or any similar
+mega pack.
 
 ### Why now
 
@@ -47,26 +46,24 @@ full spec kit or any mega pack like that."
 
 ### Who it is for
 
-- Builders who start ideas in chat: "most will start in a "chat" session, more
-  than a "code" session."
-- People triaging an idea "before an entrepreneur would even waste time on
-  crafting a full business plan".
+- Builders who start ideas in chat: most are expected to start in a chat
+  session rather than a code session.
+- People triaging an idea before anyone spends time on a full business plan.
 - Julien first: airlock is the motivating case (`OWN-01` to `OWN-04`).
 
 ### Settled decisions
 
-- Claude first: "Claude Chat/Code first, then Codex/Copilot later as v1.
-  Initial POC is fine against Claude alone."
-- Six lenses, all nudges: "all those categories should be "nudges" and not
-  forcibly enforced."
+- Claude first: Claude chat and Claude Code first, then Codex and Copilot
+  later, as v1. An initial proof of concept against Claude alone is fine.
+- Six lenses, all nudges, none enforced.
 - The challenge is opt-in, constructive, and three hats: skeptic, rival,
   customer.
-- No business plan: "not to establish a full business plan, plan product
-  tiers, subscriptions, operational costs".
+- No business plan: no full business plan, product tiers, subscriptions or
+  operational costs.
 - Monetizable starts from the user's own constraints, then industry practice,
   then options.
 - Naming asks for metaphors, mythology, brand and etymology first, and offers
-  "at least 5" candidates.
+  at least five candidates.
 - Draft loosely, dogfood, then formalize with jig.
 - A thin layer: research runs in Claude's Research mode, `/deep-research`, or
   another research tool, through a draft-then-process flow; the challenge
@@ -93,8 +90,8 @@ full spec kit or any mega pack like that."
    pitch document, then shaper's `shape-release` for a Claude-only proof of
    concept.
 5. Specs where ceremony pays: host packaging and the build step for shared
-   references, the helper scripts, and an evaluation that replays this
-   transcript against this dossier as the golden output.
+   references, the helper scripts, and an evaluation that replays the design
+   session's transcript against this dossier as the golden output.
 
 ## Vision seeds
 
@@ -135,16 +132,15 @@ default, evidence you can click, a dossier that moves to the repo.
 
 ### Scope
 
-Julien's stated jobs, in their words:
+The stated jobs:
 
-- "identify new project opportunities"
-- "do initial field research to find competitors"
-- "refine the idea"
-- "identify a viable "product" or "service" to be built"
-- "finding a proper project name (internal codename) could be part of the
-  skill pack"
-- "a Project with artifacts that ultimately can be exported to the code
-  project when it starts"
+- identify new project opportunities;
+- do initial field research to find competitors;
+- refine the idea;
+- identify a viable product or service to build;
+- find a project name, an internal codename, as part of the pack;
+- work in a chat Project whose artifacts can be exported to the code project
+  when it starts.
 
 Out of scope: business plans, product tiers, subscriptions, operating costs,
 engineering research, Codex and Copilot in the proof of concept.

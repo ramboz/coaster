@@ -21,11 +21,10 @@
 <!-- elicited: 2026-11-09 / status: filled / hash: sha256:090f80c855ca -->
 
 - **For:**
-  - Builders who start in chat: "I feel most will start in a "chat" session,
-    more than a "code" session."
-  - People triaging early: "it's mostly meant to triage idea before an
-    entrepreneur would even waste time on crafting a full business plan to
-    convince investors."
+  - Builders who start in chat: most are expected to start in a chat session
+    rather than a code session.
+  - People triaging early, before anyone spends time on a full business plan
+    to convince investors.
   - Julien first.
 - **Not for:**
   - People who want a full business plan, product tiers or subscriptions.
@@ -35,11 +34,11 @@
 
 <!-- elicited: 2026-11-09 / status: filled / hash: sha256:9041d7718efa -->
 
-- **Problem:** Most of my projects start as a conversation with an AI
-  assistant. The idea takes shape in the chat, the chat is abandoned, and a few
-  days later I am scaffolding a repository around a vision that was never
-  checked against the outside world. The research that should have happened
-  first happens later, piecemeal, and usually because something went wrong.
+- **Problem:** A project can start as a conversation with an AI assistant.
+  The idea takes shape in the chat, the chat is abandoned, and a few days
+  later a repository is scaffolded around a vision that was never checked
+  against the outside world. The research that should have happened first
+  happens later, piecemeal, and usually because something went wrong.
 - **Today's paths and where they fall short:**
   - Plain chat: agreeable by design, and an idea discussed in chat rarely
     leaves with sources you can click.
@@ -83,8 +82,8 @@ The evidence for each row is in the
 
 ### Tiers / phases
 
-- First release: Claude. "Initial POC is fine against Claude alone."
-- Later: "then Codex/Copilot later as v1"
+- First release: Claude alone, as the initial proof of concept.
+- Later: Codex and Copilot, as v1.
 
 ### MVP scope
 
@@ -93,9 +92,8 @@ The evidence for each row is in the
 
 ### Out of scope (deliberately)
 
-- "The point is not to establish a full business plan, plan product tiers,
-  subscriptions, operational costs, etc."
-- "I just don't want the full spec kit or any mega pack like that."
+- A full business plan, product tiers, subscriptions or operational costs.
+- The full Spec Kit or any similar mega pack.
 - Engineering research. "How would I build it" comes after, inside the project.
 - A research engine of its own.
 - A CRM or lead tool, an idea backlog, or a gate.
@@ -122,8 +120,8 @@ The evidence for each row is in the
 
 - **Runtime / language:** Markdown skills and templates, plus two
   standard-library Python helpers that run only in Claude Code or a terminal.
-- **Platform commitments:** "Claude Chat/Code first, then Codex/Copilot later
-  as v1."
+- **Platform commitments:** Claude chat and Claude Code first, then Codex
+  and Copilot later, as v1.
   - Deployment shape: open; the family convention is a generated
     `hosts/claude`.
   - Package manager: none.
@@ -137,15 +135,14 @@ The evidence for each row is in the
 
 <!-- elicited: 2026-11-09 / status: filled / hash: sha256:fa8aa66ee627 -->
 
-1. Nudges, not gates: "all those categories should be "nudges" and not forcibly
-   enforced."
-2. "The challenges specifically should really be opt-in only". It finds risks
-   to retire and never issues a verdict.
+1. Nudges, not gates: no category is enforced.
+2. The challenge is opt-in only. It finds risks to retire and never issues a
+   verdict.
 3. The user decides; the tool suggests.
-4. Breadth over depth: "the value is in the broader scope and "workflow", I
-   cover, and not on the depth itself (like with jig)".
-5. Defer to richer skills: "it's meant to be light-weight and defer to richer
-   skills anyway."
+4. Breadth over depth: the value is in the breadth of the workflow, not the
+   depth of any step, as with jig.
+5. Defer to richer skills: the pack is light-weight and defers to richer
+   skills.
 6. Three voices kept apart: Intent, Evidence and Readings. Every claim is
    tagged, and sourced and dated where its tag needs it.
 7. Keep skill descriptions distinct, since overlap drives wrong selection more
