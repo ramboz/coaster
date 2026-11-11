@@ -1,0 +1,18 @@
+{
+  "name": "coaster",
+  "owner": {
+    "name": "ramboz"
+  },
+  "description": "coaster, a light-weight front door for new project ideas, packaged for Claude Code.",
+  "plugins": [
+    {
+      "name": "coaster",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/ramboz/coaster.git",
+        "path": "hosts/claude"
+      },
+      "description": "A light-weight front door for new project ideas: capture a hunch, scout the field, read the evidence through six lenses, decide, name it and hand it off."
+    }
+  ]
+}

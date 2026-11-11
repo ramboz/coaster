@@ -1,8 +1,9 @@
 ---
-status: READY_FOR_IMPLEMENTATION
+status: IN_PROGRESS
 dependencies: [001-01]
 last_verified:
 frame_review: true
+claimed_by: claude/coaster-release-readiness-3b182c
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about

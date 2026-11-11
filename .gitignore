@@ -40,3 +40,6 @@ credentials/
 
 # jig review sidecars hold absolute paths; keep them out of the repository
 docs/specs/*/reviews/.candidates/
+
+# Linked worktrees live inside the main checkout
+.claude/worktrees

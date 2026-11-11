@@ -11,8 +11,8 @@
 <!-- elicited: 2026-11-09 / status: filled / hash: sha256:393e2cf92ca4 -->
 
 - **Vision statement:** A light-weight front door for the ai-pegboard: the
-  whole idea-to-handoff workflow in plain Markdown, nothing to install or run,
-  deferring to richer skills when you have them.
+  whole idea-to-handoff workflow in plain Markdown, one plugin and nothing else
+  to install or run, deferring to richer skills when you have them.
 - **Tagline:** coaster (noun): the card under your cup where an idea gets its
   first honest sketch, before anyone builds anything.
 

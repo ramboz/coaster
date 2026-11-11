@@ -29,8 +29,8 @@ and a framework, and most lead with a kill verdict.
 ## The idea
 
 > A light-weight front door for the ai-pegboard: the whole idea-to-handoff
-> workflow in plain Markdown, nothing to install or run, deferring to richer
-> skills when you have them.
+> workflow in plain Markdown, one plugin and nothing else to install or run,
+> deferring to richer skills when you have them.
 
 A small, opinionated harness for the stretch before a project exists: from
 "I have a hunch" to "this is worth building, here is its shape, here are the

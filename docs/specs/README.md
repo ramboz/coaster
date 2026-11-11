@@ -17,7 +17,7 @@
 |------|-------|--------|-------|
 | [000-adopt-jig](000-adopt-jig/spec.md) | 000-01 — bootstrap | **DONE** | genesis worked example; review boxes satisfied by deterministic completion check |
 | [001-install-and-capture](001-install-and-capture/spec.md) | 001-01 — capture from the built package | **DONE** |  |
-| [001-install-and-capture](001-install-and-capture/spec.md) | 001-02 — install from GitHub | READY_FOR_IMPLEMENTATION |  |
+| [001-install-and-capture](001-install-and-capture/spec.md) | 001-02 — install from GitHub | IN_PROGRESS (claude/coaster-release-read…) |  |
 
 ## Richer-skill selection audit (spec 096-05)
 

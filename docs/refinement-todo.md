@@ -66,11 +66,12 @@
 **Deferred:** What Free-plan users get, given that plugins in chat and Research are for paid plans.
 **Resolution trigger:** R-10's check of a single-skill ZIP upload on Free.
 
-### Decision: "Nothing to install or run" as the lead claim
-**Deferred:** Whether the claim holds while the pack ships two optional Python helpers. Round 1's rival names a pack with no scripts as the line BMAD cannot match (`V-13`).
+### ~~Decision: "Nothing to install or run" as the lead claim~~ — RESOLVED 2026-11-11
+~~**Deferred:** Whether the claim holds while the pack ships two optional Python helpers. Round 1's rival names a pack with no scripts as the line BMAD cannot match (`V-13`).~~
 **Resolution trigger:** First packaging spec, or the next change to the positioning.
 
 ## Conventions
+**Resolved:** spec 001 changed the line to "one plugin and nothing else to install or run", and the README calls the two helpers optional. Julien did not choose between the wordings offered, so this is the recommended default, and his go-ahead to publish covers it.
 
 ### Decision: Code style and linting
 **Deferred:** No signal from the initial pitch.

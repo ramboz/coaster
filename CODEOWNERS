@@ -11,12 +11,12 @@
 # Owners* AND *forbids bypassing* the rule (server-side settings scaffold-init
 # cannot commit — see docs governance.md for the arming checklist).
 #
-# Set @OWNER to a human or team owner DISTINCT from the autonomous agent — the
+# Set @ramboz to a human or team owner DISTINCT from the autonomous agent — the
 # non-author-approval gate is fictional if the agent can approve its own PR.
 
-docs/conventions.md @OWNER
-docs/decisions/** @OWNER
-oracle.sh @OWNER
-.servo/**/config.json @OWNER
-.github/workflows/** @OWNER
-CODEOWNERS @OWNER
+docs/conventions.md @ramboz
+docs/decisions/** @ramboz
+oracle.sh @ramboz
+.servo/**/config.json @ramboz
+.github/workflows/** @ramboz
+CODEOWNERS @ramboz
