@@ -43,3 +43,7 @@ docs/specs/*/reviews/.candidates/
 
 # Linked worktrees live inside the main checkout
 .claude/worktrees
+
+# Python bytecode embeds absolute source paths
+__pycache__/
+*.pyc
