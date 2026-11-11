@@ -17,3 +17,12 @@ A headless `capture` run was refused the plugin's own template, carried on, and 
 ## Write searches for private strings so they cannot match themselves
 
 A check for a home path written literally in a spec matches the spec once it is pushed. Use a bracketed form in the pattern, such as `[r]amboz`. Run the search over every review sidecar too, since jig's `reviews/.candidates/` files hold absolute paths and are git-ignored for that reason.
+
+## Check the remote right before any publishing step
+
+Another session published this repository, public and with its full history, while a review for publishing it was still running. Right before creating or pushing a repository, run `git remote -v` and `gh repo view`, because their state can change between steps.
+
+## Python bytecode carries absolute paths
+
+A `.pyc` file committed by accident held the absolute path of its source file. Ignore `__pycache__/` and `*.pyc` from the start, and include binary files in any search for private strings.
+

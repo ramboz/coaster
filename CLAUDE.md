@@ -12,7 +12,7 @@
 Always-loaded primer, kept lean per jig's context-cost discipline. This is an **index**: each bold term is a one-line claim plus link; full definitions live in [docs/memory/glossary.md](docs/memory/glossary.md) and expand on demand via `/jig:explain <term>`. Update via `/jig:memory-sync`.
 
 ### Project codenames / active work
-- **coaster** - describe what this project is once the first spec lands.
+- **coaster** - a light-weight front door for new project ideas: six Markdown skills, from capture to handoff, packaged as a Claude Code plugin. See [README.md](README.md).
 
 ### Key terms
 - **Context-cost discipline** - the orchestrator's context is re-read every turn; delegate file-heavy reading and keep only the result. See [docs/workflow.md](docs/workflow.md#context-cost-discipline).

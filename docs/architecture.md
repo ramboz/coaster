@@ -95,6 +95,9 @@ Claude Project.
 - **CLI output** (no artifact yet) — `link_check.py` and `name_check.py`
 - **Plugin manifest** (artifact: `.claude-plugin/plugin.json`) — the plugin name,
   the version installers update on, and the `/coaster:<skill>` commands
+- **Marketplace manifest** (artifact: `.claude-plugin/marketplace.json`) — the
+  marketplace name and the `coaster@coaster` install id, with its `git-subdir`
+  source
 
 ## Open questions
 

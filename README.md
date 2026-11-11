@@ -3,13 +3,15 @@
 **coaster** (noun): the card under your cup where an idea gets its first
 honest sketch, before anyone builds anything.
 
-> A light-weight front door for the ai-pegboard: the whole idea-to-handoff
-> workflow in plain Markdown, one plugin and nothing else to install or run,
-> deferring to richer skills when you have them.
+> A light-weight front door for the
+> [ai-pegboard](https://github.com/ramboz/ai-pegboard): the whole
+> idea-to-handoff workflow in plain Markdown, one plugin and nothing else to
+> install or run, deferring to richer skills when you have them.
 
 For the stretch before a project exists: capture a hunch, scout the field,
 read the evidence through six lenses, optionally pressure-test it, decide,
-name it, and hand it off to jig and shaper. Like jig, it provides the floor
+name it, and hand it off to [jig](https://github.com/ramboz/jig) and
+[shaper](https://github.com/ramboz/shaper). Like jig, it provides the floor
 and lets you bring your own depth: scout hands research to an installed
 research skill such as BMAD's Deep Recon, and the challenge to an installed
 grilling skill, when you have them. See

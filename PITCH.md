@@ -1,8 +1,8 @@
 # coaster: triage a project idea before you build it
 
 > A one-page description of something I am building. I would like your honest
-> reaction, especially to the questions at the end. A first draft exists and
-> has been tested on its own idea; nothing is released yet.
+> reaction, especially to the questions at the end. It is published as a
+> pre-release for Claude Code and has been tested on its own idea.
 
 ## The itch
 
@@ -122,9 +122,10 @@ A six-skill draft exists. It has run twice on its own idea, and those runs
 changed it. The first found the space more crowded than expected, so the pack
 was slimmed to a thin layer that defers to the research and grilling tools
 people already have. The second, with its opt-in challenge, sharpened the
-positioning and caught a few design flaws. The next steps are to hand it off
-into the family's build tools, test it in a real claude.ai Project, and hear
-whether it resonates with other builders.
+positioning and caught a few design flaws. It is now a Claude Code plugin in
+pre-release, built from the handoff into the family's build tools. The next
+steps are to run the whole loop on a new idea, test it in a real claude.ai
+Project, and hear whether it resonates with other builders.
 
 ## What I would like from you
 

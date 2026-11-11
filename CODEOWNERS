@@ -11,7 +11,7 @@
 # Owners* AND *forbids bypassing* the rule (server-side settings scaffold-init
 # cannot commit — see docs governance.md for the arming checklist).
 #
-# Set @ramboz to a human or team owner DISTINCT from the autonomous agent — the
+# The owner must be a human or team DISTINCT from the autonomous agent: the
 # non-author-approval gate is fictional if the agent can approve its own PR.
 
 docs/conventions.md @ramboz

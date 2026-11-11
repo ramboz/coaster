@@ -121,7 +121,12 @@ happens here, before anything is pushed.
   file and `publication-review.md` stay on a local `pre-publication` branch that
   is never pushed. **Amended by Julien, 2026-11-11:** no file is held back any
   more (see What goes public), so that branch keeps only the earlier commits,
-  `publication-review.md` and its search terms.
+  `publication-review.md` and its search terms. **Amended again by Julien,
+  2026-11-11:** another Claude session created a public `ramboz/coaster` at 11:03
+  PST and pushed the full local history, before the reviewed commit was ready.
+  Julien kept it public and chose to clean up on top, so the reviewed tree went
+  out as ordinary commits ending at `5e52e52`. The earlier commits, with what the
+  review removed, stay in the public history.
 - **How the package is produced (Julien, 2026-11-09).** A standard-library script
   renders neutral source into a generated, committed `hosts/claude`. This goes
   beyond the family's copy-only Claude builds and relaxes the release plan's
