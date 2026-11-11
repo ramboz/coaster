@@ -81,8 +81,17 @@ intact. Last, Julien runs the whole loop on his next real idea.
   A wildcard for the version therefore also admits `..`, and with it any script
   the model can write at a matching path.
 - `${CLAUDE_PLUGIN_ROOT}` resolves in a skill body under `--plugin-dir`
-  (spec 001). Whether it does for a plugin installed from a marketplace in the
-  CLI is unproven, because `capture` does not use it (A1).
+  (spec 001). jig, whose skills work this way in daily use, writes 88 of the 94
+  plugin-root references in its installed skills as
+  `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/<file>.py"`: an interpreter,
+  and the path in double quotes, with no `allowed-tools` grant (a count over
+  every `SKILL.md` in its installed plugin). In the CLI, a jig skill loaded with
+  the Skill tool showed that path with the plugin's absolute folder in place of
+  the variable (probe, Haiku). That jig was synced from Julien's account rather
+  than installed from a marketplace.
+- An allow rule written without the quotes, `Bash(python3 <path>:*)`, did not
+  match the quoted command `python3 "<path>" ...` and was denied. The same rule
+  with the quotes, `Bash(python3 "<path>":*)`, matched (probes, Haiku).
 
 **`challenge`**
 
@@ -133,9 +142,12 @@ intact. Last, Julien runs the whole loop on his next real idea.
 These are proposed in this draft and wait for Julien's review.
 
 - **Helpers ask for Bash like any other command (proposed).** coaster grants
-  itself nothing. The source runs each helper as `python3 scripts/<file>`, so
-  the rendered command starts with `python3` and does not depend on the execute
-  bit. Claude Code asks before each helper runs, as it does for jig's helpers.
+  itself nothing. The rendered command follows jig's form,
+  `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>"`, rendered from
+  `python3 scripts/<file>` in source, so it does not depend on the execute bit.
+  The helpers stay in each skill's `scripts/` folder, where spec 001 put them,
+  rather than beside `SKILL.md` as jig's do. Claude Code asks before each helper
+  runs, as it does for jig's helpers.
   Running a script that makes network requests is a fair moment to ask, which
   reading the package's own text was not. The cost is that "don't ask again" is
   saved per project and names the versioned path, so a user is asked again in
@@ -165,20 +177,20 @@ These are proposed in this draft and wait for Julien's review.
 - **Hats write nothing and reply with their section (proposed).** In Claude
   Code, `challenge` names the subagent type for its hats. `Explore`, the
   built-in type with no `Write` or `Edit`, which in the probes searched under
-  the session's grant and ran on the session's model, is kept only if, run
-  side by side with `general-purpose` hats, its hats meet the hats' rules, read
-  the whole dossier and research about as much (002-02's AC 1). Otherwise the
-  hats are `general-purpose` and told to write nothing, which the runs then
-  check. Each hat replies with its section in the round template's shape, and
-  the parent writes `challenge/round-N.md` from the replies, adding only the
+  the session's grant and ran on the session's model, is kept only if, run side
+  by side with `general-purpose` hats, its hats meet the hats' rules, read the
+  whole dossier and research about as much (002-02's AC 1). Otherwise the hats
+  are `general-purpose` and told to write nothing, which the runs then check.
+  Each hat replies with its section in the round template's shape, and the
+  parent writes `challenge/round-N.md` from the replies, adding only the
   summary, the grouping and the proposed dispositions. There are no per-hat
   files to write or delete, and the chat path, where the user pastes each answer
-  back, already works this way. Three alternatives are set aside. Leaving the type to the parent got `general-purpose` hats in the
-  probe, which could write, with "read-only" only a request. Hats that write their own section
-  files leave files to delete and nothing to stop a hat editing the dossier.
-  Option F, each hat as a plugin agent with its own tools and model, would
-  enforce both, but widens the package and the script, and ADR-0001 holds it
-  for a failed paste.
+  back, already works this way. Three alternatives are set aside. Leaving the
+  type to the parent got `general-purpose` hats in the probe, which could write,
+  with "read-only" only a request. Hats that write their own section files leave
+  files to delete and nothing to stop a hat editing the dossier. Option F, each
+  hat as a plugin agent with its own tools and model, would enforce both, but
+  widens the package and the script, and ADR-0001 holds it for a failed paste.
 - **What a verification run grants (proposed).** Spec 001's lesson was to test
   with no `--allowedTools` grant, because a `Read` grant hid a refused read of
   the package. In this scope `WebSearch`, `WebFetch` and the helpers are tools a
@@ -234,10 +246,10 @@ These are proposed in this draft and wait for Julien's review.
 ## Assumptions
 
 - **A1.** A plugin installed from a marketplace gets `${CLAUDE_PLUGIN_ROOT}`
-  replaced with its install folder in the skill body, as it does under
-  `--plugin-dir`. jig's installed skills arrive that way in the desktop app,
-  but no coaster skill that uses the variable has run from a CLI install. The
-  first `scout` run in 002-01 shows it in the helper command it runs.
+  replaced in the skill body as jig's account-synced plugin does in the CLI and
+  in the desktop app. Julien's call is to follow jig here, since jig's form has
+  worked reliably. The residual is only the marketplace install itself, which
+  the first `scout` run in 002-01 shows in the helper command it runs.
 - **A2.** An interactive session in the default permission mode asks once for
   each helper, and allowing it for the project covers later runs until the next
   version changes the path. Neither has been run. Julien judges the friction in

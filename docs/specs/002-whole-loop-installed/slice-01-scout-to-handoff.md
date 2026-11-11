@@ -32,7 +32,8 @@ file read.
 1. **Helpers run through an interpreter.** In `skills/scout/SKILL.md` and
    `skills/name/SKILL.md` each helper is run as `python3 scripts/<file>`. The
    build's `HELPERS` map matches that form, and the rendered skills say
-   `python3 ${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>`. The build's
+   `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>"`, the form
+   jig uses for its own helpers. The build's
    rewrite and its guard against an unrewritten helper reference work on the
    new form, shown by a build that fails when one reference is left in source
    form. `--check` exits
@@ -52,17 +53,17 @@ file read.
      it came from the web route;
    - every check with no such call is marked "not run" with the reason and the
      command.
-3. **Helpers run from the installed plugin, on something to check.** `<root>`
-   is the `path` the run's `init` event gives for `coaster`. `scout`'s Process
-   step checks the links after the entries are filed, since `link_check.py`
-   reads only Markdown already on disk. With each helper granted by its full
-   path, the `scout` run's log shows
-   `python3 <root>/skills/scout/scripts/link_check.py` run on the dossier folder
-   after the `scout/` files are written. Its summary line counts more than zero
-   URLs, as many as the unique URLs cited in that folder's Markdown at that
-   point, and the dossier's Evidence section records it with the date. The `name` run's log shows
-   `python3 <root>/skills/name/scripts/name_check.py` run on the candidates, and
-   `naming.md` carries its rows with the date.
+3. **Helpers run from the installed plugin, on something to check.** `<root>` is
+   the `path` the run's `init` event gives for `coaster`. `scout`'s Process step
+   checks the links after the entries are filed, since `link_check.py` reads
+   only Markdown already on disk. With each helper granted by its full path, the
+   `scout` run's log shows `python3 "<root>/skills/scout/scripts/link_check.py"`
+   run on the dossier folder after the `scout/` files are written. Its summary
+   line counts more than zero URLs, as many as the unique URLs cited in that
+   folder's Markdown at that point, and the dossier's Evidence section records
+   it with the date. The `name` run's log shows
+   `python3 "<root>/skills/name/scripts/name_check.py"` run on the candidates,
+   and `naming.md` carries its rows with the date.
 4. **`scout`'s quick pass files evidence by the rules.** On a dossier written by
    the installed `capture` for spec 001's sample idea, one `scout` run asked for
    the Landscape and Demand lanes:
@@ -154,14 +155,18 @@ with `--model sonnet --permission-mode acceptEdits --output-format stream-json
 --verbose`, and without `--plugin-dir`. `$ROOT` is coaster's `path` from the
 `init` event of the first run on each installed version, because the path
 changes with the version. The grants are the ones each step needs, and never
-`Read`. Each run's `init` event is checked before its output is judged.
+`Read`. A helper grant quotes the path as the command does, since an unquoted
+rule did not match a quoted command in the probes: `$SCOUT_GRANT` is
+`Bash(python3 "$ROOT/skills/scout/scripts/link_check.py":*)` and `$NAME_GRANT`
+is `Bash(python3 "$ROOT/skills/name/scripts/name_check.py":*)`. Each run's
+`init` event is checked before its output is judged.
 
 1. The baseline: steps 2 to 7 on the installed `0.1.0-pre.2`, recorded as found
    and not judged.
 2. The sample dossier, as in spec 001:
    `claude -p '/coaster:capture A small app that reminds me when my houseplants need water. Skip the other questions.'`
 3. `scout`, granted
-   `--allowedTools "WebSearch,WebFetch,Bash(python3 $ROOT/skills/scout/scripts/link_check.py:*)"`:
+   `--allowedTools "WebSearch,WebFetch,$SCOUT_GRANT"`:
    `claude -p '/coaster:scout Run the Landscape and Demand lanes as a quick pass, and skip the other lanes.'`
    The same prompt again with only `WebSearch,WebFetch` granted (AC 2), and
    once with nothing granted (AC 5), each on a copy of step 2's output.
@@ -169,7 +174,7 @@ changes with the version. The grants are the ones each step needs, and never
    `claude -p '/coaster:frame Read the Open and Wanted lenses, and skip the others.'`,
    then `claude -p --resume "$SESSION_ID" 'Go.'`
 5. `name`, granted
-   `--allowedTools "WebSearch,WebFetch,Bash(python3 $ROOT/skills/name/scripts/name_check.py:*)"`:
+   `--allowedTools "WebSearch,WebFetch,$NAME_GRANT"`:
    `claude -p '/coaster:name It reminds forgetful plant owners to water their plants. Botany, warm and playful, short and lowercase, and it must read well as a command. Skip the other questions.'`,
    then `claude -p --resume "$SESSION_ID" 'I pick the first one on the shortlist.'`
    The first turn again with only `WebSearch,WebFetch` granted (AC 2).
