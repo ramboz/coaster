@@ -126,6 +126,7 @@ dossier's round was closed as superseded.
   and shortlisted six names. Julien picked **coaster**.
 - **2026-10-29, renames.** The project folder was renamed to coaster, and
   this run's dossier moved to `docs/prospects/coaster/`. The brief and the
-  challenge round keep their original wording, with a dated note.
+  challenge round keep their original wording, with a dated note, apart from
+  the 2026-11-11 publication edits that each notes.
 - **2026-10-29, docs.** The README and the pitch were brought up to date, and
   the first dossier and its drafts were marked as superseded.

@@ -1,7 +1,8 @@
 # Research brief: prospect, landscape, timing & enablers, and reach
 
 _The brief as it was sent on 2026-10-21, under the pack's working name. The
-pack is now named coaster._
+pack is now named coaster. Restated for publication on 2026-11-11: the
+author's quoted words are given as a plain statement._
 
 _Drafted by `scout` on 2026-10-21 from `templates/research-brief.md`. Paste
 this into Claude's Research mode, Claude Code's `/deep-research`, or another
@@ -11,7 +12,8 @@ deep-research tool. Bring the full report back to `scout`._
 
 A lean skill pack for Claude that helps a builder triage a project idea before
 building it or writing a business plan. The point is to be lean and
-complementary to the rest of the tools in the ai-pegboard project, a family of small open-source plugins for spec-driven building,
+complementary to the rest of the tools in the ai-pegboard project, a family
+of small open-source plugins for spec-driven building,
 evaluation, and release shaping. It reuses what the user already has instead
 of bundling its own machinery: it writes research briefs for the user's own
 deep-research tool and turns the report into a cited evidence ledger, and its
