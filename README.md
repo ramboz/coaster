@@ -50,7 +50,10 @@ to jig and shaper is written, and the first release is being built from it.
 Markdown skills and templates. Each installed skill carries the templates and
 shared rules it needs, so it reads none of its own files at runtime. Two
 optional standard-library Python helpers need network access and run only in
-Claude Code or a terminal: scout's link check and name's collision check. No
+Claude Code or a terminal: scout's link check and name's collision check.
+coaster grants itself no permissions, so Claude Code asks before each helper
+runs. If you decline, the skill checks on the web when it can, and otherwise
+records that the check was not run. No
 hooks, no connectors, no agents, and no research engine of its own: research
 goes to a richer installed skill, a quick pass, or your own research tool, and
 scout checks what comes back.

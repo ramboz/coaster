@@ -58,7 +58,8 @@ goes to the user, give it as a block they can copy.
 
 ## 2. Run
 
-Take the first option that applies.
+If the user asks for a particular option, such as the quick pass, take it.
+Otherwise take the first option that applies.
 
 1. **A richer research skill is installed.** If a skill in this session says
    it handles deep, market, or competitor research, such as BMAD's Deep Recon,
@@ -94,14 +95,22 @@ as the long-form record.
    number. A claim is `grounded` only once its source has been opened and says
    it, qualifiers included. Until then it is `unverified`. An absence without
    its searches is `unverified` too.
-2. **Check the links.** In Claude Code, run `${CLAUDE_PLUGIN_ROOT}/skills/scout/scripts/link_check.py
-   <dossier-folder>`. In chat, open the sources behind the load-bearing claims.
-   Research tools invent or misattribute part of their citations, so this step
-   is never skipped. Record the result in the Evidence section.
-3. **File the entries.** In chat, under a heading per lane inside the one
+2. **File the entries.** In chat, under a heading per lane inside the one
    dossier artifact. In a repository, in `scout/<lane>.md`, plus one index line
    per load-bearing entry in the dossier's Evidence section. Never copy or
    renumber entries.
+3. **Check the links**, once the entries are filed, so the check sees them. In
+   Claude Code, run `python3 "${CLAUDE_PLUGIN_ROOT}/skills/scout/scripts/link_check.py" <dossier-folder>`. In chat,
+   open the sources behind the load-bearing claims. Research tools invent or
+   misattribute part of their citations, so this step is never skipped. Record
+   the result in the Evidence section.
+
+   If the helper is refused or fails, try no other command to the same end,
+   such as `curl` or an inline script: the user declined running code. If web
+   tools are allowed, open the sources behind the load-bearing claims instead,
+   as in chat, and say in the Evidence section that the links were checked on
+   the web. Otherwise record the link check as "not run", with the reason and
+   the command to run by hand. Never record a result that no tool returned.
 4. **Note the gaps in the report**: lanes it skipped, sources it could not
    read, questions it did not answer. Frame needs to know what was not looked
    at.

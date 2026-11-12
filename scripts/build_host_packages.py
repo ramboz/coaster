@@ -42,10 +42,11 @@ SKILL_FILES = {
     "handoff": ["templates/handoff.md"],
 }
 HELPERS = {  # source form -> skill that owns the helper
-    "`scripts/link_check.py": "scout",
-    "`scripts/name_check.py": "name",
+    "`python3 scripts/link_check.py": "scout",
+    "`python3 scripts/name_check.py": "name",
 }
-FORBIDDEN = ("`templates/", "`../_shared/", "`evidence.md`", "`scripts/", "allowed-tools")
+FORBIDDEN = ("`templates/", "`../_shared/", "`evidence.md`", "`scripts/",
+             "`python3 scripts/", "allowed-tools")
 INTRO = ("Each `## Packaged:` section below runs to the next `## Packaged:` heading "
          "or the end of this file.")
 
@@ -77,7 +78,9 @@ def render_skill(skill: str, root: Path) -> str:
         if owner == skill:
             if old not in text:
                 raise SystemExit(f"ERROR: {skill}: helper reference not found: {old}")
-            new = old.replace("`scripts/", f"`${{CLAUDE_PLUGIN_ROOT}}/skills/{skill}/scripts/")
+            # jig's form: python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>"
+            new = old.replace("`python3 scripts/",
+                              f'`python3 "${{CLAUDE_PLUGIN_ROOT}}/skills/{skill}/scripts/') + '"'
             text = text.replace(old, new)
     sections = "\n".join(_section(rel, root) for rel in SKILL_FILES[skill])
     text = text.rstrip("\n") + "\n\n" + INTRO + "\n\n" + sections

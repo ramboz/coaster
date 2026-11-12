@@ -1,9 +1,10 @@
 ---
-status: READY_FOR_IMPLEMENTATION
+status: IN_PROGRESS
 dependencies: [001-02]
 last_verified:
 frame_review: true
 arch_review: true
+claimed_by: claude/spec-002-01-scout-to-handoff
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
