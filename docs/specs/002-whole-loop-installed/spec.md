@@ -163,7 +163,12 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
   the choice and its costs in an ADR. What "don't ask again" saves, the versioned script path or a broader
   `python3` prefix, has not been run (A2), and decides both the cost and
   whether asking stays the narrow choice. The ADR cites it as unverified, and
-  002-03 records the rule the prompt offers.
+  002-03 records the rule the prompt offers. **Amended by Julien, 2026-11-11:**
+  his interactive probe settled A2. "Don't ask again" saves `Bash(python3 *)`,
+  not the script's path, so the cost above is wrong: a user who picks it allows
+  any Python command in the project. He kept jig's form and chose to warn users,
+  in the README and in `scout` and `name` just before each helper runs
+  (ADR-0002).
 - **A refused helper is not worked around, and nothing is filled in
   (Julien, 2026-11-11).** When a helper is refused, the skill does not try another
   command to the same end, such as `curl` or an inline script, because the user

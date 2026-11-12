@@ -58,7 +58,10 @@ candidates already named an AI agent or spec-driven tool. Drop or flag those
 before spending time on registries.
 
 In Claude Code, `python3 "${CLAUDE_PLUGIN_ROOT}/skills/name/scripts/name_check.py" <name> ...` does the registry
-and GitHub lookups. In chat, use web search. If the helper is refused or fails,
+and GitHub lookups. Before running it, tell the user that if Claude Code asks,
+they should answer Yes rather than "don't ask again", which would allow any
+Python command in the project. In chat, use web search. If the helper is
+refused or fails,
 try no other command to the same end, such as `curl` or an inline script: the
 user declined running code. If web tools are allowed, do the lookups by web
 search instead and say so in `naming.md`. Otherwise mark those columns "not

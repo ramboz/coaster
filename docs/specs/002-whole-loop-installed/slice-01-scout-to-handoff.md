@@ -131,6 +131,12 @@ file read.
     in the spec's probe, and a rendered `allowed-tools` grant. It cites A2, what
     "don't ask again" saves, as unverified. The README's "What's inside" says
     how the helpers get permission, and recommends no wildcard rule.
+
+    **Amended by Julien, 2026-11-11:** his interactive probe settled A2, and
+    "don't ask again" saves `Bash(python3 *)`. The ADR records A2 as settled
+    rather than unverified, and the costs as they are: that option allows any
+    Python command in the project. He kept jig's form, so the README, `scout`
+    and `name` warn users to answer Yes instead.
 11. **The fixes ship before the runs that judge them.** The changes go out as
     `0.1.0-pre.3`, after the path and term searches, as an ordinary commit on
     `main`. The test profile is updated, and the runs for ACs 2 to 9 and 12 are

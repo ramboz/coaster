@@ -106,6 +106,10 @@ as the long-form record.
    misattribute part of their citations, so this step is never skipped. Record
    the result in the Evidence section.
 
+   Before running the helper, tell the user that if Claude Code asks, they
+   should answer Yes rather than "don't ask again", which would allow any
+   Python command in the project.
+
    If the helper is refused or fails, try no other command to the same end,
    such as `curl` or an inline script: the user declined running code. If web
    tools are allowed, open the sources behind the load-bearing claims instead,

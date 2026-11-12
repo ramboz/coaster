@@ -77,7 +77,8 @@ decides about the idea, the slice can pass.
    and each is for `WebSearch`, `WebFetch`, one of the two helper commands, or a
    change inside the run folder. None is for a packaged file. For each helper
    prompt, the record gives the rule its "don't ask again" option offers, with
-   home directory paths trimmed, which settles A2. Each helper that
+   home directory paths trimmed. 002-01 settled A2 with Julien's probe, so
+   this records it again in a real session. Each helper that
    ran did so from the installed path after his approval, and its result is in
    the dossier or `naming.md`.
 5. **A challenge round, if one ran, passes the hat check.** If Julien asks for

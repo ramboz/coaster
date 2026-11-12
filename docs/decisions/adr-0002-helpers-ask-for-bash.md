@@ -48,7 +48,7 @@ Option A, chosen by Julien on 2026-11-11.
 
 - **The command.** The source runs each helper as `python3 scripts/<file>`. The build renders it in jig's form, `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>"`, so it does not depend on the execute bit. The build's `HELPERS` keys, rewrite and `FORBIDDEN` guard follow that form, which stays inside ADR-0001's bound of "the two helper paths".
 - **No workaround.** When a helper is refused, the skill tries no other command to the same end, because the user declined running code. If web tools are allowed, it takes the web route its text already gives for chat, and says so. Otherwise it records the check as not run, with the reason and the command to run by hand. It never records a result that no tool returned.
-- **The README** says that coaster grants itself no permissions and that Claude Code asks before each helper runs. It tells users to answer Yes rather than "don't ask again", because that option saves `Bash(python3 *)`. It recommends no allow rule.
+- **The warning.** The README says that coaster grants itself no permissions and that Claude Code asks before each helper runs. It tells users to answer Yes rather than "don't ask again", because that option saves `Bash(python3 *)`, and it recommends no allow rule. `scout` and `name` give the same warning in the session, just before each helper runs, since a user who installed from the marketplace may never open the README.
 
 The probe fired this ADR's first kill criterion. Julien weighed Option D, executable helpers run by their own path, and chose on 2026-11-11 to keep jig's form and warn users instead.
 
@@ -59,7 +59,7 @@ The probe fired this ADR's first kill criterion. Julien weighed Option D, execut
 - Keeping the build within ADR-0001's bound.
 
 **Becomes harder:**
-- Using the helpers without prompts: a careful user answers each helper prompt, and one who picks "don't ask again" allows any Python command in that project. The README's warning is the only guard.
+- Using the helpers without prompts: a careful user answers each helper prompt, and one who picks "don't ask again" allows any Python command in that project. The warnings in the README and in the session are the only guard.
 - Testing headless: a run must grant the helper by its exact, quoted, installed path.
 
 ## Assumptions
@@ -70,7 +70,7 @@ The probe fired this ADR's first kill criterion. Julien weighed Option D, execut
 ## Kill criteria
 
 - ~~"Don't ask again" turns out to offer a bare `python3` rule.~~ Fired on 2026-11-11. Julien chose the README warning over Option D, and Option B stays set aside for its own reasons.
-- Users accept the broad rule despite the warning, as 002-03 or later use shows. Option D is then the next step.
+- An issue report shows users accepting the broad rule despite the warning. coaster has no telemetry, so the standing trigger is the scope-4 release check before `v0.1.0`, which reviews this exposure again (tracked in `docs/refinement-todo.md`). Option D is then the next step, after checking that the execute bit survives the build, git and the plugin install.
 - Users find the repeat prompts bad enough to stop using the helpers, as 002-03 or later use shows.
 
 ## Open questions
