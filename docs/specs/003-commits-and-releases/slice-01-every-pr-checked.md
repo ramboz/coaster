@@ -331,6 +331,7 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
 | `docs/decisions/README.md` / ADR index | `no-op` | No ADR, by the spec's decision: the mechanism is the family's, as recorded in servo's ADR-0007. |
 | `docs/governance.md`, `docs/workflow.md`, `docs/adoption-readiness.md` | `no-op` | Searched for commit, CI and release claims: nothing stale. The new workflows fall under the existing `.github/workflows/**` protection. |
 | `CONTRIBUTING.md` | `updated` | New file, covering this slice's merging, direct-push and CI sections. |
+| 003-02's files: `release.yml`, `release-please-config.json`, `.release-please-manifest.json`, `docs/refinement-todo.md`, the release plan | `no-op` | Covered by 003-02's sweep. |
 | Spec 002's paths (`plugin.json`, `hosts/claude/**`, `skills/**`, `scripts/build_host_packages.py`, `README.md`, ADR-0002, `docs/specs/002-*`) | `no-op` | They reached this branch from `origin/main` through the rebases, not from spec 003. `git diff origin/main...HEAD` touches none of them. A diff against the stale local `main` lists them. |
 
 **Leanness:**
