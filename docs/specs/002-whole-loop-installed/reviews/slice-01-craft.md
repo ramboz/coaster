@@ -1,0 +1,13 @@
+---
+slice: 002-01 — scout to handoff, installed
+pass: craft
+verdict: pass
+reviewer: jig:reviewer
+reviewed_at: 2026-11-12T01:58:14Z
+prompt_source: review.py pr-review --richer-skill pr-review, then a re-check by the same reviewer
+substrate: shown
+applied_skill: pr-review
+shown_candidates: [independent-review:high-confidence, pr-review:high-confidence, scout-pr-review:high-confidence, access:speculative, adr-workflow:speculative, agent-development:speculative, analyze:speculative, arch-review:speculative, bug-fix:speculative, build-dashboard:speculative, build-mcp-app:speculative, build-mcp-server:speculative, build-mcpb:speculative, cardputer-buddy:speculative, clarify:speculative, claude-automation-recommender:speculative, claude-md-improver:speculative, code-health:speculative, command-development:speculative, configure:speculative, contracts:speculative, cowork-plugin-customizer:speculative, create-cowork-plugin:speculative, create-viz:speculative, data-context-extractor:speculative, data-visualization:speculative, example-command:speculative, example-skill:speculative, explain:speculative, explore-data:speculative, frontend-design:speculative, hook-development:speculative, m5-onboard:speculative, math-olympiad:speculative, mcp-integration:speculative, memory-sync:speculative, migrate:speculative, orient:speculative, playground:speculative, plugin-settings:speculative, plugin-structure:speculative, project-artifact:speculative, reframe:speculative, scaffold-init:speculative, scout-autotune:speculative, scout-bench-create:speculative, scout-memory-init:speculative, scout-scrum-master:speculative, security-review:speculative, session-report:speculative, skill-creator:speculative, skill-development:speculative, slice-land:speculative, spec-workflow:speculative, sql-queries:speculative, statistical-analysis:speculative, tdd-loop:speculative, validate-data:speculative, vision-elicitation:speculative, write-query:speculative, writing-hookify-rules:speculative]
+---
+
+Craft pass (pr-review rubric) on a re-check by the same reviewer, not a fresh review. The first pass returned needs-changes. Its blocker was a Recorded revision claim that `name`'s text was byte-identical through pre.8, which left the AC 2 evidence on older text. Its nits covered evidence traceability, the warning's placement, refusal versus failure, dossier edits with file tools, and two prose fixes. pre.9 to pre.11 and the rewritten evidence resolved them. On re-check nothing rose to a blocker. Its nits were applied in reconciliation: the `handoff` inbox remedy, the pre.10 warning gap, the "byte-identical in pre.11" wording, and how two-turn file lists read.

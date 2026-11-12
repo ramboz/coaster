@@ -1,5 +1,5 @@
 ---
-status: IN_PROGRESS
+status: REVIEWED
 dependencies: [001-02]
 last_verified:
 frame_review: true
@@ -208,7 +208,7 @@ judged runs. Raw logs stay out of the repository, because they hold home
 directory paths. The evidence is the table below and a list of each run's tool
 calls with those paths trimmed, in `evidence/slice-01-tool-calls.md`.
 
-**Recorded revision:** the judged runs used coaster installed from GitHub into a disposable profile, with Claude Code 2.1.322 and Sonnet. Each skill was judged on the last version that changed its text:
+**Recorded revision:** the judged runs used coaster installed from GitHub into a disposable profile, with Claude Code 2.1.322 and Sonnet. Each skill was judged on a version whose text for that skill is byte-identical in `0.1.0-pre.11`:
 - `scout` on `0.1.0-pre.11` (`ac1f86f`);
 - `name` and `handoff` on `0.1.0-pre.10` (`2fc2016`);
 - `capture` and `frame` on `0.1.0-pre.9` (`3189b90`).
@@ -219,7 +219,7 @@ Their text and both helpers are byte-identical in `0.1.0-pre.11`, which ships. A
 |------|----|----------|----------|---------|----------|
 | 1 | — | The baseline on `0.1.0-pre.2` is recorded | Recorded as found:<br>- The rendered helper commands had no `python3`. The model wrote `python3 -I <path> … 2>&1` itself, which the quoted grant did not match, so the helper was refused even when granted.<br>- `name` wrote `naming.md` outside the dossier folder.<br>- Most runs first tried a Bash heredoc or inline-Python edit that `acceptEdits` denied.<br>- With no web tools, `scout` already said it could not search.<br>- Account-synced plugins joined the profile after the first run and were then disabled. | recorded | `b2` to `b6` |
 | 2 | 1 | Source, map and rendered form agree; `--check` and strict validation pass | Source runs `python3 scripts/<file>`. The `HELPERS` keys, the rewrite and the `FORBIDDEN` guard use that form, and the rendered skills say `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>"`.<br>Each guard fails the build:<br>- a stray `python3 scripts/` in `frame`, inside or outside backticks: "unmapped reference";<br>- an old-form reference in `scout`: "helper reference not found".<br>`--check` exits 0 and `claude plugin validate --strict hosts/claude` passes. The rendered skills hold no `` `scripts/ `` or `allowed-tools`, `skills/` holds no `${CLAUDE_PLUGIN_ROOT}`, and the script is 161 lines. | pass | the build; the guard runs |
-| 3 | 2 | A withheld helper is not worked around; each result traces to a web call or is marked not run | **`t3b` (`scout`):** the only denial is the helper. It tried no other command, opened the sources behind its 8 `grounded` entries on the web, and says so in the Evidence section, with the command to run by hand. Every `grounded` entry cites a fetched URL, and the `unverified` ones are named as not opened.<br>**`s5b` (`name`):** the only denial is the helper. It tried nothing else, marked the npm, PyPI, crates.io and GitHub columns "not checked", and gave the reason and the command to run by hand. | pass | `t3b`, `s5b` |
+| 3 | 2 | A withheld helper is not worked around; each result traces to a web call or is marked not run | **`t3b` (`scout`):** the only denial is the helper. It tried no other command, opened the sources behind its 8 `grounded` entries on the web, and says so in the Evidence section, with the command to run by hand. Every `grounded` entry cites a fetched URL, and the `unverified` ones are named as not opened.<br>**`s5b` (`name`):** the only denial is the helper. It tried nothing else, marked the npm, PyPI, crates.io and GitHub columns "not checked", which is `name`'s word for AC 2's "not run", and gave the reason and the command to run by hand. Web tools were granted, but it used them only for product searches and did not do the registry lookups on the web, as its text says to. AC 2's bullets still hold, because nothing unchecked is reported as checked. | pass | `t3b`, `s5b` |
 | 4 | 3, 4 | The quick pass files entries by the rules, and the link check runs from `<root>` | **`t3a`:** no denials. The warning came before the helper.<br>- The lane files were written first. Then `python3 "<root:0.1.0-pre.11>/skills/scout/scripts/link_check.py"` ran on the dossier folder, after the model's own edits, and reported 12 URLs (10 resolve, 2 refuse automated requests), matching the folder's 12 unique URLs. The Evidence section records it with the date.<br>- The lanes hold 5 and 7 entries, labelled quick pass. Every entry has its prefix, number, a known tag and the fields that tag needs, and every `grounded` entry cites a fetched URL. The Evidence index lists the load-bearing entries.<br>- `status: scouted`, and `last_scouted` is today. | pass | `t3a` |
 | 5 | 5 | With no web tools, `scout` says it could not search and invents nothing | **`t3c`:** the only denials are `WebSearch`. It said the quick pass could not run and tried no other route. It wrote only a brief, beside the dossier, and no URL appears anywhere in the folder. | pass | `t3c` |
 | 6 | 6 | `frame` suggests, then records the go only on the second turn | **`r4`:** At a glance gives one-word readings for Open and Wanted, "not looked at" for the other four, "5 of 19 lane entries `grounded`", and a call labelled "a suggestion, not the decision". It sets `status: framed`, and `## Decisions` is unchanged.<br>**`r4t2` ("Go."):** a dated go with the open risks carried forward, `decision: go` and `status: decided`. | pass | `r4`, `r4t2` |
@@ -234,7 +234,7 @@ Their text and both helpers are byte-identical in `0.1.0-pre.11`, which ships. A
 **DoD:**
 - [ ] All ACs pass, with the table above filled in from real runs.
 - [ ] Reviewed by `reviewer` subagent. Reviewer prompt built by `review.py`.
-- [ ] Implementation review passed.
+- [x] Implementation review passed.
 - [ ] Deviation log produced under this slice heading.
 - [ ] Reconciliation sweep produced under this slice heading.
 - [ ] Reconciliation review passed.
@@ -267,7 +267,18 @@ The original slice is preserved above. Implementation notes:
    - **ACs 2 and 9:** first, to allow a denied Bash write inside the run folder; then, for AC 9, any denied Bash command confined to the run folder. A command touching the plugin's folder still fails, even when denied. The first amendment says Sonnet tried a heredoc in every `scout` run on pre.2 and pre.4. The accurate count is every `scout` run that wrote lane files: four of six. The two runs without web tools wrote none.
    - **AC 10:** A2 is settled. Julien's interactive probe showed that "don't ask again" saves `Bash(python3 *)`. That fired ADR-0002's kill criterion. Julien weighed Option D and chose to keep jig's form and warn users. The scope-4 release check revisits it, as `docs/refinement-todo.md` tracks.
 3. **The in-session warning is not reliable.** In the final runs `scout` showed it before every helper call, and `name` showed it before neither of its two. No AC requires it. ADR-0002 and refinement-todo record it.
-4. **Each skill was judged on its last changed version.** Recorded revision gives the versions. `capture` and `frame` ran on pre.9, and `name` on pre.10 from pre.9's `frame` output. `handoff` ran on pre.10 from that `name` output, and `scout` on pre.11 from pre.9's `capture`. Each update was compared byte for byte.
+4. **Each skill was judged on text byte-identical in pre.11.** Recorded revision gives the versions:
+   - `capture` and `frame` ran on pre.9, with `frame` (`r4`) reading the output of pre.9's `scout` run `r3a`;
+   - `name` ran on pre.10 from that `frame` output, and `handoff` on pre.10 from that `name` output;
+   - `scout` ran on pre.11 from pre.9's `capture`.
+
+   Each update was compared byte for byte.
+8. **Three wording gaps against AC 2.**
+   - `scout` and `name` now say "If the helper is refused, try no other command", while AC 2 says "refused or fails". On a failure the text sends the model to the web route or to "not run", which excludes another command only by implication.
+   - `name` writes "not checked" where AC 2 says "not run".
+   - In `s5b`, `name` had web tools but did not do the registry lookups on the web, though its text says to.
+
+   None makes a result up, and the first is a candidate for the next change to either skill.
 5. **The test profile needed isolating.** Account-synced plugins joined it after its first run, and the synced `deep-research` skill appeared at the first session. The plugins were disabled with `claude plugin disable`. `deep-research` was blocked with `Skill(...)` deny rules in the profile's settings, lifted only for AC 12's run, which reused the profile because a copy would not carry the sign-in. Julien's own settings were not touched. This settles A7. A1 is settled too: every helper command in the logs ran from the installed path, with `${CLAUDE_PLUGIN_ROOT}` filled in.
 6. **Earlier runs are kept as history.** The intermediate runs are summarized in the evidence. They include the pre.4 `frame` turn whose denied command named `/tmp/x`, outside the run folder, which no judged run repeats. They also include `DEM-02`, tagged `grounded` in a pre.5 run with only "same thread as DEM-01" as its source. The final runs cite a fetched URL for every `grounded` entry.
 7. **The first reviews were redone.** Compliance and craft returned needs-changes on pre.8. The fixes went into pre.9 to pre.11, and the runs were repeated as above. The checks that support the table are described in the evidence file. The scripts stay outside the repository, which keeps the release plan's no-test-harness rule.

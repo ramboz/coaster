@@ -45,7 +45,7 @@
 **Resolution trigger:** R-04's activation test, then R-02's chat-path run.
 
 ### Decision: The helpers' "don't ask again" exposure
-**Deferred:** Answering "don't ask again" to a helper prompt saves `Bash(python3 *)`, which allows any Python command in the project. [ADR-0002](decisions/adr-0002-helpers-ask-for-bash.md) keeps jig's command form and warns users in the README and in `scout` and `name`. The in-session warning is not reliable: in 002-01's runs on `0.1.0-pre.8`, `name` ran its helper without it. The model's own inline `python3 -` edits, seen in several of 002-01's runs, would also run unprompted under that rule, so Option D removes only coaster's share of the exposure. Option D, executable helpers run by their own path, is the fallback.
+**Deferred:** Answering "don't ask again" to a helper prompt saves `Bash(python3 *)`, which allows any Python command in the project. [ADR-0002](decisions/adr-0002-helpers-ask-for-bash.md) keeps jig's command form and warns users in the README and in `scout` and `name`. The in-session warning is not reliable: `name` ran its helper without it on `0.1.0-pre.8`, and again at both helper calls on `0.1.0-pre.10`, after the warning moved before the command. Option D, executable helpers run by their own path, is the fallback. It would remove only coaster's share of the exposure, because the model's own inline `python3 -` edits, seen in several of 002-01's runs, would also run unprompted under that rule.
 **Resolution trigger:** An issue report of users accepting the broad rule, or the scope-4 release check before `v0.1.0`, whichever comes first.
 
 ## Product

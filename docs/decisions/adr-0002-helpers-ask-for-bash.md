@@ -59,7 +59,7 @@ The probe fired this ADR's first kill criterion. Julien weighed Option D, execut
 - Keeping the build within ADR-0001's bound.
 
 **Becomes harder:**
-- Using the helpers without prompts: a careful user answers each helper prompt, and one who picks "don't ask again" allows any Python command in that project. The warnings in the README and in the session are the only guard, and the session's is model prose: in 002-01's runs on `0.1.0-pre.8`, `scout` showed it before its helper and `name` did not.
+- Using the helpers without prompts: a careful user answers each helper prompt, and one who picks "don't ask again" allows any Python command in that project. The warnings in the README and in the session are the only guard, and the session's is model prose: in 002-01's runs on `0.1.0-pre.8`, `scout` showed it before its helper and `name` did not. (Added 2026-11-11: on `0.1.0-pre.10`, after the warning moved before the command, `name` still skipped it at both helper calls, while `scout` gave it on `0.1.0-pre.11`.)
 - The exposure is not coaster's alone. In several of 002-01's runs the model edited the dossier with its own inline `python3 -` script. Under a saved `Bash(python3 *)` such commands would run without a prompt, and coaster cannot warn about them. `scout` now tells the model to edit files with the file tools, which narrows but does not remove this.
 - Testing headless: a run must grant the helper by its exact, quoted, installed path.
 
