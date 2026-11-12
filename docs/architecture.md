@@ -20,7 +20,7 @@ coaster/
 ├── skills/            # the six skills, _shared/ (evidence rules, lenses, hats), two Python helpers
 ├── templates/         # dossier, research brief, challenge round, naming, handoff
 ├── scripts/           # build_host_packages.py renders hosts/claude from source
-├── hosts/claude/      # the generated, committed Claude Code package; never edit by hand
+├── hosts/claude/      # the generated, committed Claude Code package, with challenge's hat agents; never edit by hand
 ├── docs/prospects/    # one dossier folder per idea
 ├── docs/dogfood/      # what each run on its own idea taught
 └── docs/              # jig's vision, architecture, specs, decisions
@@ -57,9 +57,28 @@ permission to read its own text.
 
 **Mechanics:** `scripts/build_host_packages.py` renders `hosts/claude/` from
 `skills/` and `templates/`, appending each skill's packaged files under
-`## Packaged:` headings from an explicit map. After any change to `skills/`,
-`templates/`, `README.md` or the manifest, run the script and commit the result.
-`--check` fails when the committed package is stale.
+`## Packaged:` headings from an explicit map, and renders challenge's three hat
+agents (ADR-0003). After any change to `skills/`, `templates/`, `README.md` or
+the manifest, run the script and commit the result. `--check` fails when the
+committed package is stale.
+
+### The hats are plugin agents ([ADR-0003](decisions/adr-0003-hats-as-plugin-agents.md))
+
+**Principle:** each hat works from the full rules and stays independent of the
+conversation, and "write nothing" is enforced rather than asked for.
+
+**Mechanics:** the build renders `hosts/claude/agents/skeptic.md`, `rival.md`
+and `customer.md` from `skills/challenge/hat-agent.md`, a Claude-only brief,
+followed by the hats' rules, that hat's own section, the evidence rules and the
+round template, cut from the same rendered sections `challenge` carries. Each
+agent has `tools: Read, Grep, Glob, WebSearch, WebFetch` and `model: inherit`.
+`challenge` starts `coaster:skeptic`, `coaster:rival` and `coaster:customer`
+in one message, with only the hat's name, the dossier path, earlier rounds and
+the date in each prompt, and writes the round from their replies. The release
+check reads each hat's system prompt from its subagent transcript and checks
+each `Agent` prompt against that list. The chat path still pastes the full
+text into one prompt per hat. A later chat or Codex build must skip
+`hat-agent.md`.
 
 ### Helpers ask for Bash ([ADR-0002](decisions/adr-0002-helpers-ask-for-bash.md))
 
@@ -87,7 +106,7 @@ run.
 
 Coupling: in source, skills couple only through the dossier and by relative
 paths to `_shared/` and `templates/`. In the package those paths are replaced by
-text built into each skill.
+text built into each skill, and into each of challenge's hat agents.
 
 ## Data model
 
@@ -111,6 +130,10 @@ Claude Project.
   the version installers update on, and the `/coaster:<skill>` commands. From
   `v0.1.0`, release-please sets the version in it and in the package's copy
   ([spec 003](specs/003-commits-and-releases/spec.md))
+- **Plugin agents** (artifact: `hosts/claude/agents/*.md`, rendered from
+  `skills/challenge/hat-agent.md`) — `coaster:skeptic`, `coaster:rival` and
+  `coaster:customer`, listed in every session that has coaster installed and
+  started only by `challenge` ([ADR-0003](decisions/adr-0003-hats-as-plugin-agents.md))
 - **Marketplace manifest** (artifact: `.claude-plugin/marketplace.json`) — the
   marketplace name and the `coaster@coaster` install id, with its `git-subdir`
   source

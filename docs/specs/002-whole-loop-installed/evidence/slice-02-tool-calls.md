@@ -311,34 +311,45 @@ Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/
 
 Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/challenge/round-1.md`, `docs/prospects/houseplant-watering-reminder/dossier.md`, `docs/prospects/houseplant-watering-reminder/scout/demand.md`, `docs/prospects/houseplant-watering-reminder/scout/landscape.md`
 
-
 ## Slice 002-04: the hat agents, local runs (2026-11-12)
 
-Two runs of `/coaster:challenge challenge this` from a `--plugin-dir` copy of this branch's `hosts/claude` at `0.1.0-pre.12`, set up as AC 1's runs were: `f1s` on Sonnet and `f1o` on Opus. Each `init` event lists `coaster@inline` `0.1.0-pre.12`, the built-in plugins, and the agents `coaster:skeptic`, `coaster:rival` and `coaster:customer`.
+Runs of `/coaster:challenge challenge this` from a `--plugin-dir` copy of this branch's `hosts/claude` at `0.1.0-pre.12`, set up as AC 1's runs were. Each `init` event lists `coaster@inline` `0.1.0-pre.12`, the built-in plugins, and the agents `coaster:skeptic`, `coaster:rival` and `coaster:customer`.
 
 **How the system prompts were checked.** Each hat's `Agent` call is matched to its task by the `task_started` event, and the task to its transcript in the profile, at `projects/<run>/<session>/subagents/agent-<task id>.jsonl`. The transcript's `prompt_snapshot` attachment holds the system prompt. A script kept outside the repository compares it with the body of `agents/<hat>.md` in the loaded build, and cuts the four parts from that file for the same four-level comparison as AC 6 above.
 
-**Results, in both runs:**
+### First runs, at `b6052c4`: `f1s` (Sonnet) and `f1o` (Opus)
+
+The build was the working tree that became `b6052c4`, byte for byte (`diff -rq`). Every system prompt matched its agent file, nothing was denied, and no hat wrote or ran Bash. But each `f1s` prompt added "(lane files are under scout/ beside it)", which is not on AC 5's list of what a prompt may hold. Slice 002-04's compliance review held it to that list, so, as ADR-0003 says, `challenge`'s wording was tightened to "and nothing else" and both runs were repeated. The same change asks the parent to copy each hat's section without shortening it, because the `f1s` parent had shortened them. These runs are not judged. Their hats are in the table below for comparison.
+
+### Judged runs, at `cbe06fc`: `f2s` (Sonnet) and `f2o` (Opus)
+
+The build was a `git archive` of `hosts/claude` at commit `cbe06fc`, identical to the committed tree (`diff -rq`). In both runs:
 
 - **System prompts.** For every hat, the first block of its system prompt equals its agent file's body, apart from surrounding whitespace. All four parts match exactly.
 - **`Agent` prompts.** Each prompt, with local paths trimmed:
-  - `f1s-agents-sonnet`, Skeptic: `Hat: skeptic. Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md (lane files are under scout/ beside it). Earlier rounds: none. Today's date: 2026-11-12.`
-  - `f1s-agents-sonnet`, Rival: `Hat: rival. Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md (lane files are under scout/ beside it). Earlier rounds: none. Today's date: 2026-11-12.`
-  - `f1s-agents-sonnet`, Customer: `Hat: customer. Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md (lane files are under scout/ beside it). Earlier rounds: none. Today's date: 2026-11-12.`
-  - `f1o-agents-opus`, Skeptic: `Hat: skeptic` ⏎ `Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md` ⏎ `Earlier rounds: none` ⏎ `Today's date: 2026-11-12`
-  - `f1o-agents-opus`, Rival: `Hat: rival` ⏎ `Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md` ⏎ `Earlier rounds: none` ⏎ `Today's date: 2026-11-12`
-  - `f1o-agents-opus`, Customer: `Hat: customer` ⏎ `Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md` ⏎ `Earlier rounds: none` ⏎ `Today's date: 2026-11-12`
+  - `f2s-agents-sonnet`, Skeptic: `Hat: skeptic. Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md. Earlier rounds: none. Today's date: 2026-11-12.`
+  - `f2s-agents-sonnet`, Rival: `Hat: rival. Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md. Earlier rounds: none. Today's date: 2026-11-12.`
+  - `f2s-agents-sonnet`, Customer: `Hat: customer. Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md. Earlier rounds: none. Today's date: 2026-11-12.`
+  - `f2o-agents-opus`, Skeptic: `Hat: skeptic` ⏎ `Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md` ⏎ `Earlier rounds: none` ⏎ `Today's date: 2026-11-12`
+  - `f2o-agents-opus`, Rival: `Hat: rival` ⏎ `Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md` ⏎ `Earlier rounds: none` ⏎ `Today's date: 2026-11-12`
+  - `f2o-agents-opus`, Customer: `Hat: customer` ⏎ `Dossier: ./docs/prospects/houseplant-watering-reminder/dossier.md` ⏎ `Earlier rounds: none` ⏎ `Today's date: 2026-11-12`
 
-  Each holds the hat's name, the dossier path, "Earlier rounds: none" and the date, and no line of the hats' rules, the evidence rules or the round template. The Sonnet parent also wrote "(lane files are under scout/ beside it)", which says where the dossier's own files are and states no rule, limit, lens instruction or reply shape.
-- **Tools, model and reading.** The three `Agent` calls in each run share one `message.id`. No hat made a `Bash`, `Write`, `Edit` or `NotebookEdit` call. Each hat ran on the session's model, read the whole dossier with `Read`, and made one `Glob` call inside the dossier's folder. No hat called `ToolSearch`.
-- **Denials and `<root>`.** `permission_denials` is empty in both runs. No tool call by the parent or a hat names the build folder. The Opus parent made no search for `link_check.py`.
-- **The rounds.** Each run wrote one `challenge/round-1.md`, with the template's headings in order, opening with "What holds up", and every disposition marked as a proposal. The Opus parent copied each hat's section as the hat replied it. The Sonnet parent still wrote the hats' concerns in fewer words, although `challenge` now asks it to copy each section. 002-02's amended AC 5 allows that if each concern keeps its claim, test and urgency, and records it.
-- **Replies.** Every reply meets AC 4. Two words from its list appear in the Opus Customer reply, "overwatering kills plants too" and "ever killed a plant", both about plants, not verdicts on the idea. Every `grounded` entry cites a page the same hat opened.
+  Each holds the hat's name, the dossier path, "Earlier rounds: none" and the date, and nothing else.
+- **Tools, model and reading.** The three `Agent` calls in each run share one `message.id`. No hat made a `Bash`, `Write`, `Edit` or `NotebookEdit` call, or called `ToolSearch`. Each hat ran on the session's model and read the whole dossier with `Read`. Five of the six made one `Glob` call inside the dossier's folder.
+- **Denials and `<root>`.** `permission_denials` is empty in both runs. No tool call by the parent or a hat names the build folder. Neither parent looked for `link_check.py`, and both rounds say the next `scout` pass runs the link check.
+- **The rounds.** Each run wrote one `challenge/round-1.md`, with the template's headings in order, opening with "What holds up". Both parents copied each hat's concerns and lens lines as the hat replied them, and said every disposition is proposed. Each added "Round 1 proposes:" notes under the readings it touched, and the Opus parent also indexed the hats' new entries in the Evidence section. One slip: the Sonnet round ends by saying those notes "are not yet added", although its dossier has them.
+- **Replies.** Every reply meets AC 4, with no word from its list. Every `grounded` entry cites a page the same hat opened.
 
-The hats, beside AC 1's runs:
+The hats, beside the first runs and AC 1's runs:
 
 | Run | Hat | Type, model | Whole dossier | Writes, Bash | Searches | Pages opened | New entries (grounded) | AC 4 | Tokens | Time |
 |---|---|---|---|---|---|---|---|---|---|---|
+| `f2s-agents-sonnet` | Skeptic | `coaster:skeptic`, sonnet-5-5 | yes | 0, 0 | 2 | 1 | 4 (1) | pass | 23k | 36s |
+| `f2s-agents-sonnet` | Rival | `coaster:rival`, sonnet-5-5 | yes | 0, 0 | 2 | 0 | 3 (0) | pass | 23k | 39s |
+| `f2s-agents-sonnet` | Customer | `coaster:customer`, sonnet-5-5 | yes | 0, 0 | 2 | 0 | 6 (0) | pass | 23k | 38s |
+| `f2o-agents-opus` | Skeptic | `coaster:skeptic`, opus-5-5 | yes | 0, 0 | 4 | 6 | 8 (6) | pass | 31k | 90s |
+| `f2o-agents-opus` | Rival | `coaster:rival`, opus-5-5 | yes | 0, 0 | 2 | 6 | 7 (6) | pass | 29k | 102s |
+| `f2o-agents-opus` | Customer | `coaster:customer`, opus-5-5 | yes | 0, 0 | 5 | 9 | 9 (7) | pass | 35k | 126s |
 | `f1s-agents-sonnet` | Skeptic | `coaster:skeptic`, sonnet-5-5 | yes | 0, 0 | 1 | 1 | 3 (1) | pass | 22k | 37s |
 | `f1s-agents-sonnet` | Rival | `coaster:rival`, sonnet-5-5 | yes | 0, 0 | 1 | 0 | 5 (0) | pass | 21k | 40s |
 | `f1s-agents-sonnet` | Customer | `coaster:customer`, sonnet-5-5 | yes | 0, 0 | 1 | 0 | 1 (0) | pass | 21k | 41s |
@@ -355,9 +366,115 @@ The hats, beside AC 1's runs:
 | `a1o-explore-opus` | Rival | `Explore`, opus-5-5 | yes | 0, 1 | 4 | 4 | 7 (4) | pass | 42k | 96s |
 | `a1o-explore-opus` | Customer | `Explore`, opus-5-5 | yes | 0, 1 | 4 | 7 | 7 (5) | pass | 44k | 93s |
 
-At Sonnet the agents made one search each, against 1.5 to 1.7 for the built-in types, and their new entries averaged 3, the same as before. The Customer returned one entry. At Opus they made 2.7 searches, opened 5.3 pages and returned 6 entries, 4.7 of them `grounded`, a hat, against `Explore`'s 3.7, 6.7 and 7.7 (5.3). Every agent used fewer tokens than either built-in type.
+Per hat in the judged runs, the Sonnet agents made 2 searches, opened 0.3 pages and returned 4.3 entries (0.3 `grounded`), against 1.5 to 1.7 searches, 0.5 pages and 3 entries for the built-in types at Sonnet. The Opus agents made 3.7 searches, opened 7 pages and returned 8 entries (6.3 `grounded`), against `Explore`'s 3.7, 6.7 and 7.7 (5.3). The Sonnet agents used about 23k tokens a hat, against 33k for `Explore` and 49k for `general-purpose`.
 
-### `f1s-agents-sonnet`: the hat agents, Sonnet (002-04)
+### `f2s-agents-sonnet`: the hat agents, Sonnet, at cbe06fc (002-04, judged)
+
+- model: claude-sonnet-5-5 | cc: 2.1.322 | turns: 12 | result events: 4 | cost: 0.67
+- plugin: coaster coaster@inline 0.1.0-pre.12; built-in: cc-plugin-agents-md, cc-plugin-telemetry, cc-plugin-privacy, cc-plugin-plugin-authoring, cc-plugin-easel
+- research/grill skills: ['deep-research', 'anthropic-skills:deep-research'] (blocked by the profile's deny rules)
+- denials: []
+- parent:
+  - `Bash: find . -path ./.git -prune -o -type f -print | head -50`
+  - `Bash: cd ./docs/prospects/houseplant-watering-reminder && cat dossier.md && ls -R`
+  - `Agent: Skeptic hat review` (coaster:skeptic)
+  - `Agent: Rival hat review` (coaster:rival)
+  - `Agent: Customer hat review` (coaster:customer)
+  - `Write: ./docs/prospects/houseplant-watering-reminder/challenge/round-1.md`
+  - `Edit: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Edit: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+- Skeptic hat:
+  - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Glob: **/*`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
+  - `WebSearch: free plant watering reminder app iPhone no account no subscription unlimited plants`
+  - `WebSearch: reddit "how do you remember to water" houseplants app reminder`
+  - `WebFetch: https://github.com/ruuda/sempervivum`
+- Rival hat:
+  - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Glob: **/*`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
+  - `WebSearch: free plant watering reminder app iPhone no account no subscription`
+  - `WebSearch: Apple Reminders repeating reminders water plants; Google Home / Alexa plant watering reminder built in`
+- Customer hat:
+  - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Glob: **/*`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
+  - `WebSearch: reddit houseplants what app do you use to remember to water plants`
+  - `WebSearch: free plant watering reminder iPhone no account no subscription app`
+
+Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/challenge/round-1.md`, `docs/prospects/houseplant-watering-reminder/dossier.md`, `docs/prospects/houseplant-watering-reminder/scout/demand.md`, `docs/prospects/houseplant-watering-reminder/scout/landscape.md`
+
+### `f2o-agents-opus`: the hat agents, Opus, at cbe06fc (002-04, judged)
+
+- model: claude-opus-5-5 | cc: 2.1.322 | turns: 14 | result events: 4 | cost: 2.03
+- plugin: coaster coaster@inline 0.1.0-pre.12; built-in: cc-plugin-agents-md, cc-plugin-telemetry, cc-plugin-privacy, cc-plugin-plugin-authoring, cc-plugin-easel
+- research/grill skills: ['deep-research', 'anthropic-skills:deep-research'] (blocked by the profile's deny rules)
+- denials: []
+- parent:
+  - `Bash: find docs -type f | head -50`
+  - `Agent: Skeptic hat challenge` (coaster:skeptic)
+  - `Agent: Rival hat challenge` (coaster:rival)
+  - `Agent: Customer hat challenge` (coaster:customer)
+  - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Write: ./docs/prospects/houseplant-watering-reminder/challenge/round-1.md`
+  - `Edit: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Edit: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Edit: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Edit: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+- Skeptic hat:
+  - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Glob: docs/prospects/houseplant-watering-reminder/**/*`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
+  - `WebFetch: https://github.com/ruuda/sempervivum`
+  - `WebSearch: reddit how do you remember to water your houseplants app`
+  - `WebSearch: free plant watering reminder app iPhone no account no subscription`
+  - `WebFetch: https://apps.apple.com/iq/app/remindew/id1546126954`
+  - `WebFetch: https://apps.apple.com/app/id6769872312`
+  - `WebFetch: https://apps.apple.com/app/id6759828509`
+  - `WebSearch: Planta app change reminder notification time of day setting`
+  - `WebFetch: https://www.janeperrone.com/blog/2023/9/20/plant-apps`
+  - `WebFetch: https://support.getplanta.com/im-not-getting-notifications-task-reminders`
+  - `WebSearch: iOS web push notifications PWA home screen requirement Safari limitations 2026`
+- Rival hat:
+  - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Glob: **/*.md`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
+  - `WebSearch: Planta app free version plant limit reminders notification time setting`
+  - `WebSearch: Greg plant app free no plant limit watering reminders pricing`
+  - `WebFetch: https://apps.apple.com/us/app/id1512912236`
+  - `WebFetch: https://apps.apple.com/us/app/plantir-plant-reminders/id1539300483`
+  - `WebFetch: https://support.getplanta.com/im-not-getting-notifications-task-reminders`
+  - `WebFetch: https://github.com/ruuda/sempervivum`
+  - `WebFetch: https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/`
+  - `WebFetch: https://apps.apple.com/us/app/planta-plant-garden-care/id1410126781`
+- Customer hat:
+  - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
+  - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
+  - `WebSearch: reddit houseplants how do you remember to water app deleted subscription`
+  - `WebSearch: Planta app reminder notification time setting "time of day" watering reminders`
+  - `WebSearch: iOS web push notifications home screen web app requirements Safari 16.4`
+  - `WebFetch: https://apps.apple.com/app/id6763580398`
+  - `WebFetch: https://support.getplanta.com/im-not-getting-notifications-task-reminders`
+  - `WebFetch: https://apps.apple.com/app/id6755929354`
+  - `WebFetch: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers`
+  - `WebSearch: Notification Triggers API showTrigger scheduled notifications status Chrome abandoned Safari support`
+  - `WebFetch: https://developer.chrome.com/docs/web-platform/notification-triggers`
+  - `WebFetch: https://www.magicbell.com/blog/pwa-ios-limitations-safari-support-complete-guide`
+  - `WebSearch: site:reddit.com r/houseplants watering reminder app recommendation free no subscription`
+  - `WebFetch: https://apps.apple.com/us/app/tierra/id1519045472`
+  - `WebFetch: https://apple.co/3L8Mzd7`
+  - `WebFetch: https://apps.apple.com/us/app/ploi-plant-care/id1624280409`
+
+Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/challenge/round-1.md`, `docs/prospects/houseplant-watering-reminder/dossier.md`, `docs/prospects/houseplant-watering-reminder/scout/demand.md`, `docs/prospects/houseplant-watering-reminder/scout/landscape.md`
+
+### `f1s-agents-sonnet`: the hat agents, Sonnet, at b6052c4 (002-04, first run)
 
 - model: claude-sonnet-5-5 | cc: 2.1.322 | turns: 12 | result events: 4 | cost: 0.60
 - plugin: coaster coaster@inline 0.1.0-pre.12; built-in: cc-plugin-agents-md, cc-plugin-telemetry, cc-plugin-privacy, cc-plugin-plugin-authoring, cc-plugin-easel
@@ -394,7 +511,7 @@ At Sonnet the agents made one search each, against 1.5 to 1.7 for the built-in t
 
 Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/challenge/round-1.md`, `docs/prospects/houseplant-watering-reminder/dossier.md`, `docs/prospects/houseplant-watering-reminder/scout/demand.md`, `docs/prospects/houseplant-watering-reminder/scout/landscape.md`
 
-### `f1o-agents-opus`: the hat agents, Opus (002-04)
+### `f1o-agents-opus`: the hat agents, Opus, at b6052c4 (002-04, first run)
 
 - model: claude-opus-5-5 | cc: 2.1.322 | turns: 14 | result events: 4 | cost: 1.76
 - plugin: coaster coaster@inline 0.1.0-pre.12; built-in: cc-plugin-agents-md, cc-plugin-telemetry, cc-plugin-privacy, cc-plugin-plugin-authoring, cc-plugin-easel
