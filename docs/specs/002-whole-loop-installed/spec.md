@@ -318,6 +318,9 @@ plugin.
 - [002-01 — scout to handoff, installed](slice-01-scout-to-handoff.md)
 - [002-02 — the challenge round, installed](slice-02-challenge-round.md)
 - [002-03 — the next real idea](slice-03-next-real-idea.md)
+- [002-04 — the hats as plugin agents](slice-04-hats-as-agents.md), added
+  on 2026-11-12 when 002-02's AC 6 failed (ADR-0003). It lands before 002-02's
+  installed runs.
 
 ## Deferred decisions this spec reaches
 

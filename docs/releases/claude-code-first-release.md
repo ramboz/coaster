@@ -40,7 +40,7 @@ demoable value on its own (not "just the data model" / "just the parser").
 
 - Risk: Descriptions overlap with Deep Recon, Forge Idea and grilling (R-04).
   - Why it matters: Overlap, not count, drives wrong selection (`S-06`), and a new pack's descriptions drop first (`RCH-03`). The result could reopen six skills or three.
-  - Retirement path: Ten natural prompts under `claude plugin eval`, with grilling and the BMAD toolbox installed; costs in `/skill-doctor`.
+  - Retirement path: Ten natural prompts under `claude plugin eval`, with grilling and the BMAD toolbox installed; costs in `/skill-doctor`. Some prompts could pull in coaster's hat agents, such as "be skeptical about this plan", and the record lists every `Agent` call (ADR-0003).
 - Risk: The grilling hand-off loses the challenge's flow or its posture (R-03).
   - Why it matters: Nested calls return to the main session (`ENB-06`), and grilling interviews relentlessly (`C-07`).
   - Retirement path: In Claude Code, hand off to grilling with and without the hats' rules, and check the dossier still gets updated.
@@ -136,7 +136,7 @@ review — not here.
   - `docs/prospects/` has been reviewed before going public.
   - The README says the chat path is untested.
   - The helpers' "don't ask again" exposure is reviewed again: answering it saves `Bash(python3 *)` (ADR-0002, `docs/refinement-todo.md`).
-- Evidence to inspect: The plugin validation output, a dossier from the installed run, the `claude plugin eval` result, and a trimmed comparison of the hat prompts with the packaged rules.
+- Evidence to inspect: The plugin validation output, a dossier from the installed run, the `claude plugin eval` result, and, for each hat (ADR-0003), its system prompt from its transcript compared with the installed agent file, and its `Agent` prompt checked against the list of what it may hold.
 - Known missing signals: No servo signals were found; release-check criteria remain advisory.
 
 _Last shaped: 2026-11-09_

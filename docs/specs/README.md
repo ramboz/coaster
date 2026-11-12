@@ -19,8 +19,9 @@
 | [001-install-and-capture](001-install-and-capture/spec.md) | 001-01 — capture from the built package | **DONE** |  |
 | [001-install-and-capture](001-install-and-capture/spec.md) | 001-02 — install from GitHub | **DONE** |  |
 | [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-01 — scout to handoff, installed | **DONE** |  |
-| [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-02 — the challenge round, installed | READY_FOR_IMPLEMENTATION |  |
+| [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-02 — the challenge round, installed | IN_PROGRESS (claude/trusting-blackburn-a…) |  |
 | [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-03 — the next real idea | READY_FOR_IMPLEMENTATION |  |
+| [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-04 — the hats as plugin agents | READY_FOR_REVIEW (claude/trusting-blackburn-a…) |  |
 | [003-commits-and-releases](003-commits-and-releases/spec.md) | 003-01 — every PR checked | **DONE** | PR titles checked on PRs, subjects on main; force pushes are denied, so merge main into a pushed branch |
 | [003-commits-and-releases](003-commits-and-releases/spec.md) | 003-02 — releases from main | **DONE** | release-please keeps PR #3 open; merging it cuts v0.1.0, after the release check |
 
