@@ -251,8 +251,11 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
   the first `scout` run in 002-01 shows in the helper command it runs.
 - **A2.** An interactive session in the default permission mode asks once for
   each helper, and allowing it for the project covers later runs until the next
-  version changes the path. Neither has been run. Julien judges the friction in
-  002-03.
+  version changes the path. **Settled on 2026-11-11, and wrong:** in Julien's
+  interactive probe, "don't ask again" saved `Bash(python3 *)`, which allows
+  any Python command in the project. Julien chose to keep jig's form and have
+  the README tell users to answer Yes instead (ADR-0002). He judges the
+  friction in 002-03.
 - **A3.** The parent pastes the packaged sections into each hat's prompt
   intact. This is ADR-0001's open assumption, and 002-02's AC 6 tests it. If it
   fails, ADR-0001's kill criterion applies.
