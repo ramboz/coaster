@@ -135,6 +135,7 @@ review — not here.
   - LICENSE, CHANGELOG and CI are in place, and CODEOWNERS has no placeholder.
   - `docs/prospects/` has been reviewed before going public.
   - The README says the chat path is untested.
+  - The helpers' "don't ask again" exposure is reviewed again: answering it saves `Bash(python3 *)` (ADR-0002, `docs/refinement-todo.md`).
 - Evidence to inspect: The plugin validation output, a dossier from the installed run, the `claude plugin eval` result, and a trimmed comparison of the hat prompts with the packaged rules.
 - Known missing signals: No servo signals were found; release-check criteria remain advisory.
 

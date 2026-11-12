@@ -326,3 +326,4 @@ plugin.
 | Module boundaries | The hats' reply shape is a contract between `challenge` and its own subagents, not between skills. The entry is unchanged. |
 | Testing framework | The checks are recorded runs and a comparison kept outside the repository, so the trigger is not reached. |
 | CI/CD setup | Pushes in this scope run the searches by hand (A6). The trigger stays with scope 4. |
+| The helpers' "don't ask again" exposure (new) | 002-01 created it: "don't ask again" saves `Bash(python3 *)`. ADR-0002 keeps jig's form with warnings, and the scope-4 release check revisits it. |
