@@ -97,8 +97,9 @@ as the long-form record.
    its searches is `unverified` too.
 2. **File the entries.** In chat, under a heading per lane inside the one
    dossier artifact. In a repository, in `scout/<lane>.md`, plus one index line
-   per load-bearing entry in the dossier's Evidence section. Never copy or
-   renumber entries.
+   per load-bearing entry in the dossier's Evidence section. Create each file
+   with the file-writing tool, which makes the `scout/` folder as needed, not
+   with a shell command. Never copy or renumber entries.
 3. **Check the links**, once the entries are filed, so the check sees them. In
    Claude Code, run `python3 "${CLAUDE_PLUGIN_ROOT}/skills/scout/scripts/link_check.py" <dossier-folder>`. In chat,
    open the sources behind the load-bearing claims. Research tools invent or

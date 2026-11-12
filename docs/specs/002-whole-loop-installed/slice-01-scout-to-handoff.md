@@ -53,6 +53,13 @@ file read.
      it came from the web route;
    - every check with no such call is marked "not run" with the reason and the
      command.
+
+   **Amended by Julien, 2026-11-11:** a denied `Bash` command that only writes
+   inside the run folder, and that the run then makes with `Write` or `Edit`,
+   is allowed and recorded. Sonnet tried such a heredoc in every `scout` run on
+   `0.1.0-pre.2` and `0.1.0-pre.4`, a habit of the model rather than of the
+   package. `scout` was also told to create its files with the file-writing
+   tool.
 3. **Helpers run from the installed plugin, on something to check.** `<root>` is
    the `path` the run's `init` event gives for `coaster`. `scout`'s Process step
    checks the links after the entries are filed, since `link_check.py` reads
@@ -111,6 +118,10 @@ file read.
    - no `Skill` call names a skill outside coaster;
    - no `Agent` call starts a hat, and the challenge round is mentioned at most
      once in the session.
+
+   **Amended by Julien, 2026-11-11:** as in AC 2, a denied `Bash` command that
+   only writes inside the run folder, and that the run then makes with `Write`
+   or `Edit`, is allowed and recorded.
 10. **The permission choice is recorded.** An ADR written with
     `/jig:adr-workflow new` records that the helpers ask for Bash like any
     other command, that coaster grants itself nothing, and that a refused
