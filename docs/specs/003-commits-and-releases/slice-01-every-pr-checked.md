@@ -1,9 +1,8 @@
 ---
-status: RECONCILED
+status: DONE
 dependencies: [001-02]
 last_verified: 2026-11-11
 frame_review: true
-claimed_by: claude/release-mechanism-cbea54
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
@@ -321,6 +320,24 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
     It exits 0 on `bbeda54..a28e0cd`. `git diff a258006 HEAD --
     .github/workflows/pr-title.yml` is empty, so the bad-title test on
     `a258006` covers the file that lands.
+
+13. **AC 7, second half, after the merge (2026-11-12).**
+    - PR #2 landed on `main` as `c0a8cc8`,
+      `ci(release): check every PR and release from main with release-please (#2)`.
+      That is the PR's title plus GitHub's ` (#2)`; the merge dialog was not
+      used, because `gh pr merge --squash` passed no subject.
+    - **Deviation: the body is not empty.** It holds a single
+      `Co-authored-by: Claude Opus 5.5 <noreply@anthropic.com>` trailer. With
+      `squash_merge_commit_message: BLANK`, GitHub still appends co-author
+      trailers taken from the squashed commits. release-please gives such a
+      trailer no meaning, and the release PR's changelog shows no effect.
+      `BLANK` still keeps branch commits' bodies, and any `BREAKING CHANGE:`
+      footer in them, off `main`.
+    - **`CI` run `43137153855` on `c0a8cc8` (push):** `subjects` passes, as do
+      `check (3.9)`, `check (3.12)` and `validate`. This is the subject
+      check's first live run on `main`.
+    - `main` had moved to `ac1f86f`, a spec 002 fix to `scout`, just before
+      the merge. It touched no file in this PR.
 
 ### Reconciliation sweep
 
