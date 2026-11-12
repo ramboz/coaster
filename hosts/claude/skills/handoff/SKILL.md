@@ -13,7 +13,8 @@ description: >
 
 # handoff
 
-Write `handoff.md` from the `## Packaged: handoff template` section. The project starts from
+Write `handoff.md` from the `## Packaged: handoff template` section, next to the dossier: in a
+repository, `docs/prospects/<slug>/handoff.md`. The project starts from
 evidence instead of memory, and nothing in the dossier is lost on the way.
 
 ## Inputs

@@ -30,7 +30,8 @@ Ask, all skippable, at most five at a time:
    how much collision is acceptable. A family may already tolerate some: a
    sibling may share its name with a famous project.
 
-Write the answers into `naming.md` from `templates/naming.md`. Record
+Write the answers into `naming.md` from `templates/naming.md`, next to the
+dossier: in a repository, `docs/prospects/<slug>/naming.md`. Record
 unanswered questions as unstated rather than guessing.
 
 ## 2. Candidates
