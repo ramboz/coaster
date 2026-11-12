@@ -19,10 +19,10 @@ hats that write nothing and reply with their sections, and show from the run
 logs that each hat received the packaged rules intact.
 
 **DoR:**
-- 002-01 is DONE, and its framed sample dossier is kept outside the repository.
+- ✅ 002-01 is DONE, and its framed sample dossier is kept outside the repository.
 - ✅ Julien accepted the decision that hats write nothing, with the type
   chosen by comparison, on 2026-11-11.
-- 002-04 is DONE, so `0.1.0-pre.12` with the hats as plugin agents is on
+- ✅ 002-04 is DONE, so `0.1.0-pre.12` with the hats as plugin agents is on
   `main` (added by Julien's amendment, 2026-11-12).
 
 **Acceptance Criteria:**
@@ -101,6 +101,13 @@ logs that each hat received the packaged rules intact.
    its `Agent` call or, when the hat runs in the background, the `summary` of
    the `task_notification` that names that call. In Claude Code 2.1.322 the
    hats ran in the background, and the `tool_result` was only a launch notice.
+
+   **Ruled by Julien, 2026-11-12:** an entry whose tag is not one of the five
+   but whose own text names its provenance, as `i1s`'s S-01
+   (`[grounded-lead, unverified until opened]`, with "they stay `unverified`"
+   and its links and date), is a format slip that is allowed and recorded,
+   not a failure. An entry with no tag, or one that claims more than its
+   source supports, still fails.
 5. **The round is assembled from the replies, not written over them.** Each
    `round-1.md` has the headings of the packaged round template in order and
    opens with a "What holds up" summary. Every concern and lens line under a
@@ -148,6 +155,13 @@ logs that each hat received the packaged rules intact.
    name, the dossier path, the paths of earlier round files, today's date and
    at most one line asking the hat to begin, with no rule, limit, lens
    instruction or reply shape of its own.
+
+   **Ruled by Julien, 2026-11-12:** a note that only says where the dossier's
+   own files are, such as `i1s`'s "(lane files are in the scout/ folder beside
+   it)", counts as part of the dossier path. It is allowed and recorded.
+   ADR-0003 stands: the recurrence in `i1s` after `cbe06fc` does not reopen
+   Option F1, because the note adds nothing the list guards against. A note
+   that states a rule, limit, lens instruction or reply shape still fails.
 7. **A failed check stops here.** If any part of any hat's prompt fails AC 6,
    ADR-0001's kill criterion applies. This AC cannot pass until Julien has
    decided, in a new ADR, between Option F (each hat as a plugin agent, with its
@@ -208,14 +222,16 @@ of the repository. The evidence is the table below, the per-hat results of
 ACs 4 and 6, and a list of each run's tool calls with home directory paths
 trimmed, in `evidence/slice-02-tool-calls.md`.
 
+**Recorded revision:** ACs 3 to 8 were judged on coaster `0.1.0-pre.12`, installed from GitHub at `8dbc2f7` into 002-01's disposable profile, with Claude Code 2.1.322: one Sonnet run (`i1s`) and one Opus run (`i1o`). The installed folder matched `hosts/claude` (`diff -rq`). AC 1's five runs used local builds of the draft wording on top of `c8480fa`, which differed only in the subagent type. The run IDs are the headings in [evidence/slice-02-tool-calls.md](evidence/slice-02-tool-calls.md).
+
 | Step | AC | Expected | Observed | Outcome | Evidence |
 |------|----|----------|----------|---------|----------|
 | 1 | 1 | The two types compared hat by hat; the choice follows the comparison | Five runs from local builds: `Explore` on Sonnet (`a1e`, `a2e`) and Opus (`a1o`), and `general-purpose` on Sonnet (`a1g`, `a2g`). Every `Explore` hat passes AC 3's checks on writes, Bash, the model and reading the whole dossier, every reply of either type meets AC 4, and at Sonnet both types research the same amount, with `Explore` on about two thirds of the tokens. On Opus, `Explore` hats ran on Opus. The rule would keep `Explore`, but both types fail AC 8 (step 7), and one run fails AC 6 (step 6). So AC 2 waits for Julien. | pass, as amended: Julien saw the comparison and chose Option F (ADR-0003) | [evidence](evidence/slice-02-tool-calls.md#ac-1-the-two-types-hat-by-hat-2026-11-12) |
 | 2 | 2 | Source and template speak only of replies; rebuilt, valid and shipped | Replaced by 002-04's ACs 1 to 4 (amendment). `challenge` and the template speak only of the hats' replies, the inbox item is struck through, and `0.1.0-pre.12` shipped at `8dbc2f7` after the searches. | pass, as amended | [002-04](slice-04-hats-as-agents.md) |
 | 3 | 3 | Three hats of the chosen type started together on the session's model, none writing; one round file per run | **`i1s` (Sonnet) and `i1o` (Opus), installed `0.1.0-pre.12`:** the three `Agent` calls are `coaster:skeptic`, `coaster:rival` and `coaster:customer`, sharing one `message.id`. No hat called `Bash`, `Write`, `Edit` or `NotebookEdit`. Each ran on the session's model and read the whole dossier with `Read`. Each run wrote one `challenge/round-1.md`, and nothing else under `challenge/`. | pass | [evidence](evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12) |
-| 4 | 4 | Every hat's reply follows the hats' rules | All six replies, from their `task_notification`s, lead with what holds up, cover the six lenses, hold at most five concerns with why, test and urgency, and use no word from the list. Every entry carries its hat's prefix. One entry breaks the evidence rules' format: `i1s`'s Skeptic tagged S-01 `[grounded-lead, unverified until opened]` rather than `[unverified]`. The entry says itself that it stays unverified, and carries links and a date. | `i1o` pass; `i1s` fails on one tag, awaiting Julien's ruling | [evidence](evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12) |
+| 4 | 4 | Every hat's reply follows the hats' rules | All six replies, from their `task_notification`s, lead with what holds up, cover the six lenses, hold at most five concerns with why, test and urgency, and use no word from the list. Every entry carries its hat's prefix. One entry breaks the evidence rules' format: `i1s`'s Skeptic tagged S-01 `[grounded-lead, unverified until opened]` rather than `[unverified]`. The entry says itself that it stays unverified, and carries links and a date. | pass, as ruled: S-01's tag is a recorded format slip | [evidence](evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12) |
 | 5 | 5 | Each round traces to its hats' replies | Both rounds have the template's headings in order and open with "What holds up". Every concern and lens line under a hat's heading appears in its reply. Every disposition is marked proposed. In each dossier no line was removed or changed: only "Round 1 proposes:" notes were added, and in `i1o` an index of the hats' new entries in the Evidence section. | pass | [evidence](evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12) |
-| 6 | 6 | All four parts intact in every hat prompt, allowed differences listed | **System prompts:** in both installed runs, every hat's system prompt equals its installed agent file's body, and all four parts match exactly, with no difference to allow. **`Agent` prompts:** `i1o`'s hold only the hat's name, the dossier path, the earlier rounds and the date. Each `i1s` prompt also says "(lane files are in the scout/ folder beside it)", which is not on the list, although `cbe06fc` told the parent "nothing else". It adds no rule, limit, lens instruction or reply shape. ADR-0003 says a breach of this list that recurs after the wording is tightened reopens its choice, and this is that recurrence. AC 1's `a1e` failure stays the evidence for ADR-0003. | `i1o` pass; `i1s` fails the prompt list, awaiting Julien's ruling on ADR-0003 | [evidence](evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12) |
+| 6 | 6 | All four parts intact in every hat prompt, allowed differences listed | **System prompts:** in both installed runs, every hat's system prompt equals its installed agent file's body, and all four parts match exactly, with no difference to allow. **`Agent` prompts:** `i1o`'s hold only the hat's name, the dossier path, the earlier rounds and the date. Each `i1s` prompt also says "(lane files are in the scout/ folder beside it)", which is not on the list, although `cbe06fc` told the parent "nothing else". It adds no rule, limit, lens instruction or reply shape. ADR-0003 says a breach of this list that recurs after the wording is tightened reopens its choice, and this is that recurrence. AC 1's `a1e` failure stays the evidence for ADR-0003. | pass, as ruled: the lane-file note counts as part of the dossier path, and ADR-0003 stands | [evidence](evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12) |
 | 7 | 8 | No denials, no read of `<root>`, only coaster loaded, hats searched under the grant | Every `init` lists `coaster@coaster` `0.1.0-pre.12` and the built-in plugins only, with both research skills blocked by the profile's deny rules and no grilling skill. `permission_denials` is empty in every `result` event, nothing reads, lists or searches `<root>`, no `Skill` call was made, and every hat search ran. AC 1's runs failed this AC, and their denials led to ADR-0003. | pass | [evidence](evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12) |
 
 **DoD:**
