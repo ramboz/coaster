@@ -1,7 +1,7 @@
 ---
-status: Proposed
+status: Accepted
 dependencies: [adr-0001]
-last_verified:
+last_verified: 2026-11-11
 frame_review: true
 ---
 
@@ -9,7 +9,7 @@ frame_review: true
 
 ## Status
 
-Proposed (2026-11-11). Julien chose this option in spec 002's Decisions on 2026-11-11.
+Accepted (2026-11-11). Julien chose this option in spec 002's Decisions on 2026-11-11, and kept it with a warning after the A2 probe the same day.
 
 ## Context
 
@@ -59,7 +59,7 @@ The probe fired this ADR's first kill criterion. Julien weighed Option D, execut
 - Keeping the build within ADR-0001's bound.
 
 **Becomes harder:**
-- Using the helpers without prompts: a careful user answers each helper prompt, and one who picks "don't ask again" allows any Python command in that project. The warnings in the README and in the session are the only guard.
+- Using the helpers without prompts: a careful user answers each helper prompt, and one who picks "don't ask again" allows any Python command in that project. The warnings in the README and in the session are the only guard, and the session's is model prose: in 002-01's runs on `0.1.0-pre.8`, `scout` showed it before its helper and `name` did not.
 - Testing headless: a run must grant the helper by its exact, quoted, installed path.
 
 ## Assumptions
@@ -69,7 +69,7 @@ The probe fired this ADR's first kill criterion. Julien weighed Option D, execut
 
 ## Kill criteria
 
-- ~~"Don't ask again" turns out to offer a bare `python3` rule.~~ Fired on 2026-11-11. Julien chose the README warning over Option D, and Option B stays set aside for its own reasons.
+- ~~"Don't ask again" turns out to offer a bare `python3` rule.~~ Fired on 2026-11-11. Julien chose the warning, in the README and in the session, over Option D, and Option B stays set aside for its own reasons.
 - An issue report shows users accepting the broad rule despite the warning. coaster has no telemetry, so the standing trigger is the scope-4 release check before `v0.1.0`, which reviews this exposure again (tracked in `docs/refinement-todo.md`). Option D is then the next step, after checking that the execute bit survives the build, git and the plugin install.
 - Users find the repeat prompts bad enough to stop using the helpers, as 002-03 or later use shows.
 

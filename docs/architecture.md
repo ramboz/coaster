@@ -61,6 +61,20 @@ permission to read its own text.
 `templates/`, `README.md` or the manifest, run the script and commit the result.
 `--check` fails when the committed package is stale.
 
+### Helpers ask for Bash ([ADR-0002](decisions/adr-0002-helpers-ask-for-bash.md))
+
+**Principle:** coaster grants itself no permissions. Running a script that
+makes network requests is the user's call.
+
+**Mechanics:** source runs each helper as `python3 scripts/<file>`, and the
+build renders it in jig's form,
+`python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>"`. Claude Code
+asks before each run. Answering "don't ask again" saves `Bash(python3 *)`
+(Claude Code 2.1.322), so the README, `scout` and `name` tell users to answer
+Yes instead. A refused helper is never worked around with another command: the
+skill takes the web route when it can, and otherwise records the check as not
+run.
+
 ## Module boundaries
 
 <!-- elicited: 2026-11-09 / status: filled / hash: sha256:db97279b6ea5 -->
