@@ -18,6 +18,9 @@
 | [000-adopt-jig](000-adopt-jig/spec.md) | 000-01 — bootstrap | **DONE** | genesis worked example; review boxes satisfied by deterministic completion check |
 | [001-install-and-capture](001-install-and-capture/spec.md) | 001-01 — capture from the built package | **DONE** |  |
 | [001-install-and-capture](001-install-and-capture/spec.md) | 001-02 — install from GitHub | **DONE** |  |
+| [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-01 — scout to handoff, installed | READY_FOR_IMPLEMENTATION |  |
+| [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-02 — the challenge round, installed | READY_FOR_IMPLEMENTATION |  |
+| [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-03 — the next real idea | READY_FOR_IMPLEMENTATION |  |
 
 ## Richer-skill selection audit (spec 096-05)
 

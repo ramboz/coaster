@@ -32,7 +32,7 @@ Ordered thinnest-demoable-path-first. Each scope must deliver end-to-end,
 demoable value on its own (not "just the data model" / "just the parser").
 
 1. Install and capture. Add coaster's marketplace from GitHub in Claude Code, install it, run capture in an empty repo, and get a correct dossier.
-2. The whole loop, installed. Run capture through handoff on the next real idea, with the helpers working from the plugin.
+2. The whole loop, installed. Run capture through handoff on the next real idea, with the helpers working from the plugin. Spec 002 meets this with three slices together, and the real idea runs as far as Julien's decision takes it (see [spec 002's Decisions](../specs/002-whole-loop-installed/spec.md#decisions)).
 3. Deferral to richer skills. Hand off to grilling and to an installed research skill, and the dossier still gets updated (R-03).
 4. Public release. Tag v0.1.0 and install it through the ai-pegboard catalog.
 
