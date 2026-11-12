@@ -59,9 +59,9 @@ independence is what they add.
   subagents `coaster:skeptic`, `coaster:rival` and `coaster:customer`. Each one
   already carries the hats' rules, its own section, the evidence rules and the
   round template, and has no tool that writes or runs commands. Its prompt
-  holds only its hat's name, the dossier path, the paths of earlier round
-  files, and today's date. Do not restate, shorten or add to its rules: no
-  limits, lens instructions or reply shape of your own.
+  holds its hat's name, the dossier path, the paths of earlier round files,
+  and today's date, and nothing else: no notes, rules, limits, lens
+  instructions or reply shape of your own.
 - `challenge` does not run the link check. That belongs to `scout`'s next
   pass, and every change to the dossier belongs to you.
 - **In a chat project:** write one paste-in prompt per hat, holding the full
@@ -73,9 +73,10 @@ independence is what they add.
 
 ## Assembling the round
 
-1. Write `challenge/round-N.md` yourself from the hats' replies. Under each
-   hat's heading, copy that hat's section as the hat replied it. Open with a
-   short "what holds up" summary before any concern.
+1. Write `challenge/round-N.md` yourself from the hats' replies. Copy each
+   hat's section as the hat replied it, from its own `## ` heading on, without
+   shortening it. Open with a short "what holds up" summary before any
+   concern.
 2. New evidence goes into the ledger with the hat's prefix (`S`, `V`, `C`).
 3. Group concerns that land on the same risk; three angles often find one
    issue from three sides.

@@ -95,7 +95,9 @@ def render_skill(skill: str, root: Path) -> str:
 def _part(text: str, start: str) -> str:
     """From the `## ` heading that starts with `start` to the next `## ` heading."""
     lines = text.split("\n")
-    i = next(n for n, line in enumerate(lines) if line.startswith(start))
+    i = next((n for n, line in enumerate(lines) if line.startswith(start)), None)
+    if i is None:
+        raise SystemExit(f"ERROR: hats.md: heading not found: {start!r}")
     j = next((n for n in range(i + 1, len(lines)) if lines[n].startswith("## ")), len(lines))
     return "\n".join(lines[i:j]).strip("\n")
 
@@ -105,9 +107,10 @@ def render_agent(agent: str, root: Path) -> str:
     brief = (root / "skills" / "challenge" / "hat-agent.md").read_text(encoding="utf-8")
     hats = _section("skills/_shared/hats.md", root)
     text = brief.replace("{name}", agent).replace("{Hat}", HATS[agent]).rstrip("\n")
-    parts = ["## Packaged: hats", _part(hats, "## Rules every hat follows"),
+    parts = [hats.split("\n", 1)[0], _part(hats, "## Rules every hat follows"),
              _part(hats, f"## {HATS[agent]} ")]
-    rest = "\n".join(_section(rel, root) for rel in SKILL_FILES["challenge"][1:])
+    rest = "\n".join(_section(rel, root) for rel in SKILL_FILES["challenge"]
+                     if rel != "skills/_shared/hats.md")
     text += "\n\n" + INTRO + "\n\n" + "\n\n".join(parts) + "\n\n" + rest
     for bad in FORBIDDEN + ("{name}", "{Hat}"):
         if bad in text:
