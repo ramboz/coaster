@@ -64,3 +64,11 @@ fields), so the documented shape and the helper output agree.
 **Context:** In slice 002-02's installed Sonnet run, the Skeptic tagged S-01 [grounded-lead, unverified until opened], and the entry said it stays unverified, with links and a date. Julien ruled on 2026-11-12 to allow and record it.
 
 **Scope:** Judging hat replies against the evidence rules (slice 002-02's AC 4)
+
+### 2026-11-12 — The parent may add its own notes on the ledger to a round
+
+**Decision:** In a challenge round, the parent's own notes on the ledger, such as which new entries share a source, which entry updates an earlier one, which entries rest on thin listings, or a strike it proposes, are allowed and recorded as part of putting the hats' new evidence into the ledger. A note that changes a hat's concern or lens line, or strikes or changes a dossier entry rather than proposing it, still breaks the round's assembly rule.
+
+**Context:** In slice 002-02's installed Opus run, the parent added a "Parent's notes on the evidence" section, which AC 5's three additions (summary, grouping, dispositions) do not cover. Julien ruled on 2026-11-12 to allow and record it.
+
+**Scope:** Assembling a challenge round from the hats' replies (slice 002-02's AC 5)
