@@ -49,3 +49,15 @@ jig's and servo's CONTRIBUTING tables say `docs` does not release. Their configs
 ## release-please's PR gets no checks, and a blank squash body still gets trailers
 
 coaster's first release PR, opened by `github-actions` with the default token, ran no workflow, because events made with `GITHUB_TOKEN` start none. Run `--check` and `claude plugin validate --strict hosts/claude` on its branch by hand before merging it. Separately, with `squash_merge_commit_message: BLANK`, GitHub still appends `Co-authored-by:` trailers from the squashed commits; release-please ignores them, but "empty body" is not literally true.
+
+## Headless subagents run in the background, and cannot ask
+
+In Claude Code 2.1.322, a headless `claude -p` parent started its subagents in the background. The `Agent` call's `tool_result` is only a launch notice. The subagent's reply arrives later as a `system` event of subtype `task_notification` with the same `tool_use_id`: its `summary` is the reply, identical to the subagent transcript's last message, and its `usage` holds tokens, tool uses and time. Such a run ends with several `result` events, so collect `permission_denials` from all of them. A background subagent cannot ask for permission, so a Bash command that `acceptEdits` does not allow by itself, such as `ls -R …; cat …; for f in …`, is denied. Slice 002-02 found this in nine of fifteen built-in hats.
+
+## A subagent's system prompt is in its transcript, not in the stream
+
+The stream-json log carries each `Agent` call's `prompt`, not the subagent's system prompt. The subagent's own transcript does, at `$CLAUDE_CONFIG_DIR/projects/<run folder>/<session>/subagents/agent-<task id>.jsonl`, in an attachment of type `prompt_snapshot`. Match an `Agent` call to its task with the `task_started` event. For a plugin agent, the first block equals the agent file's body, apart from surrounding whitespace (2.1.322). Its `tools` line held: a hat limited to `Read, Grep, Glob, WebSearch, WebFetch` made no other call, and `model: inherit` ran on the session's Sonnet and Opus.
+
+## A copied profile is not signed in
+
+Copying a signed-in `CLAUDE_CONFIG_DIR` to a new path gives a profile that answers "Not logged in", because the sign-in is not stored in the folder. To run a local `--plugin-dir` build in place of an installed plugin without touching the profile, disable the installed one for that run only: `--settings '{"enabledPlugins":{"coaster@coaster":false}}'`. The `init` event then lists the `--plugin-dir` copy as `coaster@inline`.
