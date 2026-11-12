@@ -310,9 +310,10 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
     - **PR Title run `43134442184`:** passes.
     - **`jig-governance` run `43134442274`:** fails by design.
 
-    Every later commit on the branch changes only files under `docs/specs/`
-    (`git diff --name-only a4efcc1 HEAD`), and nothing under `.github/`, so
-    these runs stand for the workflow code that lands.
+    Every later non-merge commit on the branch changes only files under
+    `docs/`, and nothing under `.github/` has changed since `a4efcc1`, so
+    these runs stand for the workflow code that lands. The merges bring in
+    spec 002's changes from `main`.
 12. **AC 4 and AC 5 against the code that lands.** The final subject step,
     taken from the YAML at `8a6d922` (a docs-only commit after `a4efcc1`, so
     the same `ci.yml`), exits 1 with `BEFORE` set to the root

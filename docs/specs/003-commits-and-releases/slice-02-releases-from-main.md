@@ -1,7 +1,7 @@
 ---
-status: REVIEWED
+status: RECONCILED
 dependencies: [003-01]
-last_verified:
+last_verified: 2026-11-11
 frame_review: true
 claimed_by: claude/release-mechanism-cbea54
 ---
@@ -95,7 +95,7 @@ release and attach the checked package to it.
       `review.py record-review`.
 - [ ] Deviation log produced under this slice heading.
 - [ ] Reconciliation sweep produced under this slice heading.
-- [ ] Reconciliation review passed.
+- [x] Reconciliation review passed.
 
 **Anti-horizontal-phasing check:** After this slice, Julien sees an open
 release PR that shows the next version and its changelog, and merging it
@@ -156,7 +156,8 @@ The acceptance criteria above are kept as written, except that their links to th
      - A re-run of `package` is safe, but a workflow fix needs a manual
        upload.
    - **`docs/architecture.md`.** The plugin-manifest interface points to
-     release-please from `v0.1.0`.
+     release-please from `v0.1.0`, and a new contract surface lists the
+     release zip.
 
    Differences from jig's `release.yml`:
    - **From the spec's Decisions:** one zip built with `git archive` instead
@@ -179,8 +180,9 @@ The acceptance criteria above are kept as written, except that their links to th
      - the note says the marketplace follows `main`, and a blank line
        separates it from release-please's notes.
 6. **AC 4 on the workflow code that lands (`f501a30`, package at
-   `0.1.0-pre.9`).** Every later commit changes only files under
-   `docs/specs/` and `docs/architecture.md`, and nothing under `.github/`.
+   `0.1.0-pre.9`).** Every later non-merge commit changes only files under
+   `docs/`, and nothing under `.github/` has changed since `f501a30`. The
+   merges bring in spec 002's package changes from `main`.
    `origin/main` moved again during review (spec 002, up to `3189b90`). The
    package job's "Check the tagged package" and "Build the release zip"
    scripts were taken from the final YAML and run:
@@ -223,6 +225,10 @@ The acceptance criteria above are kept as written, except that their links to th
      pushed;
    - the subject check over `origin/main..HEAD` with `/usr/bin/grep` exited
      1, clean.
+
+   AC 4 was then re-run on the `0.1.0-pre.10` tree (`0cf2407`): the version
+   step passes, the zip's file list equals `git ls-files hosts/claude`
+   (11 files), and the unzipped copy validates.
 9. **AC 7** waits for the merge. The follow-up commit records it, together
    with the second half of 003-01's AC 7: the squash subject, its empty body,
    and the `subjects` run on `main`.
@@ -239,7 +245,7 @@ The acceptance criteria above are kept as written, except that their links to th
 | Primer surfaces: `CLAUDE.md` / `AGENTS.md` / scaffold templates | `no-op` | 003-01's line covers both slices. |
 | `docs/inbox.md` | `no-op` | 003-01 added the one README-pointer item, and it covers this slice's deferral too. |
 | The spec overview `spec.md` | `updated` | Its link anchors point to `#operations` (item 3). |
-| `reviews/` | `no-op` | This slice's evidence, not a surface it reconciles. |
+| `reviews/` and the two slice files | `no-op` | Spec 003's own record and evidence, not surfaces this slice reconciles. |
 | `docs/refinement-todo.md` | `updated` | "CI/CD setup" struck and dated RESOLVED, with its original text kept. |
 | `docs/releases/claude-code-first-release.md` | `updated` | Scope 4 names spec 003, the release PR as the `v0.1.0` cut, and the catalog listing still to do. Status stays `candidate`. |
 | `docs/memory/**` | `updated` | See 003-01: three learnings, two of them from this slice. |
