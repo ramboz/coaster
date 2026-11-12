@@ -56,4 +56,24 @@ one a reader sees without digging.
 
 ## Git
 
-> **Deferred — commit message format and branch naming not yet decided.**
+**Rule:** Every commit that lands on `main`, by pull request or by a direct
+push, is a Conventional Commit, `<type>(<scope>): <subject>`. The type is
+one of `feat`, `fix`, `perf`, `docs`, `chore`, `refactor`, `test`, `build`
+or `ci`; the scope is required; the subject starts lowercase and does not
+end with a period. Pull requests are squash-merged, the only merge the
+repository allows, with the PR title as the subject and an empty body, so
+the PR title is the commit that lands. `.github/workflows/pr-title.yml`
+checks the title on every PR, and `.github/workflows/ci.yml` checks every
+subject pushed to `main`, after the fact. Do not edit the subject in the
+merge dialog. Commits on a branch use the same form.
+**Why:** release-please reads the subjects on `main` to choose the next
+version and to write `CHANGELOG.md`, as in jig and servo. A subject it cannot
+parse is left out of both.
+**How to apply:** Write the PR title in this form; it is the subject that
+lands. `feat` bumps the minor version; `fix`, `perf` and `docs` bump the
+patch; `chore`, `refactor`, `test`, `build` and `ci` release nothing on their
+own. A `!` after the scope or a `BREAKING CHANGE:` footer bumps the major
+version. Until `v0.1.0`, every change to the package's bytes still bumps the
+pre-release number in both `plugin.json` files by hand; from `v0.1.0` on,
+release-please owns the version and nobody edits it by hand. Branch names
+stay open. `CONTRIBUTING.md` has the long form.

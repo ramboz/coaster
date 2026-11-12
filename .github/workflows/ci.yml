@@ -1,0 +1,99 @@
+# Spec 003 (slice 003-01), after jig's and servo's ci.yml. coaster has no test
+# suite (the release plan rules out a harness for the Markdown skills), so CI
+# checks what coaster has: the committed package matches its source and is a
+# valid plugin, the Python files compile on the 3.9 floor, no local home path
+# is in the tree, and every subject that lands on main is a conventional
+# commit (pr-title.yml checks PR titles; this catches direct pushes too).
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The helpers run on users' python3. Bracket the range jig and servo
+        # support: the 3.9 floor that macOS ships, and a current 3.x.
+        python-version: ["3.9", "3.12"]
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Host-package drift guard
+        run: python3 scripts/build_host_packages.py --check
+
+      - name: Byte-compile the Python files
+        run: git ls-files -z '*.py' | xargs -0 python3 -m py_compile
+
+      - name: Home-path search
+        # Spec 001's pre-push path search (001-02's AC 2). Each bracketed
+        # letter keeps the pattern from matching itself. The publication term
+        # search stays by hand, because its terms are not published.
+        run: |
+          if git grep -n -E '/Users/[r]amboz|~/[P]rojects|-Users-[r]amboz|/private/tmp/[c]laude-'; then
+            echo "ERROR: a local home path is in the tree. Remove it before merging."
+            exit 1
+          fi
+          echo "OK: no local home path in the tree."
+
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      # An empty profile, as in the local probe: validation needs no sign-in.
+      CLAUDE_CONFIG_DIR: ${{ github.workspace }}/../claude-config
+      CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Claude Code
+        # Pinned, so a CLI release cannot turn CI red overnight. Raise the pin
+        # in a ci(...) PR.
+        run: npm install -g @anthropic-ai/claude-code@2.1.322
+
+      - name: Validate the package and the marketplace
+        # Not the repository root: --strict fails there on the root CLAUDE.md.
+        run: |
+          claude plugin validate --strict hosts/claude
+          claude plugin validate --strict .claude-plugin/marketplace.json
+
+  subjects:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Subjects that landed on main
+        # The title check's rules as one pattern. A red main is the signal;
+        # nothing is rewritten. Fix forward with an empty commit whose subject
+        # states the missed change in the right form (CONTRIBUTING.md).
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.event.after }}
+        run: |
+          if git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
+            range=("${BEFORE}..${AFTER}")
+          else
+            range=(-1 "${AFTER}")
+          fi
+          bad="$(git log --format='%h %s' "${range[@]}" \
+            | grep -v -E '^[0-9a-f]+ (feat|fix|perf|docs|chore|refactor|test|build|ci)\([^)]+\)!?: [a-z].*[^.]$' || true)"
+          if [ -n "$bad" ]; then
+            echo "ERROR: these subjects on main are not conventional commits:"
+            echo "$bad"
+            exit 1
+          fi
+          echo "OK: every new subject on main is a conventional commit."

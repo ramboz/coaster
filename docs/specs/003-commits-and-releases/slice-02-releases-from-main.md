@@ -1,8 +1,9 @@
 ---
-status: DRAFT
+status: IN_PROGRESS
 dependencies: [003-01]
 last_verified:
 frame_review: true
+claimed_by: claude/release-mechanism-cbea54
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
@@ -19,13 +20,15 @@ release and attach the checked package to it.
 
 **DoR:**
 - 003-01's ACs pass on the branch.
-- The repository allows GitHub Actions to create pull requests (A3):
+- ✅ The repository allows GitHub Actions to create pull requests (A3):
   `gh api repos/ramboz/coaster/actions/permissions/workflow` returns
   `can_approve_pull_request_reviews: true`, the API's name for "Allow GitHub
   Actions to create and approve pull requests". Without it release-please
   cannot open its PR. Julien sets it, or lets this session set it as `ramboz`.
-- Julien accepted the spec's decisions, including the `0.0.0` seed with
-  `initial-version`, and the zip.
+  On 2026-11-11 it was `false`; with Julien's OK it was set to `true` as
+  `ramboz`, keeping `default_workflow_permissions: read`, and read back.
+- ✅ Julien accepted the spec's decisions, including the `0.0.0` seed with
+  `initial-version`, and the zip, on 2026-11-11.
 
 **Acceptance Criteria:**
 
@@ -64,7 +67,7 @@ release and attach the checked package to it.
    release and zip; that merging the release PR is the release and waits for
    the release plan's check; and the version rule from 003-01's AC 1.
 6. **The deferred entry and the release plan.** The
-   [refinement-todo](../../refinement-todo.md#decision-cicd-setup) "CI/CD setup"
+   [refinement-todo](../../refinement-todo.md#operations) "CI/CD setup"
    entry is marked resolved by this spec, keeping its original text. Scope 4 of
    the [release plan](../../releases/claude-code-first-release.md) says that
    CI and release-please are in place, and that merging the release PR cuts

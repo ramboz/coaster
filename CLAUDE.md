@@ -58,6 +58,7 @@ Default to collaborative and solution-forward — answer what's asked, propose r
 ## Development Conventions
 
 - See [docs/conventions.md](docs/conventions.md) for the full list.
+- Every commit on `main`, and so every PR title, is a conventional commit, `type(scope): subject`: PRs are squash-merged and release-please reads `main`. See [the Git rule](docs/conventions.md#git) and [CONTRIBUTING.md](CONTRIBUTING.md).
 - Changes to conventions require explicit human approval.
 - Use `/jig:memory-sync` to persist new learnings from this session.
 

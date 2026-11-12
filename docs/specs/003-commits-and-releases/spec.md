@@ -1,5 +1,5 @@
 ---
-status: DRAFT
+status: IN_PROGRESS
 skill:
 use_cases: []
 ---
@@ -14,7 +14,7 @@ use_cases: []
 > tag items of scope 4 of the
 > [Claude Code first release](../../releases/claude-code-first-release.md), and
 > resolves the "CI/CD setup" entry in
-> [refinement-todo](../../refinement-todo.md#decision-cicd-setup), whose trigger
+> [refinement-todo](../../refinement-todo.md#operations), whose trigger
 > is scope 4. `use_cases: []` on purpose: this is release plumbing, and no use
 > case in the vision covers it.
 
@@ -78,9 +78,13 @@ the release plan's release check passes.
 - The path search from spec 001 (001-02's AC 2) finds nothing on `HEAD`. The
   publication term search reads a terms file that lives only on the local
   `pre-publication` branch, which is never pushed.
-- Repository settings are unknown: under the active `gh` account,
-  `ramboz_adobe`, `gh api repos/ramboz/coaster` returns `null` for every merge
-  setting, and the Actions permissions endpoint returns 403.
+- Repository settings could not be read while drafting: under the active `gh`
+  account, `ramboz_adobe`, `gh api repos/ramboz/coaster` returns `null` for
+  every merge setting, and the Actions permissions endpoint returns 403. Read
+  as `ramboz` after review, they allowed squash merges only, with
+  `squash_merge_commit_title: PR_TITLE`, `squash_merge_commit_message:
+  PR_BODY` and `can_approve_pull_request_reviews: false` (003-01's and
+  003-02's DoRs record the two changes).
 
 **jig and servo** (local checkouts of `ramboz/jig` at `35826fb0` and
 `ramboz/servo` at `f0caa22`, read on 2026-11-11)
@@ -140,7 +144,8 @@ the release plan's release check passes.
 
 ## Decisions
 
-These are proposals until Julien accepts them at review.
+Julien accepted these on 2026-11-11, with the conventions text in 003-01's
+AC 1.
 
 - **Mirror the PR-title gate exactly.** coaster's `pr-title.yml` is jig's file
   (`@v6`), with a comment header. No fixed list of scopes, as in jig and servo.
@@ -291,4 +296,4 @@ commit that records it, as spec 001 closed with `bbeda54`.
 
 | Entry | Effect |
 |---|---|
-| [CI/CD setup](../../refinement-todo.md#decision-cicd-setup) | Resolved by this spec: CI runs the drift guard, plugin validation and the path search; release-please owns releases. The term search stays by hand. |
+| [CI/CD setup](../../refinement-todo.md#operations) | Resolved by this spec: CI runs the drift guard, plugin validation and the path search; release-please owns releases. The term search stays by hand. |

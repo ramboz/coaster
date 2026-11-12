@@ -1,8 +1,9 @@
 ---
-status: DRAFT
+status: IN_PROGRESS
 dependencies: [001-02]
 last_verified:
 frame_review: true
+claimed_by: claude/release-mechanism-cbea54
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
@@ -23,8 +24,8 @@ landed.
 - ✅ jig's and servo's `pr-title.yml`, `ci.yml`, `release.yml`, release-please
   files and `CONTRIBUTING.md` were read on 2026-11-11 (the spec's Current
   state).
-- Julien has approved the exact conventions text in AC 1.
-- The repository's merge settings are the ones servo recorded in its slice
+- ✅ Julien approved the exact conventions text in AC 1 on 2026-11-11.
+- ✅ The repository's merge settings are the ones servo recorded in its slice
   010-01 (A3): `gh api repos/ramboz/coaster` returns
   `allow_squash_merge: true`, `allow_merge_commit: false`,
   `allow_rebase_merge: false` and `squash_merge_commit_title: PR_TITLE`, plus,
@@ -34,7 +35,10 @@ landed.
   differs: under GitHub's defaults the title check would not check what lands,
   and the default body (`COMMIT_MESSAGES`) would carry branch commits' footers,
   such as `BREAKING CHANGE:`, which release-please reads and no check sees.
-- Julien accepted the spec's decisions.
+  On 2026-11-11, with Julien's OK and `gh` switched to `ramboz`, the first four
+  already held and `squash_merge_commit_message` was `PR_BODY`; it was set to
+  `BLANK`, read back, and `gh` switched back to `ramboz_adobe`.
+- ✅ Julien accepted the spec's decisions on 2026-11-11.
 
 **Acceptance Criteria:**
 
