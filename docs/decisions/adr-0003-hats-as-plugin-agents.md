@@ -91,6 +91,8 @@ ADR-0001 otherwise stands. Its Option A still renders every skill. This ADR repl
 
 A breach of the `Agent` prompt list is met first by tightening `challenge`'s wording and running again. It reopens this choice only if it recurs after that.
 
+> **Note, 2026-11-12:** a note that only says where the dossier's own files are counts as part of the dossier path, not a breach (Julien's ruling in [slice 002-02's AC 6](../specs/002-whole-loop-installed/slice-02-challenge-round.md); [lightweight decisions](lightweight-decisions.md)). `i1s`'s lane-file note therefore did not reopen this choice.
+
 ## Open questions
 
 - How the chat path gives its hats their rules when it is built. It keeps the paste for now.
