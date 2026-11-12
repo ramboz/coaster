@@ -108,10 +108,16 @@ Claude Project.
   `templates/handoff.md`) — `handoff.md`, read by jig's vision step and shaper
 - **CLI output** (no artifact yet) — `link_check.py` and `name_check.py`
 - **Plugin manifest** (artifact: `.claude-plugin/plugin.json`) — the plugin name,
-  the version installers update on, and the `/coaster:<skill>` commands
+  the version installers update on, and the `/coaster:<skill>` commands. From
+  `v0.1.0`, release-please sets the version in it and in the package's copy
+  ([spec 003](specs/003-commits-and-releases/spec.md))
 - **Marketplace manifest** (artifact: `.claude-plugin/marketplace.json`) — the
   marketplace name and the `coaster@coaster` install id, with its `git-subdir`
   source
+- **Release asset** (artifact: `.github/workflows/release.yml`) —
+  `coaster-claude-vX.Y.Z.zip` on each GitHub release from `v0.1.0`, the
+  package as a plugin folder for `claude --plugin-dir`
+  ([spec 003](specs/003-commits-and-releases/spec.md))
 
 ## Open questions
 

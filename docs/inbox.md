@@ -9,6 +9,7 @@
 > This is NOT a task list. Items here are parked thoughts, not committed work.
 
 <!-- Add items below. Format: - [date] description -->
+- [2026-11-11] Add a pointer to `CONTRIBUTING.md` in the README (spec 003's sweeps). `README.md` is copied into the package, so do it in the next PR that changes the package anyway, with that PR's pre-release bump or release.
 - [2026-11-11] The elicitation hashes in `docs/product-vision.md` and `docs/architecture.md` no longer match sections edited in spec 001. Refresh them on the next `/jig:vision-elicitation` run, choosing skip so the edits become the baseline.
 - [2026-11-09] `capture` step 2 sends question 5's answer to Intent, while step 3 and the evidence rules send a claim such as "nothing does this" to Evidence. One sentence should say which wins.
 - [2026-11-09] `challenge` starts "read-only subagents" and then has each one write a section file. Settle this in scope 2.

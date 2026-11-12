@@ -1,0 +1,121 @@
+# Spec 003 (slice 003-02), after jig's and servo's release.yml. Two jobs:
+#   - release-please reads the conventional-commit subjects on main and keeps
+#     a release PR open that sets the version in both plugin.json files and
+#     writes CHANGELOG.md. Merging that PR is the release: it tags vX.Y.Z and
+#     publishes a GitHub release.
+#   - package runs only when a release was created. It checks the tagged
+#     package and attaches it as coaster-claude-vX.Y.Z.zip. coaster has no
+#     build_release_zip.py; these steps are the whole recipe.
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Granted per job below, each only what it needs.
+permissions: {}
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - name: Run release-please
+        id: release
+        uses: googleapis/release-please-action@v5
+        with:
+          config-file: .github/release-please-config.json
+          manifest-file: .github/.release-please-manifest.json
+
+  package:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ needs.release-please.outputs.tag_name }}
+      VERSION: ${{ needs.release-please.outputs.version }}
+    steps:
+      # No token left in .git/config while npm runs install scripts; the gh
+      # steps get theirs from env.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Check the tagged package
+        run: |
+          python3 scripts/build_host_packages.py --check
+          for f in .claude-plugin/plugin.json hosts/claude/.claude-plugin/plugin.json; do
+            v="$(python3 -c 'import json, sys; print(json.load(open(sys.argv[1]))["version"])' "$f")"
+            if [ "$v" != "$VERSION" ]; then
+              echo "ERROR: $f says $v, but the release is $VERSION."
+              exit 1
+            fi
+          done
+          echo "OK: the package is current and both plugin.json files say $VERSION."
+
+      - name: Build the release zip
+        run: |
+          mkdir -p dist
+          git archive --format=zip -o "dist/coaster-claude-v${VERSION}.zip" HEAD:hosts/claude
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code@2.1.322
+
+      - name: Smoke-test the zip
+        env:
+          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude-config
+          CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
+        run: |
+          smoke="${RUNNER_TEMP}/coaster-smoke"
+          mkdir -p "$smoke"
+          unzip -q "dist/coaster-claude-v${VERSION}.zip" -d "$smoke"
+          claude plugin validate --strict "$smoke"
+
+      # --clobber and the guard below make a re-run of this job safe.
+      - name: Upload the zip to the release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload --clobber -R "$GITHUB_REPOSITORY" "$TAG" "dist/coaster-claude-v${VERSION}.zip"
+
+      # Append to release-please's notes; never replace them.
+      - name: Append an install note to the release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          existing="$(gh release view -R "$GITHUB_REPOSITORY" "$TAG" --json body -q .body)"
+          if printf '%s\n' "$existing" | grep -q '^## Install$'; then
+            echo "The release already has an install note."
+            exit 0
+          fi
+          note="$(cat <<EOF
+
+          ## Install
+
+          coaster's marketplace installs the current coaster from \`main\`:
+
+          \`\`\`
+          claude plugin marketplace add ramboz/coaster
+          claude plugin install coaster@coaster
+          \`\`\`
+
+          \`coaster-claude-v${VERSION}.zip\` is this release's package as a
+          plugin folder. Extract it and load it with
+          \`claude --plugin-dir <folder>\`.
+          EOF
+          )"
+          gh release edit -R "$GITHUB_REPOSITORY" "$TAG" --notes "$(printf '%s\n%s' "$existing" "$note")"

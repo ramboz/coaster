@@ -33,3 +33,15 @@ A new `CLAUDE_CONFIG_DIR` was clean at sign-in, and coaster was its only plugin.
 ## "Don't ask again" on `python3 "<path>"` saves `Bash(python3 *)`
 
 In Claude Code 2.1.322, answering "Yes, and don't ask again" to a helper run as `python3 "<script>" ...` saved `Bash(python3 *)` in the project's `.claude/settings.local.json`. That rule allows any Python command. An allow rule must also quote a path the way the command does: an unquoted rule did not match a quoted command. A wildcard for a version folder also matches a `../..` path out of it. Probe the saved rule before relying on a prompt being narrow.
+
+## A release-please manifest at `0.0.0` means "never released"
+
+Seeding `.release-please-manifest.json` at `0.0.0` does not make the first release `0.1.0`. release-please uses the manifest's version as a stand-in previous release only when that version is not `0.0.0`; otherwise it takes the package's `initial-version`, which defaults to `1.0.0`. A frame review caught this before spec 003 merged. Set `initial-version` beside a `0.0.0` seed, and read the version in the release PR's title before merging it.
+
+## A docs-only merge opens a release PR
+
+jig's and servo's CONTRIBUTING tables say `docs` does not release. Their configs show `docs` in the changelog, and servo's `v0.2.1` holds only a Documentation section. With that config, a docs-only merge such as a new spec opens a patch release PR. Describe release behaviour from the config and the tags, not from a sibling's prose.
+
+## Validate the plugin folder, not the repository root
+
+`claude plugin validate --strict .` fails at coaster's root, because `--strict` turns the warning about the root `CLAUDE.md` into an error. Validate `hosts/claude` and `.claude-plugin/marketplace.json` instead. Neither needs a sign-in: both pass with an empty `CLAUDE_CONFIG_DIR`, on macOS and on GitHub's Ubuntu runner.

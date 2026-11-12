@@ -87,6 +87,7 @@
 
 ## Operations
 
-### Decision: CI/CD setup
-**Deferred:** No CI yet. Spec 001 crosses a deploy boundary without it, and the privacy search, `--check` and the pre-release bump run by hand until then.
+### ~~Decision: CI/CD setup~~ — RESOLVED 2026-11-11
+~~**Deferred:** No CI yet. Spec 001 crosses a deploy boundary without it, and the privacy search, `--check` and the pre-release bump run by hand until then.~~
 **Resolution trigger:** Scope 4 of the Claude Code first release, before the `v0.1.0` tag.
+**Resolved by:** [spec 003](specs/003-commits-and-releases/spec.md). CI runs `--check`, plugin validation, the path search and a check of the subjects that land on `main`; release-please owns releases from `v0.1.0`. The publication term search, and the pre-release bump until `v0.1.0`, stay by hand.
