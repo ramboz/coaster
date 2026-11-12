@@ -8,6 +8,7 @@
 ## Index
 
 - [ADR-0001: Render a self-contained Claude package from neutral source](adr-0001-rendered-claude-package.md) — coaster's Claude Code package has to give each skill its templates and shared rules without relying on a runtime read of the plugin's own files. (2026-11-09, Accepted)
+- [ADR-0002: Helpers ask for Bash like any other command](adr-0002-helpers-ask-for-bash.md) — ADR-0001 builds the packaged text into each skill, so reading it needs no permission. (Proposed)
 
 ## Format
 
