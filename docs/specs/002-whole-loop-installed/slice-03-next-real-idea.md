@@ -1,9 +1,8 @@
 ---
-status: READY_FOR_REVIEW
+status: READY_FOR_IMPLEMENTATION
 dependencies: [002-02]
 last_verified:
 frame_review: true
-claimed_by: claude/objective-diffie-02c20e
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
