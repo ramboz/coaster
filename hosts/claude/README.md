@@ -55,8 +55,9 @@ coaster grants itself no permissions, so Claude Code asks before each helper
 runs. Answer Yes rather than "don't ask again": for these commands, that option
 saves a rule allowing any Python command in the project. If you decline, the
 skill checks on the web when it can, and otherwise records that the check was
-not run. No
-hooks, no connectors, no agents, and no research engine of its own: research
+not run.
+
+No hooks, no connectors, no agents, and no research engine of its own: research
 goes to a richer installed skill, a quick pass, or your own research tool, and
 scout checks what comes back.
 

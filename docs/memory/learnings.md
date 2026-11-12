@@ -26,3 +26,10 @@ Another session published this repository, public and with its full history, whi
 
 A `.pyc` file committed by accident held the absolute path of its source file. Ignore `__pycache__/` and `*.pyc` from the start, and include binary files in any search for private strings.
 
+## A signed-in disposable profile picks up synced plugins and skills
+
+A new `CLAUDE_CONFIG_DIR` was clean at sign-in, and coaster was its only plugin. By the second run, account-synced plugins (jig, data, cowork-plugin-management) had joined it. The synced `deep-research` skill was there from the first session's start, which `scout` would hand research to. Check every run's stream-json `init` event (`plugins` and `skills`), and disable such plugins with `claude plugin disable`. Block skills with `Skill(...)` deny rules in that profile's settings, not in your own.
+
+## "Don't ask again" on `python3 "<path>"` saves `Bash(python3 *)`
+
+In Claude Code 2.1.322, answering "Yes, and don't ask again" to a helper run as `python3 "<script>" ...` saved `Bash(python3 *)` in the project's `.claude/settings.local.json`. That rule allows any Python command. An allow rule must also quote a path the way the command does: an unquoted rule did not match a quoted command. A wildcard for a version folder also matches a `../..` path out of it. Probe the saved rule before relying on a prompt being narrow.

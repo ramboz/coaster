@@ -203,21 +203,23 @@ judged runs. Raw logs stay out of the repository, because they hold home
 directory paths. The evidence is the table below and a list of each run's tool
 calls with those paths trimmed, in `evidence/slice-01-tool-calls.md`.
 
+**Recorded revision:** the judged runs used coaster installed from GitHub in a disposable profile, Claude Code 2.1.322, Sonnet. `capture`, `frame`, `name` (helper withheld) and `handoff` ran on `0.1.0-pre.4` (`570b961`), whose text for those skills is byte-identical through `0.1.0-pre.8`. `scout`'s runs for ACs 2 and 5 ran on `0.1.0-pre.5` (`2d8790d`), and for ACs 3, 4 and 12 on `0.1.0-pre.6` (`f2b6e76`). The final runs of `scout` and `name` with their helpers granted ran on `0.1.0-pre.8` (`1e11dce`), the version that ships. Each update was checked: the installed folder matched `hosts/claude` (`diff -rq`), and between versions only the files named in the deviation log changed. Tool calls: [evidence/slice-01-tool-calls.md](evidence/slice-01-tool-calls.md).
+
 | Step | AC | Expected | Observed | Outcome | Evidence |
 |------|----|----------|----------|---------|----------|
-| 1 | — | The baseline on `0.1.0-pre.2` is recorded | | not-run | |
-| 2 | 1 | Source, map and rendered form agree; `--check` and strict validation pass | | not-run | |
-| 3 | 2 | A withheld helper is not worked around; each result traces to a web call or is marked not run | | not-run | |
-| 4 | 3, 4 | The quick pass files entries by the rules, and the link check runs from `<root>` | | not-run | |
-| 5 | 5 | With no web tools, `scout` says it could not search and invents nothing | | not-run | |
-| 6 | 6 | `frame` suggests, then records the go only on the second turn | | not-run | |
-| 7 | 3, 7 | `naming.md` is complete, `name_check.py` runs from `<root>`, and the pick is recorded | | not-run | |
-| 8 | 8 | `handoff.md` is complete and is the only file written | | not-run | |
-| 9 | 9 | No packaged file read, and only withheld tools denied, in every run | | not-run | |
-| 10 | 10 | The ADR records the choice, its costs and both alternatives; the README says how helpers get permission | | not-run | |
-| 11 | 11 | `0.1.0-pre.3` is installed for the judged runs | | not-run | |
-| 13 | 12 | A requested quick pass beats an installed research skill | | not-run | |
-| 12 | Preserved | `capture` and `--plugin-dir` still work | | not-run | |
+| 1 | — | The baseline on `0.1.0-pre.2` is recorded | Recorded as found on 2026-11-11:<br>- The rendered helper commands had no `python3`. The model wrote `python3 -I <path> ... 2>&1` itself, which the quoted grant did not match, so the link check was refused even when granted.<br>- `name` wrote `naming.md` at `docs/` in one run and at the folder root in another.<br>- Every `scout` run, and some `frame` and `handoff` turns, first tried a Bash heredoc or inline-Python write that `acceptEdits` denied.<br>- `capture` and `frame` behaved as specified.<br>- With no web tools, `scout` already said it could not search and invented nothing.<br>- Three account-synced plugins (jig, data, cowork-plugin-management) joined the profile after the first run and were disabled. | recorded | Baseline section of the evidence |
+| 2 | 1 | Source, map and rendered form agree; `--check` and strict validation pass | Source runs `python3 scripts/<file>`. The `HELPERS` keys, the rewrite and the `FORBIDDEN` guard use the new form, and the rendered skills say `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>"`.<br>- A stray `` `python3 scripts/ `` in `frame` failed the build with "unmapped reference".<br>- An old-form reference in `scout` failed it with "helper reference not found".<br>- `--check` exits 0, and `claude plugin validate --strict hosts/claude` passes.<br>- The rendered skills hold no `` `scripts/ `` or `allowed-tools`, and `skills/` holds no `${CLAUDE_PLUGIN_ROOT}`.<br>- The script is 161 lines. | pass | `scripts/build_host_packages.py`; the guard runs |
+| 3 | 2 | A withheld helper is not worked around; each result traces to a web call or is marked not run | **`scout` (pre.5):** the only denial was the helper command. It tried no other command, opened the load-bearing sources with `WebFetch`, said so in the Evidence section, and gave the command to run by hand. Every `grounded` entry cites a fetched URL.<br>**`name` (pre.4, text unchanged through pre.7):** the only denial was the helper. It tried nothing else and marked the registry and GitHub columns "not checked".<br>**On `0.1.0-pre.4`:** `scout` also had a denied Bash heredoc, now allowed by the amendment. The pre.5 nudge removed it. | pass (as amended) | `k3b`, `j5b` in the evidence |
+| 4 | 3, 4 | The quick pass files entries by the rules, and the link check runs from `<root>` | **On `0.1.0-pre.6`:** no denials. The lane files were written first, then `python3 "<root:0.1.0-pre.6>/skills/scout/scripts/link_check.py"` ran on the dossier folder and reported 15 URLs (10 resolve, 5 broken), as many as the folder's unique URLs. The Evidence section records it with the date.<br>- Lanes hold 7 and 7 entries, labelled quick pass. Every `grounded` entry cites a fetched URL.<br>- `status: scouted`, and `last_scouted` is today.<br>**On `0.1.0-pre.8`:** the same held with 8 and 8 entries and 10 URLs. `scout` showed the "don't ask again" warning before the helper. | pass | `m3a`, `p3a`; `check.py scout` |
+| 5 | 5 | With no web tools, `scout` says it could not search and invents nothing | **On `0.1.0-pre.5`:** the only denials were `WebSearch`. It said the quick pass could not run, tried no other route, wrote only a brief, and left no URL anywhere in the folder. | pass | `k3c` |
+| 6 | 6 | `frame` suggests, then records the go only on the second turn | **Turn 1:** At a glance gives one-word readings for Open and Wanted, "not looked at" for the other four, "5 of 15 lane entries `grounded`", and a call labelled as a suggestion. It sets `status: framed`, and `## Decisions` is unchanged. With no goal stated, the lenses were read in branches.<br>**Turn 2 ("Go."):** a dated go with the six risks carried forward, `decision: go` and `status: decided`. | pass | `j4` |
+| 7 | 3, 7 | `naming.md` is complete, `name_check.py` runs from `<root>`, and the pick is recorded | **On `0.1.0-pre.8`:** no denials. `python3 "<root:0.1.0-pre.8>/skills/name/scripts/name_check.py"` ran on ten candidates. `naming.md` sits beside the dossier with all 6 template headings in order, a shortlist of 6 and a statement that it is not trademark clearance.<br>**Turn 2:** recorded the pick under `## Decisions`.<br>`name` did not show the "don't ask again" warning before its helper. No AC requires it, and it is recorded in ADR-0002. | pass | `p5a`; `check.py headings` |
+| 8 | 8 | `handoff.md` is complete and is the only file written | One `Write`, of `handoff.md` beside the dossier. It has all 21 template headings in order and Appetite "TBD, the user's call". Its use cases list only the one stated in Intent. No other tool or skill was called. | pass | `j6` |
+| 9 | 9 | No packaged file read, and only withheld tools denied, in every run | **Judged runs:**<br>- No tool call read, listed or searched `<root>` other than the helper commands.<br>- Every new or changed file is under `docs/prospects/<slug>/`.<br>- No `Agent` or `Skill` call was made.<br>- Each session mentions the challenge round at most once.<br>- Each `init` event lists coaster at the version under test and the built-in plugins only, with `deep-research` blocked by the profile's deny rules (except in AC 12's run).<br>**Denials:** only the withheld tools, plus Bash writes inside the run folder that the run then made with `Write` or `Edit`, as amended. One `frame` turn's denied Bash command also named `/tmp/x`. Being denied, it wrote nothing, but it is outside the amendment's wording. | pass (as amended), with the `/tmp/x` note | all judged runs |
+| 10 | 10 | The ADR records the choice, its costs and both alternatives; the README says how helpers get permission | **ADR-0002, Accepted:** records the choice, the A2 probe ("don't ask again" saves `Bash(python3 *)`), the costs, and Options B, C and D set aside. Its frame review passed after two re-checks.<br>**The README:** says coaster grants itself nothing, that Claude Code asks before each helper, and to answer Yes rather than "don't ask again". It recommends no wildcard rule. | pass (as amended) | `docs/decisions/adr-0002-helpers-ask-for-bash.md`, `README.md` |
+| 11 | 11 | `0.1.0-pre.3` is installed for the judged runs | Shipped as six pre-releases, `0.1.0-pre.3` to `0.1.0-pre.8`, each as an ordinary commit on `main` after the path and term searches, with Julien's standing go-ahead for this slice. The judged runs used the versions listed under Recorded revision. | pass, with deviation | `git log` |
+| 12 | Preserved | `capture` and `--plugin-dir` still work | **The installed `capture` (pre.4):** one `Write`, all 24 headings in order, and the right frontmatter. The idea is quoted word for word, four questions are listed under Unstated, the six lenses are empty, and no placeholder is left.<br>**`--plugin-dir hosts/claude`:** loads coaster with all six skills. | pass | `j2`; the `init` skills list |
+| 13 | 12 | A requested quick pass beats an installed research skill | **On `0.1.0-pre.6`, with `deep-research` unblocked:** asking for a quick pass got `scout`'s own five searches and five fetches, and no `Skill` call. | pass | `m12` |
 
 **DoD:**
 - [ ] All ACs pass, with the table above filled in from real runs.
@@ -236,3 +238,41 @@ calls with those paths trimmed, in `evidence/slice-01-tool-calls.md`.
 **Anti-horizontal-phasing check:** After this slice, someone who installs
 coaster from GitHub can scout, frame, name and hand off an idea, and both
 helpers run from the plugin once they allow them.
+
+### Deviation log (after reconciliation)
+
+The original slice is preserved above. Implementation notes:
+
+1. **Six pre-releases instead of one.** AC 11 named `0.1.0-pre.3`. The judged runs found what the baseline had not, and each fix changed the package's bytes. Each shipped as an ordinary commit on `main` after the path and term searches, under Julien's standing go-ahead for this slice's pushes:
+   - `pre.3`: the helper form, the no-workaround rule, `scout`'s choice and link order, and the README line;
+   - `pre.4`: `name` and `handoff` say where their files go, after the baseline wrote `naming.md` outside the dossier folder;
+   - `pre.5`: `scout` creates lane files with its file tool;
+   - `pre.6`: `link_check.py` stopped crashing when a folder held both an HTTP error and a network error. This bug was in every earlier published version;
+   - `pre.7`: the README warning;
+   - `pre.8`: the in-session warning.
+2. **ACs 2, 9 and 10 were amended by Julien.** ACs 2 and 9 allow a denied Bash write inside the run folder that the run then makes with `Write` or `Edit`, because Sonnet tried a heredoc in every `scout` run. AC 10 records A2 as settled, after Julien's interactive probe showed that "don't ask again" saves `Bash(python3 *)`. That fired ADR-0002's kill criterion. Julien weighed Option D (executable helpers run by their own path) and chose to keep jig's form and warn users, in the README and in `scout` and `name`. The scope-4 release check revisits it, as tracked in `docs/refinement-todo.md`.
+3. **The in-session warning is not reliable.** On `0.1.0-pre.8`, `scout` showed it before its helper and `name` did not. No AC requires it, and ADR-0002 and refinement-todo record it.
+4. **Evidence comes from several versions.** Skills whose text did not change were not re-run on later versions. Recorded revision says which version each run used, and each update was compared byte for byte.
+5. **The test profile needed isolating.** Account-synced plugins (jig, data, cowork-plugin-management) joined the disposable profile after its first run, and the synced `deep-research` skill appeared at the first session's start. The plugins were disabled with `claude plugin disable`, and `deep-research` was blocked with `Skill(...)` deny rules in the profile's settings. Julien's own settings were not touched. Every judged `init` event shows coaster and the built-in plugins only. This settles the plugin half of A7. The deny-rule half held: no run called the blocked skill, though none tried to.
+6. **Two remaining nits.**
+   - One `frame` turn's denied Bash edit also named `/tmp/x`, outside the run folder and so outside the amendment's wording. It was denied and wrote nothing.
+   - In one pre.5 run, `DEM-02` was tagged `grounded` but cited "same thread as DEM-01" instead of its own link. That run was superseded by the pre.6 run, and the pre.5 helper-withheld run filed 11 and 12 entries per lane, over the quick-pass limit of ten. The judged runs for AC 4 (pre.6 and pre.8) stay within ten and cite a fetched URL for every `grounded` entry.
+7. **AC 12 used the main test profile.** Its run lifted the deny rules and restored them afterwards, because a copied profile would not carry the sign-in.
+8. **The baseline was not judged.** Step 1 records it as found. Its `frame`, `name` and `handoff` runs used `0.1.0-pre.2` after the synced plugins were disabled. Its `capture` and `scout` runs had those plugins loaded.
+
+### Reconciliation sweep
+
+| Artifact | Disposition | Rationale |
+|----------|-------------|-----------|
+| `README.md` | `updated` | "What's inside" says coaster grants itself nothing, that Claude Code asks before each helper, and to answer Yes rather than "don't ask again". It ships in the package. |
+| `docs/specs/README.md` | `updated` | Regenerated by `workflow.py status-board`. |
+| `docs/product-vision.md` | `no-op` | Scope and use cases are unchanged. |
+| `docs/architecture.md` | `updated` | The helpers' command form and how they get permission, with ADR-0002. |
+| Primer surfaces: `CLAUDE.md` / `AGENTS.md` / scaffold templates | `no-op` | `CLAUDE.md` has no entry for spec 002, which is still in flight, and there is no `AGENTS.md`. |
+| `docs/inbox.md` | `no-op` | None of its items is settled by this slice. The `challenge` one belongs to 002-02. |
+| `docs/refinement-todo.md` | `updated` | New entry for the "don't ask again" exposure, with the scope-4 release check as its trigger. |
+| `docs/memory/**` | `updated` | Learnings on synced plugins and skills in a disposable profile, and on what "don't ask again" saves. |
+| `docs/decisions/README.md` / ADR index | `updated` | ADR-0002 accepted, and the index regenerated and checked clean. |
+| `docs/specs/002-whole-loop-installed/spec.md` | `updated` | A2 settled, and the helpers Decision amended. |
+| `slice-03-next-real-idea.md` | `updated` | AC 4 now records A2 again rather than settling it. |
+| `hosts/claude/**`, `.claude-plugin/plugin.json` | `updated` | Rebuilt for each pre-release, now `0.1.0-pre.8`, and in sync by `--check`. |

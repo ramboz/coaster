@@ -46,7 +46,7 @@ HELPERS = {  # source form -> skill that owns the helper
     "`python3 scripts/name_check.py": "name",
 }
 FORBIDDEN = ("`templates/", "`../_shared/", "`evidence.md`", "`scripts/",
-             "`python3 scripts/", "allowed-tools")
+             "python3 scripts/", "allowed-tools")
 INTRO = ("Each `## Packaged:` section below runs to the next `## Packaged:` heading "
          "or the end of this file.")
 
