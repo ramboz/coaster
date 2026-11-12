@@ -109,7 +109,8 @@ The acceptance criteria above are kept as written, except that their links to th
    - `release.yml` is as specified, except permissions, which item 5 grants
      per job. The zip smoke test also sets `CLAUDE_CONFIG_DIR` to a fresh
      folder under `$RUNNER_TEMP` and `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`,
-     as `ci.yml`'s `validate` job does (003-01, item 2).
+     the same two settings as `ci.yml`'s `validate` job (003-01, item 2),
+     though the folder differs: `ci.yml` uses one beside the checkout.
    - The install note is appended with `printf '%s\n%s'`, so a blank line
      separates it from release-please's notes. A first draft had no blank
      line, which a local render through a stub `gh` showed.
@@ -159,8 +160,12 @@ The acceptance criteria above are kept as written, except that their links to th
    Differences from jig's `release.yml`:
    - **From the spec's Decisions:** one zip built with `git archive` instead
      of `build_release_zip.py` and its zips for three hosts and an alias.
-   - **From AC 2:** a step that checks both `plugin.json` versions against
-     the release.
+   - **From AC 2:**
+     - `--check` on the tag;
+     - a step that checks both `plugin.json` versions against the release;
+     - a smoke test that installs Claude Code 2.1.322 and runs
+       `claude plugin validate --strict` on the unzipped copy, where jig uses
+       `build_release_zip.py --smoke-test`.
    - **From this item:**
      - per-job permissions;
      - `persist-credentials: false`;
@@ -184,10 +189,16 @@ The acceptance criteria above are kept as written, except that their links to th
    deviation log:
    - the second rebase;
    - integration as a merge of `origin/main` plus one commit, because the
-     project denies force pushes (items 10 and 12);
-   - the pre-push checks before each push: the remote, `gh repo view`, the
-     build, `--check`, and the path and term searches (item 10);
+     project denies force pushes (item 10);
+   - the full pre-push routine before the `a258006..a4efcc1` push: the remote,
+     `gh repo view`, the build, `--check`, and the path and term searches
+     (item 10);
    - the final head's CI runs (item 11).
+
+   The docs-only pushes after it (`8a6d922`, `f501a30`) each ran the path
+   search, the term search over the tree and the subject check, all clean. On
+   2026-11-11 the term search also ran over the messages of all 10 branch
+   commits, with 0 hits.
 8. **AC 7** waits for the merge. The follow-up commit records it.
 
 ### Reconciliation sweep
@@ -200,7 +211,8 @@ The acceptance criteria above are kept as written, except that their links to th
 | `docs/product-vision.md` | `no-op` | No behaviour or scope change. |
 | `docs/architecture.md` | `updated` | The plugin-manifest interface now says release-please sets the version from `v0.1.0`. |
 | Primer surfaces: `CLAUDE.md` / `AGENTS.md` / scaffold templates | `no-op` | 003-01's line covers both slices. |
-| `docs/inbox.md` | `updated` | No earlier item was about releases. The one README-pointer item, shared with 003-01's sweep, covers this slice's deferral too. |
+| `docs/inbox.md` | `no-op` | 003-01 added the one README-pointer item, and it covers this slice's deferral too. |
+| The spec overview `spec.md` and `reviews/` | `no-op` | These are spec 003's own record: the overview's link anchors are item 3, and the reviews are this slice's evidence. |
 | `docs/refinement-todo.md` | `updated` | "CI/CD setup" struck and dated RESOLVED, with its original text kept. |
 | `docs/releases/claude-code-first-release.md` | `updated` | Scope 4 names spec 003, the release PR as the `v0.1.0` cut, and the catalog listing still to do. Status stays `candidate`. |
 | `docs/memory/**` | `updated` | See 003-01: three learnings, two of them from this slice. |
@@ -211,6 +223,6 @@ The acceptance criteria above are kept as written, except that their links to th
 | `CONTRIBUTING.md` | `updated` | The release sections: the title-to-release table, the release flow, versions, and re-running the `package` job. |
 
 **Leanness:**
-- No `build_release_zip.py`: the `package` job is about a dozen lines of steps.
+- No `build_release_zip.py`. The `package` job is 8 steps in about 85 lines of YAML, and most of the shell is the install note.
 - The config is jig's, with two `extra-files` entries and `initial-version`.
 - The re-run guard and per-job permissions answer craft findings.
