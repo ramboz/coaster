@@ -1,9 +1,10 @@
 ---
-status: READY_FOR_IMPLEMENTATION
+status: IN_PROGRESS
 dependencies: [002-01]
 last_verified:
 frame_review: true
 arch_review: true
+claimed_by: claude/trusting-blackburn-a5b423
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
@@ -160,13 +161,13 @@ trimmed, in `evidence/slice-02-tool-calls.md`.
 
 | Step | AC | Expected | Observed | Outcome | Evidence |
 |------|----|----------|----------|---------|----------|
-| 1 | 1 | The two types compared hat by hat; the choice follows the comparison | | not-run | |
+| 1 | 1 | The two types compared hat by hat; the choice follows the comparison | Five runs from local builds: `Explore` on Sonnet (`a1e`, `a2e`) and Opus (`a1o`), and `general-purpose` on Sonnet (`a1g`, `a2g`). Every `Explore` hat passes AC 3's checks on writes, Bash, the model and reading the whole dossier, every reply of either type meets AC 4, and at Sonnet both types research the same amount, with `Explore` on about two thirds of the tokens. On Opus, `Explore` hats ran on Opus. The rule would keep `Explore`, but both types fail AC 8 (step 7), and one run fails AC 6 (step 6). So AC 2 waits for Julien. | blocked: Julien's decision | [evidence](evidence/slice-02-tool-calls.md#ac-1-the-two-types-hat-by-hat-2026-11-12) |
 | 2 | 2 | Source and template speak only of replies; rebuilt, valid and shipped | | not-run | |
 | 3 | 3 | Three hats of the chosen type started together on the session's model, none writing; one round file per run | | not-run | |
 | 4 | 4 | Every hat's reply follows the hats' rules | | not-run | |
 | 5 | 5 | Each round traces to its hats' replies | | not-run | |
-| 6 | 6 | All four parts intact in every hat prompt, allowed differences listed | | not-run | |
-| 7 | 8 | No denials, no read of `<root>`, only coaster loaded, hats searched under the grant | | not-run | |
+| 6 | 6 | All four parts intact in every hat prompt, allowed differences listed | AC 1's runs so far: in `a1e`, every hat's prompt holds the hats' rules and its own section with only whitespace changed, but condensed evidence rules (first failing line 3) and only that hat's part of the round template (first failing line 3, `round: N`). In the other four runs, all four parts are byte for byte in every prompt. AC 7 applies. The installed runs have not run. | fail (`a1e`) | [finding 1](evidence/slice-02-tool-calls.md#what-the-runs-found) |
+| 7 | 8 | No denials, no read of `<root>`, only coaster loaded, hats searched under the grant | AC 1's runs so far: every `init` lists the `--plugin-dir` coaster and the built-in plugins only, no `Skill` call was made, and every hat search ran. But each run has at least one hat's compound Bash read of the dossier denied, and in `a1o` the parent searched the loaded plugin's folder for `link_check.py`, which was denied. The installed runs have not run. | fail (all five) | [findings 2, 3](evidence/slice-02-tool-calls.md#what-the-runs-found) |
 
 **DoD:**
 - [ ] All ACs pass, with the table above filled in from real runs.
