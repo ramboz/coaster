@@ -72,3 +72,11 @@ fields), so the documented shape and the helper output agree.
 **Context:** In slice 002-02's installed Opus run, the parent added a "Parent's notes on the evidence" section, which AC 5's three additions (summary, grouping, dispositions) do not cover. Julien ruled on 2026-11-12 to allow and record it.
 
 **Scope:** Assembling a challenge round from the hats' replies (slice 002-02's AC 5)
+
+### 2026-11-12 — A round needs no note under a lens that was not looked at
+
+**Decision:** The readings a challenge round touches, and so must note with "Round N proposes:", are the readings with content that the round affects, as challenge's "each affected reading" says. A lens skipped at the user's request has no reading to change, so it needs no note, though one under "Not looked at" is allowed. A reading with content that a disposition proposes to change, left without a note, still fails.
+
+**Context:** In slice 002-02's installed Sonnet run, the round bore on the four skipped lenses but noted only Open and Wanted, the two readings with content; the Opus run also noted "Not looked at". Compliance review asked whether "touches" covers the skipped lenses. Julien ruled on 2026-11-12 that it does not.
+
+**Scope:** Judging where a challenge round leaves notes in the dossier (slice 002-02's AC 5)
