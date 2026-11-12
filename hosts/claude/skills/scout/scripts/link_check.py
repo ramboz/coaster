@@ -65,7 +65,8 @@ def main(folder):
             counts["broken"] += 1
             problems.append(("broken", status, url))
     print(f"{len(urls)} URLs: " + ", ".join(f"{n} {k}" for k, n in counts.items()))
-    for kind, status, url in sorted(problems):
+    # Statuses mix HTTP codes (int) and exception names (str), so sort as text.
+    for kind, status, url in sorted(problems, key=lambda p: (p[0], str(p[1]), p[2])):
         print(f"{kind}\t{status}\t{url}")
     return 1 if counts["broken"] else 0
 
