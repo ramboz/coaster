@@ -31,8 +31,10 @@ Ask, all skippable, at most five at a time:
    sibling may share its name with a famous project.
 
 Write the answers into `naming.md` from `templates/naming.md`, next to the
-dossier: in a repository, `docs/prospects/<slug>/naming.md`. Record
-unanswered questions as unstated rather than guessing.
+dossier. In a repository, find the dossier first (`docs/prospects/*/dossier.md`)
+and write `docs/prospects/<slug>/naming.md` in that same folder. If there is no
+dossier, ask before starting a new folder. Record unanswered questions as
+unstated rather than guessing.
 
 ## 2. Candidates
 
@@ -59,8 +61,9 @@ before spending time on registries.
 
 In chat, use web search. In Claude Code, first tell the user that if Claude
 Code asks, they should answer Yes rather than "don't ask again", which would
-allow any Python command in the project. Then `python3 scripts/name_check.py <name> ...`
-does the registry and GitHub lookups.
+allow any Python command in the project. Then `python3 scripts/name_check.py <name> ...`,
+run exactly as written without listing or reading the plugin's own folder, does
+the registry and GitHub lookups.
 
 If the helper is refused, try no other command to the same end, such as `curl`
 or an inline script, because the user declined running code. If it is refused

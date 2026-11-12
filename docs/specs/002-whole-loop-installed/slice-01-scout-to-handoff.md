@@ -122,6 +122,11 @@ file read.
    **Amended by Julien, 2026-11-11:** as in AC 2, a denied `Bash` command that
    only writes inside the run folder, and that the run then makes with `Write`
    or `Edit`, is allowed and recorded.
+
+   **Amended again by Julien, 2026-11-11:** any denied `Bash` command confined
+   to the run folder, whether it reads or writes, is allowed and recorded. A
+   command that reads, lists or searches the installed plugin's folder, other
+   than the helper commands, still fails this AC even when it is denied.
 10. **The permission choice is recorded.** An ADR written with
     `/jig:adr-workflow new` records that the helpers ask for Bash like any
     other command, that coaster grants itself nothing, and that a refused
