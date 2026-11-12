@@ -76,7 +76,9 @@ agent has `tools: Read, Grep, Glob, WebSearch, WebFetch` and `model: inherit`.
 in one message, with only the hat's name, the dossier path, earlier rounds and
 the date in each prompt, and writes the round from their replies. The release
 check reads each hat's system prompt from its subagent transcript and checks
-each `Agent` prompt against that list. The chat path still pastes the full
+each `Agent` prompt against that list. A note that only says where the
+dossier's own files are counts as part of the dossier path (Julien's ruling,
+2026-11-12, in [lightweight decisions](decisions/lightweight-decisions.md)). The chat path still pastes the full
 text into one prompt per hat. A later chat or Codex build must skip
 `hat-agent.md`.
 

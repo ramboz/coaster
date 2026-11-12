@@ -131,7 +131,7 @@ review — not here.
   - `claude plugin validate --strict` passes on the package.
   - A fresh install from GitHub runs the whole loop.
   - R-04's activation test has a result, and the six or three call is made.
-  - A `challenge` run's log shows each hat received the packaged rules intact.
+  - A `challenge` run's log shows each hat received the packaged rules intact. Slice 002-02's installed runs on `0.1.0-pre.12` are the record ([slice 002-02](../specs/002-whole-loop-installed/slice-02-challenge-round.md), [evidence](../specs/002-whole-loop-installed/evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12)).
   - LICENSE, CHANGELOG and CI are in place, and CODEOWNERS has no placeholder.
   - `docs/prospects/` has been reviewed before going public.
   - The README says the chat path is untested.

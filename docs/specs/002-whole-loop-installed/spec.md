@@ -201,7 +201,10 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
   agents, `coaster:skeptic`, `coaster:rival` and `coaster:customer`, rendered
   by the build with their rules, limited to `Read`, `Grep`, `Glob`,
   `WebSearch` and `WebFetch`, and on the session's model. Each hat's prompt
-  carries only the run's details. Slice 002-04 builds it.
+  carries only the run's details. Slice 002-04 builds it. Julien ruled on
+  2026-11-12 that a note in a hat's prompt that only says where the dossier's
+  own files are counts as part of the dossier path, so ADR-0003 stands
+  ([lightweight decisions](../../decisions/lightweight-decisions.md)).
 - **What a verification run grants (Julien, 2026-11-11).** Spec 001's lesson was to test
   with no `--allowedTools` grant, because a `Read` grant hid a refused read of
   the package. In this scope `WebSearch`, `WebFetch` and the helpers are tools a
