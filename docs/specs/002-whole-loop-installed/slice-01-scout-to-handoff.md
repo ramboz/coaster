@@ -299,3 +299,5 @@ The original slice is preserved above. Implementation notes:
 | `docs/specs/002-whole-loop-installed/spec.md` | `updated` | A1, A2 and A7 settled, and the helpers Decision amended. |
 | `slice-03-next-real-idea.md` | `updated` | AC 4 now records A2 again rather than settling it. |
 | `hosts/claude/**`, `.claude-plugin/plugin.json` | `updated` | Rebuilt for each pre-release, now `0.1.0-pre.11`, and in sync by `--check`. |
+| `evidence/slice-01-tool-calls.md`, `reviews/slice-01-*.md`, `docs/decisions/reviews/adr-0002-frame-critique.md` | `updated` | The slice's own evidence and the recorded review verdicts. |
+| `docs/conventions.md`, `CONTRIBUTING.md`, `.github/**`, spec 003 | `no-op` | These came from spec 003 (PR #2, #4), which landed on `main` while this slice was in flight. This branch was rebased onto them, and its commits follow the new conventional-commit rule. |
