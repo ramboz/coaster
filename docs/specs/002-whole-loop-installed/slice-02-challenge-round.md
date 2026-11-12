@@ -1,5 +1,5 @@
 ---
-status: IN_PROGRESS
+status: REVIEWED
 dependencies: [002-01, 002-04]
 last_verified:
 frame_review: true
@@ -252,9 +252,9 @@ trimmed, in `evidence/slice-02-tool-calls.md`.
 | 7 | 8 | No denials, no read of `<root>`, only coaster loaded, hats searched under the grant | Every `init` lists `coaster@coaster` `0.1.0-pre.12` and the built-in plugins only, with both research skills blocked by the profile's deny rules and no grilling skill. `permission_denials` is empty in every `result` event, nothing reads, lists or searches `<root>`, no `Skill` call was made, and every hat search ran. AC 1's runs failed this AC, and their denials led to ADR-0003. | pass | [evidence](evidence/slice-02-tool-calls.md#slice-002-02-the-installed-runs-2026-11-12) |
 
 **DoD:**
-- [ ] All ACs pass, with the table above filled in from real runs.
-- [ ] Reviewed by `reviewer` subagent. Reviewer prompt built by `review.py`.
-- [ ] Implementation review passed.
+- [x] All ACs pass, with the table above filled in from real runs.
+- [x] Reviewed by `reviewer` subagent. Reviewer prompt built by `review.py`.
+- [x] Implementation review passed.
 - [ ] Deviation log produced under this slice heading.
 - [ ] Reconciliation sweep produced under this slice heading.
 - [ ] Reconciliation review passed.
