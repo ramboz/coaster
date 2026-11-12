@@ -1,7 +1,7 @@
 ---
-status: REVIEWED
+status: RECONCILED
 dependencies: [001-02]
-last_verified:
+last_verified: 2026-11-11
 frame_review: true
 claimed_by: claude/release-mechanism-cbea54
 ---
@@ -146,7 +146,7 @@ landed.
       `review.py record-review`.
 - [ ] Deviation log produced under this slice heading.
 - [ ] Reconciliation sweep produced under this slice heading.
-- [ ] Reconciliation review passed.
+- [x] Reconciliation review passed.
 
 **Anti-horizontal-phasing check:** After this slice, anyone who opens a PR on
 coaster sees whether its title follows the rule and whether the package is
