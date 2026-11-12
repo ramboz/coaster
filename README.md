@@ -57,14 +57,20 @@ saves a rule allowing any Python command in the project. If you decline, the
 skill checks on the web when it can, and otherwise records that the check was
 not run.
 
-No hooks, no connectors, no agents, and no research engine of its own: research
-goes to a richer installed skill, a quick pass, or your own research tool, and
-scout checks what comes back.
+In Claude Code, challenge's three hats run as coaster's own agents,
+`coaster:skeptic`, `coaster:rival` and `coaster:customer`. Each carries the
+hats' rules and can read and search the web, but cannot write files or run
+commands. Only challenge starts them.
+
+No hooks, no connectors, and no research engine of its own: research goes to
+a richer installed skill, a quick pass, or your own research tool, and scout
+checks what comes back.
 
 ## Repository layout
 
 This is the source repository on GitHub. The installed plugin holds only the
-built skills.
+built skills and challenge's three hat agents. To change coaster, see
+[CONTRIBUTING.md](https://github.com/ramboz/coaster/blob/main/CONTRIBUTING.md).
 
 ```text
 skills/

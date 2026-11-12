@@ -3,8 +3,9 @@
 Source is host-neutral Markdown: skills name packaged files by relative path.
 The installed plugin cannot read those paths without a permission grant, so
 each rendered SKILL.md carries the full text of its files under `## Packaged:`
-headings. `--check` rebuilds into a scratch folder and compares it with the
-committed tree, naming each file that drifted.
+headings. challenge's three hats are rendered as plugin agents (ADR-0003), each
+carrying the same parts its skill does. `--check` rebuilds into a scratch
+folder and compares it with the committed tree, naming each file that drifted.
 """
 
 from __future__ import annotations
@@ -41,6 +42,7 @@ SKILL_FILES = {
     "name": ["templates/naming.md"],
     "handoff": ["templates/handoff.md"],
 }
+HATS = {"skeptic": "Skeptic", "rival": "Rival", "customer": "Customer"}  # agent -> heading
 HELPERS = {  # source form -> skill that owns the helper
     "`python3 scripts/link_check.py": "scout",
     "`python3 scripts/name_check.py": "name",
@@ -90,6 +92,29 @@ def render_skill(skill: str, root: Path) -> str:
     return text
 
 
+def _part(text: str, start: str) -> str:
+    """From the `## ` heading that starts with `start` to the next `## ` heading."""
+    lines = text.split("\n")
+    i = next(n for n, line in enumerate(lines) if line.startswith(start))
+    j = next((n for n in range(i + 1, len(lines)) if lines[n].startswith("## ")), len(lines))
+    return "\n".join(lines[i:j]).strip("\n")
+
+
+def render_agent(agent: str, root: Path) -> str:
+    """A hat agent: its brief, then the hats' rules, its own section, and the rest."""
+    brief = (root / "skills" / "challenge" / "hat-agent.md").read_text(encoding="utf-8")
+    hats = _section("skills/_shared/hats.md", root)
+    text = brief.replace("{name}", agent).replace("{Hat}", HATS[agent]).rstrip("\n")
+    parts = ["## Packaged: hats", _part(hats, "## Rules every hat follows"),
+             _part(hats, f"## {HATS[agent]} ")]
+    rest = "\n".join(_section(rel, root) for rel in SKILL_FILES["challenge"][1:])
+    text += "\n\n" + INTRO + "\n\n" + "\n\n".join(parts) + "\n\n" + rest
+    for bad in FORBIDDEN + ("{name}", "{Hat}"):
+        if bad in text:
+            raise SystemExit(f"ERROR: agent {agent}: unmapped reference {bad}")
+    return text
+
+
 def build(root: Path, out: Path) -> None:
     """Render into a scratch folder, and replace `out` only on success."""
     found = {p.parent.name for p in (root / "skills").glob("*/SKILL.md")}
@@ -103,6 +128,9 @@ def build(root: Path, out: Path) -> None:
         for name in ("README.md", "LICENSE"):
             if (root / name).is_file():
                 shutil.copy(root / name, tmp / name)
+        (tmp / "agents").mkdir()
+        for agent in HATS:
+            (tmp / "agents" / f"{agent}.md").write_text(render_agent(agent, root), encoding="utf-8")
         for skill in SKILL_FILES:
             src, dst = root / "skills" / skill, tmp / "skills" / skill
             dst.mkdir(parents=True)

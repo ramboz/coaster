@@ -7,7 +7,7 @@ hats: [skeptic, rival, customer]
 
 # Challenge round N
 
-> Assembled from one section file per hat, which are then deleted.
+> Written by the parent from each hat's reply.
 > Opt-in and constructive. The hats read only the dossier and earlier rounds.
 > Their concerns are risks worth retiring, never verdicts. Dispositions are
 > the user's.

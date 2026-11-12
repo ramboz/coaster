@@ -1,9 +1,10 @@
 ---
-status: READY_FOR_IMPLEMENTATION
+status: IN_PROGRESS
 dependencies: [adr-0003]
 last_verified:
 frame_review: true
 arch_review: true
+claimed_by: claude/trusting-blackburn-a5b423
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
@@ -123,11 +124,11 @@ evidence is the table below and the run's tool calls, added to
 
 | Step | AC | Expected | Observed | Outcome | Evidence |
 |------|----|----------|----------|---------|----------|
-| 1 | 1 | Three agent files, each part byte-identical to `challenge`'s; `--check` catches a stale or missing agent; under 200 lines | | not-run | |
-| 2 | 2, 3 | The brief and `challenge`'s wording as specified; nothing pasted | | not-run | |
-| 3 | 4 | Valid, and shipped as `0.1.0-pre.12` | | not-run | |
-| 4 | 5 | The local Sonnet and Opus runs: the agents started with prompts that carry only the run's details, each with its file as its system prompt, none writing or running Bash, no denials, and research set beside `a1e` and `a1g` | | not-run | |
-| 5 | Preserved | The other five skills render unchanged | | not-run | |
+| 1 | 1 | Three agent files, each part byte-identical to `challenge`'s; `--check` catches a stale or missing agent; under 200 lines | `hosts/claude/agents/skeptic.md`, `rival.md` and `customer.md` are rendered from `skills/challenge/hat-agent.md` and the challenge files. In each, the hats' rules, its own section, the evidence rules and the round template equal the same parts of the rendered `challenge` `SKILL.md` byte for byte. Each frontmatter has its `name`, a description that says only `challenge` starts it, `tools: Read, Grep, Glob, WebSearch, WebFetch` and `model: inherit`. On a scratch copy, `--check` names `agents/rival.md` after a hand edit and `agents/customer.md` after a deletion, and exits 1 both times. The script is 189 lines. | pass | the build; the guard runs |
+| 2 | 2, 3 | The brief and `challenge`'s wording as specified; nothing pasted | The brief names the hat and says to read the whole dossier and earlier rounds, to write nothing, and to use the evidence rules only for its own new entries. It says the link check and every change to the dossier belong to the skill that started it and to `scout`, and to reply with its section only. `challenge` starts the three agents in one message, with prompts limited to the hat's name, the dossier path, earlier rounds and the date, and nothing restated. It says `challenge` does not run the link check, and has the parent copy each hat's section under its heading. The template says the parent writes the round from each hat's reply, and the chat path still pastes the full text into one prompt per hat. The inbox's `challenge` item is struck through. | pass | `skills/challenge/`; `templates/challenge-round.md`; `docs/inbox.md` |
+| 3 | 4 | Valid, and shipped as `0.1.0-pre.12` | `--check` prints "in sync" and `claude plugin validate --strict hosts/claude` passes. The path search (bracketed home path, with no review sidecars present) and the 27-term search from the local `pre-publication` branch find nothing in the files changed since `origin/main`. Not pushed yet: the push waits for Julien's go-ahead. | pending: push | the build; the searches |
+| 4 | 5 | The local Sonnet and Opus runs: the agents started with prompts that carry only the run's details, each with its file as its system prompt, none writing or running Bash, no denials, and research set beside `a1e` and `a1g` | **`f1s` (Sonnet) and `f1o` (Opus):**<br>- the three agents started in one message;<br>- each prompt holds the hat's name, the dossier path, "Earlier rounds: none" and the date. The Sonnet prompts also say where the lane files are;<br>- every hat's system prompt equals its agent file's body, and all four parts match exactly;<br>- no hat ran Bash or wrote, each ran on the session's model and read the whole dossier;<br>- `permission_denials` is empty, nothing touched the build folder, and the Opus parent did not look for the helper;<br>- one round file each. The Opus parent copied the hats' sections; the Sonnet parent shortened them.<br>At Sonnet the agents searched a little less than the built-in types and returned as many entries. At Opus they researched close to `Explore`, and they used fewer tokens throughout. | pass | [evidence](evidence/slice-02-tool-calls.md#slice-002-04-the-hat-agents-local-runs-2026-11-12) |
+| 5 | Preserved | The other five skills render unchanged | Against the installed `0.1.0-pre.11`, `diff -rq` finds `capture`, `scout`, `frame`, `name` and `handoff`, with both helpers, identical. Only the manifest, the README, `challenge`'s `SKILL.md` and the new `agents/` folder differ. | pass | `diff -rq` |
 
 **DoD:**
 - [ ] All ACs pass, with the table above filled in from real runs.

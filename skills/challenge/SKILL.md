@@ -55,20 +55,27 @@ pressure-tests a plan or idea. If there is one, offer it first:
 only the dossier and earlier rounds, never the conversation. That
 independence is what they add.
 
-- **In Claude Code:** start three fresh read-only subagents in parallel. Paste
-  into each hat's prompt the full text of `../_shared/hats.md`,
-  `../_shared/evidence.md` and `templates/challenge-round.md`, and name that
-  hat's own section. Also give it the dossier path, earlier round files, and
-  today's date. Web search is allowed. Each writes its own section file in the
-  shape of `templates/challenge-round.md`.
-- **In a chat project:** write one paste-in prompt per hat. The user opens a
-  new conversation in the same Project, where the dossier is in project
-  knowledge, pastes the prompt, and brings the answer back.
+- **In Claude Code:** start the three hats in parallel, in one message, as the
+  subagents `coaster:skeptic`, `coaster:rival` and `coaster:customer`. Each one
+  already carries the hats' rules, its own section, the evidence rules and the
+  round template, and has no tool that writes or runs commands. Its prompt
+  holds only its hat's name, the dossier path, the paths of earlier round
+  files, and today's date. Do not restate, shorten or add to its rules: no
+  limits, lens instructions or reply shape of your own.
+- `challenge` does not run the link check. That belongs to `scout`'s next
+  pass, and every change to the dossier belongs to you.
+- **In a chat project:** write one paste-in prompt per hat, holding the full
+  text of `../_shared/hats.md`, `../_shared/evidence.md` and
+  `templates/challenge-round.md`, the name of that hat's own section, and
+  today's date. The user opens a new conversation in the same Project, where
+  the dossier is in project knowledge, pastes the prompt, and brings the
+  answer back.
 
 ## Assembling the round
 
-1. Assemble `challenge/round-N.md` from the sections, opening with a short
-   "what holds up" summary before any concern. Delete per-hat files.
+1. Write `challenge/round-N.md` yourself from the hats' replies. Under each
+   hat's heading, copy that hat's section as the hat replied it. Open with a
+   short "what holds up" summary before any concern.
 2. New evidence goes into the ledger with the hat's prefix (`S`, `V`, `C`).
 3. Group concerns that land on the same risk; three angles often find one
    issue from three sides.
