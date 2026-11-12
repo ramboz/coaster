@@ -42,11 +42,13 @@ jobs:
         # letter keeps the pattern from matching itself. The publication term
         # search stays by hand, because its terms are not published.
         run: |
-          if git grep -n -E '/Users/[r]amboz|~/[P]rojects|-Users-[r]amboz|/private/tmp/[c]laude-'; then
-            echo "ERROR: a local home path is in the tree. Remove it before merging."
-            exit 1
-          fi
-          echo "OK: no local home path in the tree."
+          rc=0
+          git grep -n -E '/Users/[r]amboz|~/[P]rojects|-Users-[r]amboz|/private/tmp/[c]laude-' || rc=$?
+          case "$rc" in
+            0) echo "ERROR: a local home path is in the tree. Remove it before merging."; exit 1 ;;
+            1) echo "OK: no local home path in the tree." ;;
+            *) echo "ERROR: git grep failed with exit $rc."; exit "$rc" ;;
+          esac
 
   validate:
     runs-on: ubuntu-latest
@@ -87,9 +89,14 @@ jobs:
           if git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
             range=("${BEFORE}..${AFTER}")
           else
+            echo "::warning::The previous tip (${BEFORE}) is unknown here, so only the newest commit is checked."
             range=(-1 "${AFTER}")
           fi
-          bad="$(git log --format='%h %s' "${range[@]}" \
+          # Its own assignment, so a git log failure stops the step under -e.
+          subjects="$(git log --format='%h %s' "${range[@]}")"
+          # Drop GitHub's " (#N)" squash suffix first, so a subject edited to
+          # end in a period before it (`feat(x): foo. (#3)`) still fails.
+          bad="$(printf '%s\n' "$subjects" | sed -E 's/ \(#[0-9]+\)$//' \
             | grep -v -E '^[0-9a-f]+ (feat|fix|perf|docs|chore|refactor|test|build|ci)\([^)]+\)!?: [a-z].*[^.]$' || true)"
           if [ -n "$bad" ]; then
             echo "ERROR: these subjects on main are not conventional commits:"

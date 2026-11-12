@@ -22,7 +22,7 @@
 | [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-02 — the challenge round, installed | READY_FOR_IMPLEMENTATION |  |
 | [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-03 — the next real idea | READY_FOR_IMPLEMENTATION |  |
 | [003-commits-and-releases](003-commits-and-releases/spec.md) | 003-01 — every PR checked | IN_PROGRESS (claude/release-mechanism-cb…) |  |
-| [003-commits-and-releases](003-commits-and-releases/spec.md) | 003-02 — releases from main | IN_PROGRESS (claude/release-mechanism-cb…) |  |
+| [003-commits-and-releases](003-commits-and-releases/spec.md) | 003-02 — releases from main | REVIEWED (claude/release-mechanism-cb…) |  |
 
 ## Richer-skill selection audit (spec 096-05)
 
@@ -30,4 +30,6 @@ Advisory (ADR-0040 auditability — never blocks). Regenerated from `reviews/sli
 
 - **0** pass(es) recorded `not-shown` (selection step did not run — the kill-criterion-1 defect signal).
 - **3** pass(es) recorded `non-interactive` (declared no-orchestrator / CI).
-- **0** shown-and-declined anomaly(ies) (a high-confidence richer skill was shown and not applied):
+- **2** shown-and-declined anomaly(ies) (a high-confidence richer skill was shown and not applied):
+  - `003-commits-and-releases/slice-01-craft.md` — applied `pr-review`; declined: independent-review, scout-pr-review
+  - `003-commits-and-releases/slice-02-craft.md` — applied `pr-review`; declined: independent-review, scout-pr-review

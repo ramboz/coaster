@@ -59,10 +59,15 @@ To run the same checks locally:
 
 ```bash
 python3 scripts/build_host_packages.py --check
-git ls-files -z '*.py' | xargs -0 python3 -m py_compile
+git ls-files -z '*.py' | xargs -0 /usr/bin/python3 -m py_compile
+git grep -n -E '/Users/[r]amboz|~/[P]rojects|-Users-[r]amboz|/private/tmp/[c]laude-'
 claude plugin validate --strict hosts/claude
 claude plugin validate --strict .claude-plugin/marketplace.json
 ```
+
+The `git grep` line should print nothing. `/usr/bin/python3` is macOS's
+Python 3.9, the floor CI checks; any newer `python3` misses syntax that needs
+3.10 or later.
 
 - `--check` rebuilds `hosts/claude` and fails if the committed package is
   stale. `hosts/` is generated: edit the source, run
@@ -73,8 +78,11 @@ claude plugin validate --strict .claude-plugin/marketplace.json
 - `claude plugin validate` runs on the package folder and the marketplace
   file, not the repository root, where `--strict` fails on the root
   `CLAUDE.md`.
-- The home-path search is spec 001's pre-push path search; its pattern is in
-  `ci.yml`.
+- The home-path search is spec 001's pre-push path search. Each bracketed
+  letter keeps the pattern from matching itself.
+- The title's nine types and its subject rule are written in four places:
+  `pr-title.yml`, `ci.yml`'s subject check, this file and
+  `docs/conventions.md`. Change them together.
 
 Maintainers also run the publication term search by hand before any push. Its
 terms are not published, so CI cannot run it.
@@ -92,7 +100,7 @@ coaster is pre-1.0. These are the effects in release-please's terms:
 | `feat` | `feat(scout): …` | minor bump (`0.1.0` → `0.2.0`) |
 | `fix`, `perf` | `fix(name): …` | patch bump (`0.1.0` → `0.1.1`) |
 | `docs` | `docs(specs): …` | patch bump, and listed under Documentation. A docs-only merge opens a release PR too. |
-| `feat!`, or any type with `!` | `feat(capture)!: …` | major bump |
+| `feat!`, or any type with `!` | `feat(capture)!: …` | major bump, even before 1.0 (`0.1.0` → `1.0.0`) |
 | `chore`, `refactor`, `test`, `build`, `ci` | `ci(release): …` | no release on its own, and hidden from the changelog |
 
 ## The release flow
@@ -106,13 +114,16 @@ Releases are run by release-please, in
    files, writes `CHANGELOG.md`, and updates
    [`.github/.release-please-manifest.json`](.github/.release-please-manifest.json).
 3. **Merging the release PR is the release.** It tags `vX.Y.Z` and publishes a
-   GitHub release. Merge it only when the
-   [release plan](docs/releases/claude-code-first-release.md)'s release check
-   passes. Before merging, if its CI did not run, run `--check` and
-   `claude plugin validate --strict hosts/claude` on its branch by hand.
+   GitHub release. Merge it only when the release is ready: for `v0.1.0`,
+   when the [first release plan](docs/releases/claude-code-first-release.md)'s
+   release check passes. Before merging, if its CI did not run, run `--check`
+   and `claude plugin validate --strict hosts/claude` on its branch by hand.
 4. Once the release exists, the `package` job checks the tagged package,
    zips `hosts/claude` as `coaster-claude-vX.Y.Z.zip`, validates the unzipped
-   copy, and attaches it to the release.
+   copy, and attaches it to the release. Re-running the job is safe: the
+   upload replaces the zip, and the install note is added only once. A fix to
+   the workflow itself does not reach a re-run, so in that case build and
+   upload the zip by hand with the same commands.
 
 The first release is `0.1.0`: the manifest starts at `0.0.0`, which means
 nothing has been released, and the config's `initial-version` sets the first

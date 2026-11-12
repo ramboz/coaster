@@ -136,7 +136,9 @@ landed.
 
 **DoD:**
 - [ ] All ACs pass, with evidence in the deviation log (commands, exit codes,
-      run ids).
+      run ids). AC 7's second half (the squash subject, its empty body, and
+      `subjects` passing on `main`) comes from the follow-up commit after the
+      merge, with 003-02's AC 7.
 - [ ] The build, `--check`, the path search, the term search and the subject
       check over `origin/main..HEAD` pass before the push, and `git remote -v`
       and `gh repo view` are checked first.
@@ -149,3 +151,161 @@ landed.
 **Anti-horizontal-phasing check:** After this slice, anyone who opens a PR on
 coaster sees whether its title follows the rule and whether the package is
 current, valid and free of home paths, before anything merges.
+
+### Deviation log (after reconciliation)
+
+The acceptance criteria above are kept as written. Implementation notes, 2026-11-11:
+
+1. **The conventions edit.** jig's spec-gate hook reads
+   `JIG_CONVENTIONS_APPROVED` from Claude Code's own environment, so it cannot
+   be set for a single Edit call. After Julien approved the text, the edit was
+   made by one shell command with `JIG_CONVENTIONS_APPROVED=1` set for that
+   command only. The hook's own comment names that route. A `diff` of the new
+   `## Git` body against AC 1's block shows no difference.
+2. **Three CI jobs, not two plus a step.** `ci.yml` has `check` (Python 3.9
+   and 3.12: `--check`, the byte-compile, the path search), `validate` (Claude
+   Code 2.1.322, both `validate --strict` runs), and `subjects` (push only).
+   The subject check is its own job with `fetch-depth: 0`, so it runs once and
+   not in each Python leg. `validate` points `CLAUDE_CONFIG_DIR` at a folder
+   that does not exist yet, outside the checkout, and sets
+   `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`, matching the signed-out local
+   probe. The byte-compile is
+   `git ls-files -z '*.py' | xargs -0 python3 -m py_compile`.
+3. **AC 2.** `diff` against jig's `pr-title.yml` shows only the four-line
+   comment header.
+4. **AC 4, each check fails on a planted fault (local, 2026-11-11).** The
+   path-search and subject-check scripts were taken from `ci.yml` with Ruby's
+   YAML parser, so the committed text was the code under test.
+   - `--check`: a line appended to `hosts/claude/skills/capture/SKILL.md`
+     gives exit 1, naming the file. Exit 0 after `git checkout`.
+   - Path search: an intent-to-add scratch file holding a home path gives
+     exit 1. Exit 0 once it is removed.
+   - Byte-compile: a `match` statement under the macOS `/usr/bin/python3`
+     3.9.6 gives exit 1. Exit 0 once the file is fixed. All tracked `.py`
+     files compile on 3.9.6 and 3.14.
+   - Validate: a scratch copy of the package whose `plugin.json` has no `name`
+     gives exit 1 (`name: Invalid input: expected string, received
+     undefined`). Exit 0 once restored.
+   - Subject check:
+     - with `BEFORE` set to the root commit `fd473ab` and `AFTER` to
+       `origin/main`: exit 1, naming `chore: stop tracking Python bytecode`
+       and `docs: adopt jig, ...`. The step's `BEFORE..AFTER` range leaves
+       out the root commit itself, `feat(pack): draft the idea-triage skill
+       pack and its first dogfood run`, which matches the pattern;
+     - on `bbeda54..a28e0cd`: exit 0;
+     - with an unknown `before`: falls back to the last commit, exit 0;
+     - on the 8 commits spec 002 pushed to `main` while this was built
+       (`a28e0cd..1e11dce`): exit 0.
+5. **Merge settings (AC 7, first half).** Read as `ramboz` on 2026-11-11, with
+   Julien's OK. `allow_squash_merge: true`, `allow_merge_commit: false`,
+   `allow_rebase_merge: false` and `squash_merge_commit_title: PR_TITLE`
+   already held. `squash_merge_commit_message` was `PR_BODY`, so it was set to
+   `BLANK`. The read-back, minutes before PR #2 was opened, returned exactly
+   `{"allow_merge_commit":false,"allow_rebase_merge":false,"allow_squash_merge":true,"squash_merge_commit_message":"BLANK","squash_merge_commit_title":"PR_TITLE"}`.
+   No one else changed the settings between that read and the PR's opening.
+   `gh` was then switched back to `ramboz_adobe`.
+6. **Rebase.** `origin/main` moved 8 commits during implementation: spec 002's
+   fixes, with the package at `0.1.0-pre.8`. The branch rebased with no
+   conflict. The status board was regenerated, and the drift guard, plugin
+   validation, the byte-compile and the pre-push searches were re-run on the
+   rebased tree.
+7. **One `CONTRIBUTING.md` for both slices.** It holds this slice's merging,
+   direct-push and CI sections and 003-02's release sections.
+8. **Live evidence (AC 5).** [PR #2](https://github.com/ramboz/coaster/pull/2)
+   was opened on 2026-11-11 as `ramboz`, with Julien's OK, from `a258006`.
+   - **CI run `43132628853`:** `check (3.9)`, `check (3.12)` and `validate`
+     all pass. `validate` logged `✔ Validation passed` for the package and the
+     marketplace on the Ubuntu runner, signed out, which settles A1.
+     `subjects` was skipped, as it runs only on pushes to `main`.
+   - **PR Title run `43132629005`:** passes on the conventional title.
+   - **Title test, with Julien's OK:** the title was changed to `Update stuff.`
+     as `ramboz`. Run `43132861588` failed with "No release type found in pull
+     request title". The title was restored, and run `43132923618` passes.
+   - **`jig-governance` run `43132628737`:** fails, as AC 5 expects for a PR
+     that touches protected paths.
+
+   AC 7's second half (the squash subject, the empty body and the `main` run
+   of `subjects`) can only be shown after the merge, and is recorded with
+   003-02's AC 7.
+9. **Review findings, 2026-11-11.**
+   - **Compliance (needs-changes).** Three fixes:
+     - `CONTRIBUTING.md` now gives the path search as a local command;
+     - item 5 quotes the settings exactly;
+     - the DoD routes AC 7's second half to the follow-up commit.
+   - **Craft (pass, with nits).** Three applied:
+     - `ci.yml`'s path search now fails on a `git grep` error (exit 2 or
+       more) rather than reading it as "no match";
+     - the subject check now fails when `git log` fails, because its output is
+       captured in its own assignment;
+     - the subject check warns when it falls back to the newest commit only.
+
+     Each change was tested from the YAML: a `git grep` error gives exit 128,
+     a bad `after` gives exit 128, and an unknown `before` warns and passes.
+     `CONTRIBUTING.md` now names `/usr/bin/python3` for the 3.9 floor, and
+     says the type list and subject rule live in four places and change
+     together.
+   - **Not applied.** Pinning Node with `actions/setup-node`: the runner's Node
+     only installs the pinned CLI. Pinning actions by SHA: the spec mirrors
+     jig's tags.
+
+### Reconciliation sweep
+
+| Artifact | Disposition | Rationale |
+|----------|-------------|-----------|
+| `README.md` | `deferred` | Parked in `docs/inbox.md`. The spec's decision leaves a pointer to `CONTRIBUTING.md` for later. `README.md` is copied into the package, so editing it changes the package's bytes and needs a pre-release bump in both `plugin.json` files, which this spec does not touch. It goes with the next PR that changes the package. GitHub links `CONTRIBUTING.md` from the PR form meanwhile. |
+| `docs/specs/README.md` | `updated` | Regenerated by `workflow.py status-board` after each transition and after the rebase; `check-board` reports it clean. |
+| `docs/product-vision.md` | `no-op` | No behaviour or scope change; `use_cases: []` is deliberate. |
+| `docs/architecture.md` | `no-op` | This slice adds workflows only; no module boundary or contract changes. (003-02 updates the plugin-manifest entry.) |
+| `docs/conventions.md` | `updated` | The Git rule, in the wording Julien approved (AC 1). |
+| Primer surfaces: `CLAUDE.md` / `AGENTS.md` / scaffold templates | `updated` | One `CLAUDE.md` line under Development Conventions. No `AGENTS.md`. Active specs are left as they are: spec 002 is not listed either, and the board carries live status. |
+| `docs/inbox.md` | `updated` | No earlier item was about commits, CI or releases. Added one: the README pointer to `CONTRIBUTING.md` (row above). |
+| `docs/refinement-todo.md` | `no-op` | The CI/CD entry is resolved under 003-02, which owns the release half. |
+| `docs/memory/**` | `updated` | Three learnings: the `0.0.0` seed, docs-only releases, and validating the plugin folder rather than the root. |
+| `docs/decisions/README.md` / ADR index | `no-op` | No ADR, by the spec's decision: the mechanism is the family's, as recorded in servo's ADR-0007. |
+| `docs/governance.md`, `docs/workflow.md`, `docs/adoption-readiness.md` | `no-op` | Searched for commit, CI and release claims: nothing stale. The new workflows fall under the existing `.github/workflows/**` protection. |
+| `CONTRIBUTING.md` | `updated` | New file, covering this slice's merging, direct-push and CI sections. |
+| Spec 002's paths (`plugin.json`, `hosts/claude/**`, `skills/**`, `scripts/build_host_packages.py`, `README.md`, ADR-0002, `docs/specs/002-*`) | `no-op` | They reached this branch from `origin/main` through the rebases, not from spec 003. `git diff origin/main...HEAD` touches none of them. A diff against the stale local `main` lists them. |
+
+**Leanness:**
+- Nothing beyond the ACs was added: no new script, and no test harness.
+- Three things go past jig's CI, and each was asked for by a frame review: the subject check on `main`, the third CI job, and the error-path handling.
+- Node is not pinned, and actions are not pinned by SHA (deviation log, item 9).
+   - **Compliance rerun (needs-changes, evidence only).** Three findings:
+     - AC 5's runs were on `a258006`, before item 9 changed `ci.yml`; the
+       final head's runs are recorded in item 10.
+     - The DoD's pre-push checks needed commands and exit codes; item 10
+       gives them.
+     - Item 4's subject-check invocation needed spelling out; it now does.
+
+     The reviewer also found a gap: GitHub's ` (#N)` suffix on `main` hid a
+     trailing period, so `feat(x): foo. (#3)` passed. The step now strips the
+     suffix before matching. Tested from the YAML in a scratch repository:
+     `feat(x): foo (#3)` and `chore(main): release 0.1.0 (#5)` pass, while
+     `feat(x): foo. (#3)` and `fix(y): bar.` fail, named by hash. The
+     pattern approximates `amannn/action-semantic-pull-request`'s parser
+     rather than reproducing it. CONTRIBUTING says to change the copies of the
+     rule together.
+10. **Second rebase and the final pre-push run (2026-11-11).** `origin/main`
+    moved 2 more commits (spec 002's sweep, and its fix, up to `3189b90`).
+    - The only conflict was `docs/memory/learnings.md`, where both sides
+      appended; both sets of entries were kept.
+    - The board was regenerated.
+    - The branch is 0 behind.
+
+    Before the push, in order:
+    - `git remote -v` showed `origin https://github.com/ramboz/coaster.git`,
+      and `gh repo view` showed `ramboz/coaster PUBLIC`;
+    - `python3 scripts/build_host_packages.py`: exit 0, with no file under
+      `hosts/` changed;
+    - `--check`: exit 0;
+    - the byte-compile on 3.9.6: exit 0;
+    - `validate --strict` on the package and on the marketplace: both exit 0;
+    - the path search on `HEAD`: exit 1, clean;
+    - the term search over the tree, with all 27 terms: exit 1, clean, and 0
+      hits in the branch's commit messages;
+    - the subject check over `origin/main..HEAD`, 7 commits, with
+      `/usr/bin/grep`: exit 1, clean.
+
+    In a piped, scripted run, the shell's `grep` wrapper (ugrep) reported
+    exit 0 for that last check, though a listing of rejected subjects was
+    empty. `/usr/bin/grep` is the reliable one here.
