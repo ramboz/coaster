@@ -103,7 +103,7 @@ releases coaster with the package attached.
 
 ### Deviation log (after reconciliation)
 
-The acceptance criteria above are kept as written. Implementation notes, 2026-11-11:
+The acceptance criteria above are kept as written, except that their links to the refinement-todo entry point to `#operations` (item 3). Implementation notes, 2026-11-11:
 
 1. **The workflow and config.**
    - `release.yml` is as specified, except permissions, which item 5 grants
@@ -172,7 +172,23 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
      - the note's heading is `## Install`, not `## Install artifacts`;
      - the note says the marketplace follows `main`, and a blank line
        separates it from release-please's notes.
-6. **AC 7** waits for the merge. The follow-up commit records it.
+6. **AC 4 on the final head (`f501a30`, package at `0.1.0-pre.9`).**
+   `origin/main` moved again during review (spec 002, up to `3189b90`). The
+   package job's "Check the tagged package" and "Build the release zip"
+   scripts were taken from the final YAML and run:
+   - the version step exits 0 with `VERSION=0.1.0-pre.9` and exits 1 with
+     `VERSION=0.1.0`;
+   - the zip's file list equals `git ls-files hosts/claude` (11 files);
+   - `claude plugin validate --strict` passes on the unzipped copy.
+7. **Integration and pre-push checks.** These are recorded once, in 003-01's
+   deviation log:
+   - the second rebase;
+   - integration as a merge of `origin/main` plus one commit, because the
+     project denies force pushes (items 10 and 12);
+   - the pre-push checks before each push: the remote, `gh repo view`, the
+     build, `--check`, and the path and term searches (item 10);
+   - the final head's CI runs (item 11).
+8. **AC 7** waits for the merge. The follow-up commit records it.
 
 ### Reconciliation sweep
 
@@ -184,12 +200,14 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
 | `docs/product-vision.md` | `no-op` | No behaviour or scope change. |
 | `docs/architecture.md` | `updated` | The plugin-manifest interface now says release-please sets the version from `v0.1.0`. |
 | Primer surfaces: `CLAUDE.md` / `AGENTS.md` / scaffold templates | `no-op` | 003-01's line covers both slices. |
-| `docs/inbox.md` | `updated` | No earlier item was about releases. Added the README-pointer item, so that deferral outlives the spec. |
+| `docs/inbox.md` | `updated` | No earlier item was about releases. The one README-pointer item, shared with 003-01's sweep, covers this slice's deferral too. |
 | `docs/refinement-todo.md` | `updated` | "CI/CD setup" struck and dated RESOLVED, with its original text kept. |
 | `docs/releases/claude-code-first-release.md` | `updated` | Scope 4 names spec 003, the release PR as the `v0.1.0` cut, and the catalog listing still to do. Status stays `candidate`. |
 | `docs/memory/**` | `updated` | See 003-01: three learnings, two of them from this slice. |
 | `docs/decisions/README.md` / ADR index | `no-op` | No ADR, by the spec's decision. |
 | `CHANGELOG.md` | `deferred` | release-please writes it in the first release PR (spec decision: no stub). AC 7 checks it after the merge. |
+| This slice's deliverables: `release.yml`, `release-please-config.json`, `.release-please-manifest.json` | `updated` | See deviation log items 1 and 5. |
+| 003-01's files: `docs/conventions.md`, `CLAUDE.md`, `ci.yml`, `pr-title.yml` | `no-op` | Covered by 003-01's sweep. |
 | `CONTRIBUTING.md` | `updated` | The release sections: the title-to-release table, the release flow, versions, and re-running the `package` job. |
 
 **Leanness:**
