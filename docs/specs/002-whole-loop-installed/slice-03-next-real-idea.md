@@ -22,7 +22,8 @@ decides about the idea, the slice can pass.
 
 **DoR:**
 - 002-02 is DONE, and its pre-release is on `origin/main`.
-- Julien has a next real idea and time for one interactive loop (A5).
+- ✅ Julien has a next real idea ready (confirmed 2026-11-11).
+- Julien has time for one interactive loop (A5).
 
 **Acceptance Criteria:**
 

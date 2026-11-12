@@ -25,7 +25,7 @@ file read.
   mode (see the spec's Current state).
 - Julien has signed in to a new disposable profile with coaster installed from
   GitHub. 001-02's profile is not reused, because synced plugins joined it.
-- Julien has accepted or changed the spec's proposed decisions.
+- ✅ Julien accepted the spec's decisions on 2026-11-11.
 
 **Acceptance Criteria:**
 
@@ -118,14 +118,8 @@ file read.
     in each new idea folder and after each update, and the two alternatives set
     aside: a README allow rule, whose version wildcard also admitted a `..` path
     in the spec's probe, and a rendered `allowed-tools` grant. It cites A2, what
-    "don't ask again" saves, as unverified. If Julien chooses the grant instead,
-    the ADR records that; ADR-0001's bound on the build's text changes, AC 1's
-    search for `allowed-tools` and the build's `FORBIDDEN` list are amended to
-    allow exactly that grant; AC 3's runs drop the helper from
-    `--allowedTools`; and one two-turn `scout` run, with the link check in the
-    second turn, shows whether the grant still holds there. The README's
-    "What's inside" says how the helpers get permission, and recommends no
-    wildcard rule.
+    "don't ask again" saves, as unverified. The README's "What's inside" says
+    how the helpers get permission, and recommends no wildcard rule.
 11. **The fixes ship before the runs that judge them.** The changes go out as
     `0.1.0-pre.3`, after the path and term searches, as an ordinary commit on
     `main`. The test profile is updated, and the runs for ACs 2 to 9 and 12 are

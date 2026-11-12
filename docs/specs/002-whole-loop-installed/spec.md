@@ -139,9 +139,9 @@ intact. Last, Julien runs the whole loop on his next real idea.
 
 ## Decisions
 
-These are proposed in this draft and wait for Julien's review.
+Julien accepted each of these on 2026-11-11, as the draft proposed them.
 
-- **Helpers ask for Bash like any other command (proposed).** coaster grants
+- **Helpers ask for Bash like any other command (Julien, 2026-11-11).** coaster grants
   itself nothing. The rendered command follows jig's form,
   `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/scripts/<file>"`, rendered from
   `python3 scripts/<file>` in source, so it does not depend on the execute bit.
@@ -159,14 +159,13 @@ These are proposed in this draft and wait for Julien's review.
   narrower than any rule a user writes. It is set aside because it adds a build
   text change beyond ADR-0001's bound, has only been seen lasting for the turn
   that invoked the skill, which misses the link check `scout` often runs in a
-  later turn, and because no sibling pack grants itself Bash. Julien may still
-  prefer it, and 002-01 records whichever he chooses, with its costs, in an
-  ADR. What "don't ask again" saves, the versioned script path or a broader
+  later turn, and because no sibling pack grants itself Bash. 002-01 records
+  the choice and its costs in an ADR. What "don't ask again" saves, the versioned script path or a broader
   `python3` prefix, has not been run (A2), and decides both the cost and
   whether asking stays the narrow choice. The ADR cites it as unverified, and
   002-03 records the rule the prompt offers.
 - **A refused helper is not worked around, and nothing is filled in
-  (proposed).** When a helper is refused, the skill does not try another
+  (Julien, 2026-11-11).** When a helper is refused, the skill does not try another
   command to the same end, such as `curl` or an inline script, because the user
   declined running code. It may take the route its text already gives for chat,
   opening the sources or searching the registries on the web, when those tools
@@ -174,7 +173,7 @@ These are proposed in this draft and wait for Julien's review.
   reason, and the command to run by hand. It never states a result that no tool
   call returned. A refused read degraded `capture` without any error in spec
   001, and the same could happen here.
-- **Hats write nothing and reply with their section (proposed).** In Claude
+- **Hats write nothing and reply with their section (Julien, 2026-11-11).** In Claude
   Code, `challenge` names the subagent type for its hats. `Explore`, the
   built-in type with no `Write` or `Edit`, which in the probes searched under
   the session's grant and ran on the session's model, is kept only if, run side
@@ -191,7 +190,7 @@ These are proposed in this draft and wait for Julien's review.
   files to delete and nothing to stop a hat editing the dossier. Option F, each
   hat as a plugin agent with its own tools and model, would enforce both, but
   widens the package and the script, and ADR-0001 holds it for a failed paste.
-- **What a verification run grants (proposed).** Spec 001's lesson was to test
+- **What a verification run grants (Julien, 2026-11-11).** Spec 001's lesson was to test
   with no `--allowedTools` grant, because a `Read` grant hid a refused read of
   the package. In this scope `WebSearch`, `WebFetch` and the helpers are tools a
   user is asked about and would approve, so a headless run grants exactly those
@@ -226,8 +225,8 @@ These are proposed in this draft and wait for Julien's review.
   by the three slices together.** 002-01 and 002-02 run every skill from an
   install from GitHub, and 002-03 runs a real idea as far as Julien's decision
   takes it. The test must not lean on that decision: a real idea that ends in a
-  no-go or a park is coaster working as designed. If Julien accepts this, the
-  release plan's scope 2 line gets a pointer to this decision.
+  no-go or a park is coaster working as designed. The release plan's scope 2
+  line points here.
 
 ## Non-goals
 
@@ -264,8 +263,9 @@ These are proposed in this draft and wait for Julien's review.
   records it and grants nothing more. 002-02's AC 1 runs `Explore` hats on Opus
   before anything ships, and if one runs on another model, the hats move to
   `general-purpose` (002-02's ACs 1 and 3).
-- **A5.** Julien has a next real idea ready and time for one interactive loop.
-  If not, 002-03 is parked as DEFERRED until he has one. What he decides about
+- **A5.** Julien has time for one interactive loop on his next real idea,
+  which he confirmed on 2026-11-11 is ready. If the time does not come, 002-03
+  is parked as DEFERRED until it does. What he decides about
   the idea does not matter: 002-03 passes on a no-go or a park, and 002-01's
   installed runs are the evidence for `name` and `handoff` if his loop stops
   before them.

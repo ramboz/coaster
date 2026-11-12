@@ -20,8 +20,8 @@ logs that each hat received the packaged rules intact.
 
 **DoR:**
 - 002-01 is DONE, and its framed sample dossier is kept outside the repository.
-- Julien has accepted or changed the proposed decision that hats write
-  nothing.
+- ✅ Julien accepted the decision that hats write nothing, with the type
+  chosen by comparison, on 2026-11-11.
 
 **Acceptance Criteria:**
 
