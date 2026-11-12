@@ -254,6 +254,8 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
   in the desktop app. Julien's call is to follow jig here, since jig's form has
   worked reliably. The residual is only the marketplace install itself, which
   the first `scout` run in 002-01 shows in the helper command it runs.
+  **Settled on 2026-11-11:** in every 002-01 run from a marketplace install,
+  the helper command ran from the installed path with the variable filled in.
 - **A2.** An interactive session in the default permission mode asks once for
   each helper, and allowing it for the project covers later runs until the next
   version changes the path. **Settled on 2026-11-11, and wrong:** in Julien's
@@ -288,7 +290,10 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
   coaster's research notes and has not been run. The `init` check and the log
   catch either failure after the fact. If disabling or blocking does not keep
   them out, Julien turns the skill off on his account for the test, or chooses
-  another way to sign the profile in.
+  another way to sign the profile in. **Settled on 2026-11-11:** synced plugins
+  joined 002-01's profile after its first run and stayed out once disabled with
+  `claude plugin disable`. `deep-research` arrived at the first session, and
+  with the deny rules no judged run called it.
 - **A8.** An `Explore` hat writes a section as full as a `general-purpose` hat
   would. Claude Code describes `Explore` as a search agent that reads excerpts
   rather than whole files and locates rather than reviews, while a hat must read

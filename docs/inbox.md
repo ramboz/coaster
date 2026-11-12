@@ -14,3 +14,5 @@
 - [2026-11-09] `capture` step 2 sends question 5's answer to Intent, while step 3 and the evidence rules send a claim such as "nothing does this" to Evidence. One sentence should say which wins.
 - [2026-11-09] `challenge` starts "read-only subagents" and then has each one write a section file. Settle this in scope 2.
 - [2026-11-09] `capture`'s rule that a briefly answered question is not unstated is stricter than 001-01's amended AC 8. Align them when `capture` next changes.
+- [2026-11-11] `frame` and `handoff` still try Bash edits and reads (inline `python3 -`, `sed -i`, `for f in …`) before their file tools, which an interactive user is asked about. `scout` was told to use its file tools in 002-01; the same line may help them. Seen in 002-01's runs.
+- [2026-11-11] In one of 002-01's pre.5 runs, `scout` tagged an entry `grounded` with "same thread as DEM-01" in place of its own link. The evidence rules want a link on every `grounded` entry; consider saying so in `scout`'s Extract step.
