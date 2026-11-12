@@ -54,7 +54,9 @@ the idea in a paragraph taken from Intent, the lane's questions, the claimed
 difference to search for, what counts as evidence, and the exact output
 format. One brief can cover several lanes when the tool takes long prompts.
 A quick pass uses the same questions to guide its searches. When the brief
-goes to the user, give it as a block they can copy.
+goes to the user, give it as a block they can copy. In a repository, every file
+scout writes, briefs included, goes in the dossier's own folder: a brief as
+`scout/brief-<lanes>.md` next to the dossier.
 
 ## 2. Run
 
@@ -108,7 +110,8 @@ as the long-form record.
    In Claude Code, first tell the user that if Claude Code asks, they should
    answer Yes rather than "don't ask again", which would allow any Python
    command in the project. Then run `python3 "${CLAUDE_PLUGIN_ROOT}/skills/scout/scripts/link_check.py" <dossier-folder>`
-   and record the result in the Evidence section.
+   exactly as written, without listing or reading the plugin's own folder, and
+   record the result in the Evidence section.
 
    If the helper is refused, try no other command to the same end, such as
    `curl` or an inline script, because the user declined running code. If it is
