@@ -1,9 +1,8 @@
 ---
-status: RECONCILED
+status: DONE
 dependencies: [003-01]
 last_verified: 2026-11-11
 frame_review: true
-claimed_by: claude/release-mechanism-cbea54
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
@@ -229,9 +228,34 @@ The acceptance criteria above are kept as written, except that their links to th
    AC 4 was then re-run on the `0.1.0-pre.10` tree (`0cf2407`): the version
    step passes, the zip's file list equals `git ls-files hosts/claude`
    (11 files), and the unzipped copy validates.
-9. **AC 7** waits for the merge. The follow-up commit records it, together
-   with the second half of 003-01's AC 7: the squash subject, its empty body,
-   and the `subjects` run on `main`.
+9. **AC 7, after the merge (2026-11-12).**
+   - [PR #2](https://github.com/ramboz/coaster/pull/2) was squash-merged at
+     01:49 UTC as `c0a8cc8`, with Julien's OK, by `ramboz`.
+   - **`Release` run `43137153871` on `c0a8cc8`:** `release-please` succeeded,
+     and `package` was skipped, since no release was created.
+   - **The release PR.** release-please opened
+     [PR #3](https://github.com/ramboz/coaster/pull/3),
+     `chore(main): release 0.1.0`, as `github-actions`, at `a208d63`. It
+     changes exactly four files (+45, −3):
+     - both `plugin.json` files, `0.1.0-pre.11` → `0.1.0`;
+     - the manifest, `0.0.0` → `0.1.0`;
+     - a new `CHANGELOG.md`, whose first heading is `## 0.1.0 (2026-11-12)`
+       with no compare link.
+
+     This confirms A2: the version came from `initial-version`, not from a
+     bump of `0.0.0`.
+   - **Checks on the release PR.** None ran (`gh pr checks 3`: "no checks
+     reported"), which is A4's expected case. By hand, on a copy of
+     `a208d63`:
+     - `--check` exits 0;
+     - `claude plugin validate --strict hosts/claude` exits 0;
+     - the path and term searches are clean.
+   - **PR #3 is left open.** Merging it is the `v0.1.0` release.
+   - **The changelog** lists the history's `feat`, `fix` and `docs` subjects
+     and hides the `ci` merge of PR #2, as CONTRIBUTING's table says. The two
+     unscoped early commits still appear: release-please parses a missing
+     scope.
+   - 003-01's item 13 records the squash commit itself.
 
 ### Reconciliation sweep
 

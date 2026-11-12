@@ -34,7 +34,7 @@ demoable value on its own (not "just the data model" / "just the parser").
 1. Install and capture. Add coaster's marketplace from GitHub in Claude Code, install it, run capture in an empty repo, and get a correct dossier.
 2. The whole loop, installed. Run capture through handoff on the next real idea, with the helpers working from the plugin. Spec 002 meets this with three slices together, and the real idea runs as far as Julien's decision takes it (see [spec 002's Decisions](../specs/002-whole-loop-installed/spec.md#decisions)).
 3. Deferral to richer skills. Hand off to grilling and to an installed research skill, and the dossier still gets updated (R-03).
-4. Public release. Tag v0.1.0 and install it through the ai-pegboard catalog. [Spec 003](../specs/003-commits-and-releases/spec.md) puts CI and release-please in place: release-please keeps a `release 0.1.0` PR open, and merging it cuts `v0.1.0`, so it waits for the release check below. The catalog listing is still to do.
+4. Public release. Tag v0.1.0 and install it through the ai-pegboard catalog. [Spec 003](../specs/003-commits-and-releases/spec.md) puts CI and release-please in place: release-please keeps its `release 0.1.0` PR open ([#3](https://github.com/ramboz/coaster/pull/3)), and merging it cuts `v0.1.0`, so it waits for the release check below. The catalog listing is still to do.
 
 ## Risks / Rabbit Holes
 

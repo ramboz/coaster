@@ -45,3 +45,7 @@ jig's and servo's CONTRIBUTING tables say `docs` does not release. Their configs
 ## Validate the plugin folder, not the repository root
 
 `claude plugin validate --strict .` fails at coaster's root, because `--strict` turns the warning about the root `CLAUDE.md` into an error. Validate `hosts/claude` and `.claude-plugin/marketplace.json` instead. Neither needs a sign-in: both pass with an empty `CLAUDE_CONFIG_DIR`, on macOS and on GitHub's Ubuntu runner.
+
+## release-please's PR gets no checks, and a blank squash body still gets trailers
+
+coaster's first release PR, opened by `github-actions` with the default token, ran no workflow, because events made with `GITHUB_TOKEN` start none. Run `--check` and `claude plugin validate --strict hosts/claude` on its branch by hand before merging it. Separately, with `squash_merge_commit_message: BLANK`, GitHub still appends `Co-authored-by:` trailers from the squashed commits; release-please ignores them, but "empty body" is not literally true.
