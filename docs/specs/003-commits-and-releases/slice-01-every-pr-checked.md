@@ -309,3 +309,20 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
     In a piped, scripted run, the shell's `grep` wrapper (ugrep) reported
     exit 0 for that last check, though a listing of rejected subjects was
     empty. `/usr/bin/grep` is the reliable one here.
+
+    The rebased branch could not be pushed: replacing `a258006` needs a force
+    push, and the project's settings deny every force push. Instead:
+    - the PR's tip `a258006` took a merge of `origin/main`, as `84b7a36`
+      (`chore(sync): merge origin/main into the spec 003 branch`);
+    - one commit, `a4efcc1`, laid the reviewed tree on top of it;
+    - `git diff` between `a4efcc1` and the rebased tip it replaced is empty;
+    - the push was a fast-forward, `a258006..a4efcc1`, after the path and
+      term searches and `--check` passed again.
+11. **Live runs on the final workflow code (`a4efcc1`).**
+    - **CI run `43134442343`:** `check (3.9)`, `check (3.12)` and `validate`
+      all pass, and `subjects` is skipped on a PR, as designed.
+    - **PR Title run `43134442184`:** passes.
+    - **`jig-governance` run `43134442274`:** fails by design.
+
+    Later commits on the branch change only `docs/specs/003-*`, so these runs
+    stand for the workflow code that lands.
