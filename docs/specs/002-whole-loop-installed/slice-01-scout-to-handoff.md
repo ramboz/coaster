@@ -1,7 +1,7 @@
 ---
-status: REVIEWED
+status: RECONCILED
 dependencies: [001-02]
-last_verified:
+last_verified: 2026-11-11
 frame_review: true
 arch_review: true
 claimed_by: claude/spec-002-01-scout-to-handoff
@@ -237,7 +237,7 @@ Their text and both helpers are byte-identical in `0.1.0-pre.11`, which ships. A
 - [x] Implementation review passed.
 - [x] Deviation log produced under this slice heading.
 - [x] Reconciliation sweep produced under this slice heading.
-- [ ] Reconciliation review passed.
+- [x] Reconciliation review passed.
 - [x] `docs/refinement-todo.md` updated if any decisions were deferred during
       implementation.
 
@@ -298,7 +298,7 @@ The original slice is preserved above. Implementation notes:
 | `docs/refinement-todo.md` | `updated` | New entry for the "don't ask again" exposure, triggered at the scope-4 release check, noting the unreliable in-session warning and the model's own inline `python3` edits. |
 | `docs/memory/**` | `updated` | Learnings on synced plugins and skills in a disposable profile, and on what "don't ask again" saves. |
 | `docs/decisions/README.md` / ADR index | `updated` | ADR-0002 accepted, and the index regenerated and checked clean. |
-| `docs/specs/002-whole-loop-installed/spec.md` | `updated` | A1, A2 and A7 settled, and the helpers Decision amended. |
+| `docs/specs/002-whole-loop-installed/spec.md` | `updated` | A1, A2 and A7 settled, the helpers Decision amended, and the new "don't ask again" exposure added to the deferred-decisions table. |
 | `slice-03-next-real-idea.md` | `updated` | AC 4 now records A2 again rather than settling it. |
 | `hosts/claude/**`, `.claude-plugin/plugin.json` | `updated` | Rebuilt for each pre-release, now `0.1.0-pre.11`, and in sync by `--check`. |
 | `evidence/slice-01-tool-calls.md`, `reviews/slice-01-*.md`, `docs/decisions/reviews/adr-0002-frame-critique.md` | `updated` | The slice's own evidence and the recorded review verdicts. |
