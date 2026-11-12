@@ -1,10 +1,9 @@
 ---
-status: READY_FOR_REVIEW
+status: READY_FOR_IMPLEMENTATION
 dependencies: [adr-0003]
 last_verified:
 frame_review: true
 arch_review: true
-claimed_by: claude/trusting-blackburn-a5b423
 ---
 
 <!-- jig grounding (spec 064-02 / ADR-0020): ground factual claims about
@@ -23,8 +22,9 @@ the rules.
 - ✅ 002-02's AC 1 runs are recorded, with the failing log (`a1e`), in
   `evidence/slice-02-tool-calls.md`.
 - ✅ Julien chose Option F on 2026-11-12.
-- ADR-0003 is Accepted.
-- Julien has agreed the amendments to 002-02 listed at the end of this slice.
+- ✅ ADR-0003 is Accepted (2026-11-12).
+- ✅ Julien agreed the amendments to 002-02 listed at the end of this slice on
+  2026-11-12, and they are applied there.
 
 **Acceptance Criteria:**
 
@@ -149,7 +149,8 @@ that carry their own rules and cannot write.
 
 ### Amendments this slice proposes to 002-02
 
-Proposed on 2026-11-12. They are applied to 002-02 only once Julien agrees.
+Proposed on 2026-11-12, agreed by Julien the same day, and applied to 002-02
+as dated amendments under each AC.
 
 - **Dependencies:** `[002-01, 002-04]`. 002-02's installed runs check this
   slice's change.

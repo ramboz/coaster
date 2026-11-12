@@ -1,6 +1,6 @@
 ---
 status: IN_PROGRESS
-dependencies: [002-01]
+dependencies: [002-01, 002-04]
 last_verified:
 frame_review: true
 arch_review: true
@@ -22,6 +22,8 @@ logs that each hat received the packaged rules intact.
 - 002-01 is DONE, and its framed sample dossier is kept outside the repository.
 - ✅ Julien accepted the decision that hats write nothing, with the type
   chosen by comparison, on 2026-11-11.
+- 002-04 is DONE, so `0.1.0-pre.12` with the hats as plugin agents is on
+  `main` (added by Julien's amendment, 2026-11-12).
 
 **Acceptance Criteria:**
 
@@ -43,6 +45,13 @@ logs that each hat received the packaged rules intact.
    tool. If the `general-purpose` hats also fail AC 3 or AC 8, AC 2 waits for
    Julien's decision. Julien sees the comparison before AC 2 ships the
    choice.
+
+   **Amended by Julien, 2026-11-12:** closed by the recorded comparison
+   ([evidence](evidence/slice-02-tool-calls.md#ac-1-the-two-types-hat-by-hat-2026-11-12)).
+   The paste condensed in one run of five, so ADR-0003 replaces both built-in
+   types with coaster's own agents, `coaster:skeptic`, `coaster:rival` and
+   `coaster:customer` (002-04). AC 1's runs stay the evidence for ADR-0003.
+   ACs 6 and 8 are judged on the runs of 002-04's change.
 2. **Hats write nothing and reply with their section.** In Claude Code,
    `skills/challenge/SKILL.md` starts the three hats in parallel as subagents of
    the type AC 1 chose, tells the parent to paste the packaged sections
@@ -56,6 +65,8 @@ logs that each hat received the packaged rules intact.
    through with a pointer to this slice. The package is rebuilt, `--check` and
    strict validation exit 0, and the change ships as the next pre-release after
    the path and term searches.
+
+   **Amended by Julien, 2026-11-12:** replaced by 002-04's ACs 1 to 4.
 3. **Two rounds from the installed plugin.** On copies of 002-01's framed
    dossier, one Sonnet run and one Opus run of `/coaster:challenge challenge
    this` each show, in the log:
@@ -72,6 +83,11 @@ logs that each hat received the packaged rules intact.
      pre-release, and both runs are repeated;
    - one `challenge/round-1.md` written by the parent, and no other new file
      under `challenge/`.
+
+   **Amended by Julien, 2026-11-12:** the three `Agent` calls have the
+   `subagent_type`s `coaster:skeptic`, `coaster:rival` and `coaster:customer`.
+   The bullet about `Explore` hats moving to `general-purpose` is dropped. A hat
+   on a model other than the session's is ADR-0003's kill criterion.
 4. **Each hat's reply follows the hats' rules.** A hat's reply is the
    `tool_result` of its `Agent` call in the log. Each reply holds that hat's
    section in the round template's shape: what holds up before any concern, a
@@ -80,6 +96,11 @@ logs that each hat received the packaged rules intact.
    and a suggested urgency, and none of "fatal", "kill" or "will fail". New
    evidence carries the hat's prefix, `S`, `V` or `C`, in the evidence rules'
    format.
+
+   **Amended by Julien, 2026-11-12:** a hat's reply is the `tool_result` of
+   its `Agent` call or, when the hat runs in the background, the `summary` of
+   the `task_notification` that names that call. In Claude Code 2.1.322 the
+   hats ran in the background, and the `tool_result` was only a launch notice.
 5. **The round is assembled from the replies, not written over them.** Each
    `round-1.md` has the headings of the packaged round template in order and
    opens with a "What holds up" summary. Every concern and lens line under a
@@ -87,6 +108,13 @@ logs that each hat received the packaged rules intact.
    the grouping of concerns that land on one risk, and the dispositions, each
    marked proposed. The readings in the dossier are unchanged except for a
    "Round 1 proposes:" note under each one the round touches.
+
+   **Amended by Julien, 2026-11-12:** a concern or lens line in the round
+   traces to a hat's reply when it keeps that concern's claim, cheapest test
+   and urgency, or that lens's line. Shorter wording is allowed and recorded.
+   In AC 1's four Sonnet runs the parent wrote the hats' concerns in fewer
+   words than their replies, and 002-04 now asks it to copy each section as the
+   hat replied it.
 6. **Each hat received the packaged text intact.** This is the check ADR-0001
    and the release plan require before the tag. For every hat in every
    challenge run of this spec, its prompt is the `prompt` input of its `Agent`
@@ -110,11 +138,25 @@ logs that each hat received the packaged rules intact.
    every allowed difference, or gives the first line that fails. The
    comparison runs as a short command kept outside the repository, and the
    record says what it did.
+
+   **Amended by Julien, 2026-11-12:** the check has two halves (ADR-0003).
+   Each hat's system prompt is the `prompt_snapshot` in its own transcript in
+   the profile, and the four parts are cut from the installed agent file under
+   `<root>/agents/`, not from the `Agent` call's `prompt`. The allowed
+   differences are unchanged. And each hat's `Agent` prompt, recorded in full
+   with local paths trimmed, carries only what 002-04's AC 5 lists: the hat's
+   name, the dossier path, the paths of earlier round files, today's date and
+   at most one line asking the hat to begin, with no rule, limit, lens
+   instruction or reply shape of its own.
 7. **A failed check stops here.** If any part of any hat's prompt fails AC 6,
    ADR-0001's kill criterion applies. This AC cannot pass until Julien has
    decided, in a new ADR, between Option F (each hat as a plugin agent, with its
    own slice in this spec) and another remedy. The failing log stays the
    evidence.
+
+   **Amended by Julien, 2026-11-12:** met by ADR-0003, which chose Option F.
+   The `a1e` log stays the evidence. A failure of the amended AC 6 is
+   ADR-0003's kill criterion.
 8. **Nothing else is read or denied.** In every run, `permission_denials` is
    empty, no tool call reads, lists or searches `<root>`, the `init` event lists
    coaster, Claude Code's built-in plugins and nothing else, its skills list
@@ -149,6 +191,13 @@ Then the same with `--model opus`. For AC 4, take each `Agent` call's
 `tool_result` from the logs. For AC 6, take each `Agent` call's `prompt`, and
 the four parts from the installed `challenge` `SKILL.md` under `<root>`.
 
+**Amended by Julien, 2026-11-12:** coaster is updated to `0.1.0-pre.12` before
+the runs, and AC 1's runs are done. For AC 4, a background hat's reply is the
+`summary` of its `task_notification`. For AC 6, each hat's system prompt is in
+its transcript under the profile's `projects/` folder, at
+`<session>/subagents/agent-<id>.jsonl`, and the four parts come from
+`<root>/agents/<hat>.md`.
+
 **Preserved behavior:** `challenge` runs only on an explicit request (002-01's
 AC 9 covers the runs where it was not asked for). The chat path still writes one
 paste-in prompt per hat.
@@ -161,7 +210,7 @@ trimmed, in `evidence/slice-02-tool-calls.md`.
 
 | Step | AC | Expected | Observed | Outcome | Evidence |
 |------|----|----------|----------|---------|----------|
-| 1 | 1 | The two types compared hat by hat; the choice follows the comparison | Five runs from local builds: `Explore` on Sonnet (`a1e`, `a2e`) and Opus (`a1o`), and `general-purpose` on Sonnet (`a1g`, `a2g`). Every `Explore` hat passes AC 3's checks on writes, Bash, the model and reading the whole dossier, every reply of either type meets AC 4, and at Sonnet both types research the same amount, with `Explore` on about two thirds of the tokens. On Opus, `Explore` hats ran on Opus. The rule would keep `Explore`, but both types fail AC 8 (step 7), and one run fails AC 6 (step 6). So AC 2 waits for Julien. | blocked: Julien's decision | [evidence](evidence/slice-02-tool-calls.md#ac-1-the-two-types-hat-by-hat-2026-11-12) |
+| 1 | 1 | The two types compared hat by hat; the choice follows the comparison | Five runs from local builds: `Explore` on Sonnet (`a1e`, `a2e`) and Opus (`a1o`), and `general-purpose` on Sonnet (`a1g`, `a2g`). Every `Explore` hat passes AC 3's checks on writes, Bash, the model and reading the whole dossier, every reply of either type meets AC 4, and at Sonnet both types research the same amount, with `Explore` on about two thirds of the tokens. On Opus, `Explore` hats ran on Opus. The rule would keep `Explore`, but both types fail AC 8 (step 7), and one run fails AC 6 (step 6). So AC 2 waits for Julien. | pass, as amended: Julien saw the comparison and chose Option F (ADR-0003) | [evidence](evidence/slice-02-tool-calls.md#ac-1-the-two-types-hat-by-hat-2026-11-12) |
 | 2 | 2 | Source and template speak only of replies; rebuilt, valid and shipped | | not-run | |
 | 3 | 3 | Three hats of the chosen type started together on the session's model, none writing; one round file per run | | not-run | |
 | 4 | 4 | Every hat's reply follows the hats' rules | | not-run | |

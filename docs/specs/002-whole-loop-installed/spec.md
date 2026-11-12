@@ -195,6 +195,13 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
   files to delete and nothing to stop a hat editing the dossier. Option F, each
   hat as a plugin agent with its own tools and model, would enforce both, but
   widens the package and the script, and ADR-0001 holds it for a failed paste.
+  **Amended by Julien, 2026-11-12:** 002-02's comparison found the paste
+  condensed in one run of five, which fired ADR-0001's kill criterion. Julien
+  chose Option F, recorded in ADR-0003: the hats are coaster's own plugin
+  agents, `coaster:skeptic`, `coaster:rival` and `coaster:customer`, rendered
+  by the build with their rules, limited to `Read`, `Grep`, `Glob`,
+  `WebSearch` and `WebFetch`, and on the session's model. Each hat's prompt
+  carries only the run's details. Slice 002-04 builds it.
 - **What a verification run grants (Julien, 2026-11-11).** Spec 001's lesson was to test
   with no `--allowedTools` grant, because a `Read` grant hid a refused read of
   the package. In this scope `WebSearch`, `WebFetch` and the helpers are tools a
@@ -240,7 +247,8 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
 - The `v0.1.0` tag, the ai-pegboard listing, `CHANGELOG` and CI (scope 4).
 - The claude.ai chat path, Codex and Copilot.
 - Option F, plugin agents for the hats, unless the hat-prompt check fails
-  (002-02's AC 7).
+  (002-02's AC 7). It failed on 2026-11-12, so 002-04 builds Option F
+  (ADR-0003).
 - `capture`'s two follow-ups in `docs/inbox.md`, unless the real-idea run trips
   on one of them.
 - A test harness for the Markdown skills, which the release plan rules out. The
@@ -265,14 +273,19 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
   friction in 002-03.
 - **A3.** The parent pastes the packaged sections into each hat's prompt
   intact. This is ADR-0001's open assumption, and 002-02's AC 6 tests it. If it
-  fails, ADR-0001's kill criterion applies.
+  fails, ADR-0001's kill criterion applies. **Settled on 2026-11-12, and
+  wrong:** in one of 002-02's five comparison runs, the parent condensed the
+  evidence rules and the round template. ADR-0003 replaces the paste.
 - **A4.** Hats started as `Explore` subagents inherit the session's grants and
   its model, as they did in one Haiku and one Sonnet probe. No Opus session has
   been probed, and Claude Code's documentation has at times described
   `Explore` as running on a smaller model. If a hat's search is denied, the run
   records it and grants nothing more. 002-02's AC 1 runs `Explore` hats on Opus
   before anything ships, and if one runs on another model, the hats move to
-  `general-purpose` (002-02's ACs 1 and 3).
+  `general-purpose` (002-02's ACs 1 and 3). **Settled on 2026-11-12:**
+  `Explore` hats ran on Opus in 002-02's `a1o`, and a plugin agent with
+  `model: inherit` ran on Sonnet and on Opus in ADR-0003's probes. Every hat
+  search ran under the session's grant.
 - **A5.** Julien has time for one interactive loop on his next real idea,
   which he confirmed on 2026-11-11 is ready. If the time does not come, 002-03
   is parked as DEFERRED until it does. What he decides about
@@ -300,6 +313,9 @@ Julien accepted each of these on 2026-11-11, as the draft proposed them.
   the whole dossier and review it. 002-02's AC 1 compares the two types hat by
   hat, on their replies, their reading and their research, before the change
   ships, and its AC 4 judges every hat's reply, not only the assembled round.
+  **Settled on 2026-11-12:** at Sonnet, `Explore` and `general-purpose` hats
+  researched the same amount, and every reply met AC 4. The choice is moot
+  under ADR-0003, and 002-04 sets its agents beside these runs.
 
 ## Decomposition
 

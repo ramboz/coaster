@@ -1,7 +1,7 @@
 ---
-status: Proposed
+status: Accepted
 dependencies: [adr-0001]
-last_verified:
+last_verified: 2026-11-12
 frame_review: true
 ---
 
@@ -9,7 +9,7 @@ frame_review: true
 
 ## Status
 
-Proposed (2026-11-12). Julien chose Option F on 2026-11-12, after slice 002-02's AC 6 failed.
+Accepted (2026-11-12). Julien chose Option F on 2026-11-12, after slice 002-02's AC 6 failed, and accepted this record the same day.
 
 ## Context
 
