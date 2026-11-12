@@ -114,6 +114,10 @@ Claude Project.
 - **Marketplace manifest** (artifact: `.claude-plugin/marketplace.json`) — the
   marketplace name and the `coaster@coaster` install id, with its `git-subdir`
   source
+- **Release asset** (artifact: `.github/workflows/release.yml`) —
+  `coaster-claude-vX.Y.Z.zip` on each GitHub release from `v0.1.0`, the
+  package as a plugin folder for `claude --plugin-dir`
+  ([spec 003](specs/003-commits-and-releases/spec.md))
 
 ## Open questions
 

@@ -268,6 +268,9 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
      pattern approximates `amannn/action-semantic-pull-request`'s parser
      rather than reproducing it. CONTRIBUTING says to change the copies of the
      rule together.
+   - **Compliance run 3 (needs-changes).** Items 9 to 11 sat below the
+     reconciliation sweep. They were moved above it, and AC 4 was re-run with
+     the final step (item 12). Run 4 passed.
 10. **Second rebase and the final pre-push run (2026-11-11).** `origin/main`
     moved 2 more commits (spec 002's sweep, and its fix, up to `3189b90`).
     - The only conflict was `docs/memory/learnings.md`, where both sides
@@ -311,7 +314,8 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
     (`git diff --name-only a4efcc1 HEAD`), and nothing under `.github/`, so
     these runs stand for the workflow code that lands.
 12. **AC 4 and AC 5 against the code that lands.** The final subject step,
-    taken from the YAML at `8a6d922`, exits 1 with `BEFORE` set to the root
+    taken from the YAML at `8a6d922` (a docs-only commit after `a4efcc1`, so
+    the same `ci.yml`), exits 1 with `BEFORE` set to the root
     commit and `AFTER` to `origin/main`, naming the same two unscoped commits.
     It exits 0 on `bbeda54..a28e0cd`. `git diff a258006 HEAD --
     .github/workflows/pr-title.yml` is empty, so the bad-title test on
@@ -328,15 +332,14 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
 | `docs/conventions.md` | `updated` | The Git rule, in the wording Julien approved (AC 1). |
 | Primer surfaces: `CLAUDE.md` / `AGENTS.md` / scaffold templates | `updated` | One `CLAUDE.md` line under Development Conventions. No `AGENTS.md`. Active specs are left as they are: spec 002 is not listed either, and the board carries live status. |
 | `docs/inbox.md` | `updated` | No earlier item was about commits, CI or releases. Added one: the README pointer to `CONTRIBUTING.md` (row above). |
-| `docs/refinement-todo.md` | `no-op` | The CI/CD entry is resolved under 003-02, which owns the release half. |
 | `docs/memory/**` | `updated` | Three learnings: the `0.0.0` seed, docs-only releases, and validating the plugin folder rather than the root. |
 | `docs/decisions/README.md` / ADR index | `no-op` | No ADR, by the spec's decision: the mechanism is the family's, as recorded in servo's ADR-0007. |
 | `docs/governance.md`, `docs/workflow.md`, `docs/adoption-readiness.md` | `no-op` | Searched for commit, CI and release claims: nothing stale. The new workflows fall under the existing `.github/workflows/**` protection. |
 | This slice's deliverables: `.github/workflows/ci.yml`, `.github/workflows/pr-title.yml` | `updated` | See deviation log items 2, 3, 9 and 12. |
 | `CONTRIBUTING.md` | `updated` | New file, covering this slice's merging, direct-push and CI sections. |
 | The spec overview `spec.md`, both slice files and `reviews/` | `no-op` | These are spec 003's own record, not surfaces this slice reconciles. |
-| 003-02's files: `release.yml`, `release-please-config.json`, `.release-please-manifest.json`, `docs/refinement-todo.md`, the release plan | `no-op` | Covered by 003-02's sweep. |
-| Spec 002's paths (`plugin.json`, `hosts/claude/**`, `skills/**`, `scripts/build_host_packages.py`, `README.md`, ADR-0002, `docs/specs/002-*`) | `no-op` | They reached this branch from `origin/main` through the rebases, not from spec 003. `git diff origin/main...HEAD` touches none of them. A diff against the stale local `main` lists them. |
+| 003-02's files: `release.yml`, `release-please-config.json`, `.release-please-manifest.json`, `docs/refinement-todo.md` (its CI/CD entry), the release plan | `no-op` | Covered by 003-02's sweep. |
+| Spec 002's paths (`plugin.json`, `hosts/claude/**`, `skills/**`, `scripts/build_host_packages.py`, `README.md`, ADR-0002 and `docs/decisions/README.md`, `docs/specs/002-*`) | `no-op` | They reached this branch from `origin/main` through the rebases, not from spec 003. `git diff origin/main...HEAD` touches none of them. A diff against the stale local `main` lists them. |
 
 **Leanness:**
 - Nothing beyond the ACs was added: no new script, and no test harness.
