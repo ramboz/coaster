@@ -207,7 +207,22 @@ The acceptance criteria above are kept as written, except that their links to th
    They skipped the remote checks, the build and `--check`, because those
    pushes changed only `docs/specs/003-*` on an already-checked remote, with
    no package source. The full routine ran again before the next push (item 8).
-8. **The push that lands this record.** _Filled in below before the push._
+8. **The push that lands this record.** `origin/main` moved once more, to
+   `2fc2016` (spec 002, package at `0.1.0-pre.10`). It was merged in as
+   `84f6798` (`chore(sync): merge origin/main into the spec 003 branch`) with
+   no conflict. The full routine ran on `84f6798`, and again on the commit that
+   adds this item, before the push:
+   - `git remote -v` showed `origin https://github.com/ramboz/coaster.git`,
+     and `gh repo view` showed `ramboz/coaster PUBLIC`; the branch was 0
+     behind;
+   - the build changed no file under `hosts/`, and `--check` exited 0;
+   - the byte-compile on 3.9.6 exited 0;
+   - `validate --strict` exited 0 on the package and on the marketplace;
+   - the path search and the term search over the tree both exited 1, clean;
+   - the term search found 0 hits in the messages of the commits being
+     pushed;
+   - the subject check over `origin/main..HEAD` with `/usr/bin/grep` exited
+     1, clean.
 9. **AC 7** waits for the merge. The follow-up commit records it, together
    with the second half of 003-01's AC 7: the squash subject, its empty body,
    and the `subjects` run on `main`.
