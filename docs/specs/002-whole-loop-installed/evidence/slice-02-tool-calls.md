@@ -1,6 +1,6 @@
 # Slice 002-02: tool calls per run
 
-Trimmed from each run's stream-json log by short scripts kept outside the repository. `./` is the run's own empty `git init` folder, `<root>` the plugin folder the run loaded, and `<scratch>` the rest of the session's scratch folder. A multi-line command is shown on one line, with ⏎ for each line break, and cut at 170 characters. Raw logs and hat prompts stay outside the repository. Claude Code's built-in plugins (`cc-plugin-*`) are listed once per run. Each run ends with the files under `docs/` in its folder afterwards, including the framed dossier copied in.
+Trimmed from each run's stream-json log by short scripts kept outside the repository. `./` is the run's own empty `git init` folder, `<root>` the plugin folder the run loaded, and `<scratch>` the rest of the session's scratch folder. A multi-line command is shown on one line, with ⏎ for each line break, and cut at 170 characters. A `Glob` or `Grep` call shows the folder it searched in brackets when it names one. Raw logs and hat prompts stay outside the repository. Claude Code's built-in plugins (`cc-plugin-*`) are listed once per run. Each run ends with the files under `docs/` in its folder afterwards, including the framed dossier copied in.
 
 ## How the runs were made
 
@@ -385,7 +385,7 @@ Per hat in the judged runs, the Sonnet agents made 2 searches, opened 0.3 pages 
   - `Edit: ./docs/prospects/houseplant-watering-reminder/dossier.md`
 - Skeptic hat:
   - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
-  - `Glob: **/*`
+  - `Glob: **/* (in ./docs/prospects/houseplant-watering-reminder)`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
   - `WebSearch: free plant watering reminder app iPhone no account no subscription unlimited plants`
@@ -393,14 +393,14 @@ Per hat in the judged runs, the Sonnet agents made 2 searches, opened 0.3 pages 
   - `WebFetch: https://github.com/ruuda/sempervivum`
 - Rival hat:
   - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
-  - `Glob: **/*`
+  - `Glob: **/* (in ./docs/prospects/houseplant-watering-reminder)`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
   - `WebSearch: free plant watering reminder app iPhone no account no subscription`
   - `WebSearch: Apple Reminders repeating reminders water plants; Google Home / Alexa plant watering reminder built in`
 - Customer hat:
   - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
-  - `Glob: **/*`
+  - `Glob: **/* (in ./docs/prospects/houseplant-watering-reminder)`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
   - `WebSearch: reddit houseplants what app do you use to remember to water plants`
@@ -442,7 +442,7 @@ Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/
   - `WebSearch: iOS web push notifications PWA home screen requirement Safari limitations 2026`
 - Rival hat:
   - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
-  - `Glob: **/*.md`
+  - `Glob: **/*.md (in ./docs/prospects/houseplant-watering-reminder)`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
   - `WebSearch: Planta app free version plant limit reminders notification time setting`
@@ -491,20 +491,20 @@ Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/
   - `Edit: ./docs/prospects/houseplant-watering-reminder/dossier.md`
 - Skeptic hat:
   - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
-  - `Glob: **/*`
+  - `Glob: **/* (in ./docs/prospects/houseplant-watering-reminder)`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
   - `WebSearch: free plant watering reminder PWA no account open source github`
   - `WebFetch: https://www.janeperrone.com/blog/2023/9/20/plant-apps`
 - Rival hat:
   - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
-  - `Glob: **/*`
+  - `Glob: **/* (in ./docs/prospects/houseplant-watering-reminder)`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
   - `WebSearch: free plant watering reminder app iPhone no account no subscription`
 - Customer hat:
   - `Read: ./docs/prospects/houseplant-watering-reminder/dossier.md`
-  - `Glob: **/*`
+  - `Glob: **/* (in ./docs/prospects/houseplant-watering-reminder)`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/landscape.md`
   - `Read: ./docs/prospects/houseplant-watering-reminder/scout/demand.md`
   - `WebSearch: free plant watering reminder app no account no subscription iPhone`
@@ -569,4 +569,3 @@ Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/
   - `WebFetch: https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/`
 
 Files under `docs/` after the run: `docs/prospects/houseplant-watering-reminder/challenge/round-1.md`, `docs/prospects/houseplant-watering-reminder/dossier.md`, `docs/prospects/houseplant-watering-reminder/scout/demand.md`, `docs/prospects/houseplant-watering-reminder/scout/landscape.md`
-

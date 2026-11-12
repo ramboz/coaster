@@ -1,5 +1,5 @@
 ---
-status: IN_PROGRESS
+status: REVIEWED
 dependencies: [adr-0003]
 last_verified:
 frame_review: true
@@ -133,7 +133,7 @@ evidence is the table below and the run's tool calls, added to
 **DoD:**
 - [ ] All ACs pass, with the table above filled in from real runs.
 - [ ] Reviewed by `reviewer` subagent. Reviewer prompt built by `review.py`.
-- [ ] Implementation review passed.
+- [x] Implementation review passed.
 - [ ] Deviation log produced under this slice heading.
 - [ ] Reconciliation sweep produced under this slice heading.
 - [ ] Reconciliation review passed.
