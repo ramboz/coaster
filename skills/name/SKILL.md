@@ -57,16 +57,17 @@ crowded where it matters: in the first run, eight of seventeen workshop-tool
 candidates already named an AI agent or spec-driven tool. Drop or flag those
 before spending time on registries.
 
-In Claude Code, `python3 scripts/name_check.py <name> ...` does the registry
-and GitHub lookups. Before running it, tell the user that if Claude Code asks,
-they should answer Yes rather than "don't ask again", which would allow any
-Python command in the project. In chat, use web search. If the helper is
-refused or fails,
-try no other command to the same end, such as `curl` or an inline script: the
-user declined running code. If web tools are allowed, do the lookups by web
-search instead and say so in `naming.md`. Otherwise mark those columns "not
-checked", with the reason and the command to run by hand. Never record a
-result that no tool returned.
+In chat, use web search. In Claude Code, first tell the user that if Claude
+Code asks, they should answer Yes rather than "don't ask again", which would
+allow any Python command in the project. Then `python3 scripts/name_check.py <name> ...`
+does the registry and GitHub lookups.
+
+If the helper is refused, try no other command to the same end, such as `curl`
+or an inline script, because the user declined running code. If it is refused
+or fails and web tools are allowed, do the lookups by web search instead and
+say so in `naming.md`. Otherwise mark those columns "not checked", with the
+reason and the command to run by hand. Never record a result that no tool
+returned.
 
 ## 4. Shortlist
 

@@ -18,7 +18,7 @@ ADR-0001 builds the packaged text into each skill, so reading it needs no permis
 Probes on Claude Code 2.1.322, recorded in spec 002's Current state, set the terms:
 
 - A headless run with no grant was denied Bash, WebSearch and WebFetch. An interactive user is asked before each.
-- jig writes 88 of the 94 plugin-root references in its installed skills as `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/<file>.py"`, with no `allowed-tools` grant. In the CLI, a jig skill loaded with that root already replaced by the plugin's absolute folder. Julien asked coaster to follow jig.
+- jig writes 88 of the 94 plugin-root references in its installed skills as `python3 "${CLAUDE_PLUGIN_ROOT}/skills/<skill>/<file>.py"`, with no `allowed-tools` grant. In the CLI, a jig skill loaded with that root already replaced by the plugin's absolute folder, in a probe with Haiku. Julien asked coaster to follow jig.
 - Installed from GitHub, the helpers land at `$CLAUDE_CONFIG_DIR/plugins/cache/coaster/coaster/<version>/skills/<skill>/scripts/<file>`, so the path names the version.
 - An allow rule must quote the path the way the command does. An unquoted rule did not match a quoted command.
 - An allow rule with a wildcard for the version, anchored at the plugin cache, also let a script outside the plugin run with no prompt, through a `../../` path.
@@ -60,6 +60,7 @@ The probe fired this ADR's first kill criterion. Julien weighed Option D, execut
 
 **Becomes harder:**
 - Using the helpers without prompts: a careful user answers each helper prompt, and one who picks "don't ask again" allows any Python command in that project. The warnings in the README and in the session are the only guard, and the session's is model prose: in 002-01's runs on `0.1.0-pre.8`, `scout` showed it before its helper and `name` did not.
+- The exposure is not coaster's alone. In several of 002-01's runs the model edited the dossier with its own inline `python3 -` script. Under a saved `Bash(python3 *)` such commands would run without a prompt, and coaster cannot warn about them. `scout` now tells the model to edit files with the file tools, which narrows but does not remove this.
 - Testing headless: a run must grant the helper by its exact, quoted, installed path.
 
 ## Assumptions

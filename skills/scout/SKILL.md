@@ -34,7 +34,7 @@ Five lanes, each optional. Offer them and let the user pick.
 | `MON` | **Money** | How comparable products and projects make money or sustain themselves: model types, not price planning. Note where the user's stated constraints rule a model out. | Monetizable |
 | `RCH` | **Reach** | Who adopts and who decides, where they gather, which channels and marketplaces carry tools like this, and the switching costs people describe. | Adoptable |
 
-Three rules shape every brief:
+Four rules shape every brief:
 
 - **Search for the claimed difference.** If the hunch claims something is
   new, such as a posture, a surface, or a combination, the landscape brief
@@ -97,25 +97,26 @@ as the long-form record.
    its searches is `unverified` too.
 2. **File the entries.** In chat, under a heading per lane inside the one
    dossier artifact. In a repository, in `scout/<lane>.md`, plus one index line
-   per load-bearing entry in the dossier's Evidence section. Create each file
-   with the file-writing tool, which makes the `scout/` folder as needed, not
-   with a shell command. Never copy or renumber entries.
-3. **Check the links**, once the entries are filed, so the check sees them. In
-   Claude Code, run `python3 scripts/link_check.py <dossier-folder>`. In chat,
-   open the sources behind the load-bearing claims. Research tools invent or
-   misattribute part of their citations, so this step is never skipped. Record
-   the result in the Evidence section.
+   per load-bearing entry in the dossier's Evidence section. Create and edit
+   files, the dossier included, with the file tools, which make the `scout/`
+   folder as needed, not with a shell command or an inline script. Never copy
+   or renumber entries.
+3. **Check the links**, once the entries are filed, so the check sees them.
+   Research tools invent or misattribute part of their citations, so this step
+   is never skipped. In chat, open the sources behind the load-bearing claims.
 
-   Before running the helper, tell the user that if Claude Code asks, they
-   should answer Yes rather than "don't ask again", which would allow any
-   Python command in the project.
+   In Claude Code, first tell the user that if Claude Code asks, they should
+   answer Yes rather than "don't ask again", which would allow any Python
+   command in the project. Then run `python3 scripts/link_check.py <dossier-folder>`
+   and record the result in the Evidence section.
 
-   If the helper is refused or fails, try no other command to the same end,
-   such as `curl` or an inline script: the user declined running code. If web
-   tools are allowed, open the sources behind the load-bearing claims instead,
-   as in chat, and say in the Evidence section that the links were checked on
-   the web. Otherwise record the link check as "not run", with the reason and
-   the command to run by hand. Never record a result that no tool returned.
+   If the helper is refused, try no other command to the same end, such as
+   `curl` or an inline script, because the user declined running code. If it is
+   refused or fails and web tools are allowed, open the sources behind the
+   load-bearing claims instead, as in chat, and say in the Evidence section that
+   the links were checked on the web. Otherwise record the link check as "not
+   run", with the reason and the command to run by hand. Never record a result
+   that no tool returned.
 4. **Note the gaps in the report**: lanes it skipped, sources it could not
    read, questions it did not answer. Frame needs to know what was not looked
    at.
