@@ -69,8 +69,9 @@ Otherwise take the first option that applies.
    can call it, call it. If only the user can start it, give them the line to
    send. Then process what it returns.
 2. **Otherwise, a quick pass, by default.** A few web searches per lane, at
-   most ten entries per lane, labeled as a quick pass in the ledger. It runs
-   in the session and needs no other tool.
+   most ten entries per lane, counting every entry, absences included,
+   labeled as a quick pass in the ledger. It runs in the session and needs no
+   other tool.
 3. **The deeper option, on request.** Offer the brief for the user's own
    research tool:
    - **claude.ai:** only the user can turn Research mode on, per chat, on paid
@@ -96,7 +97,8 @@ as the long-form record.
 1. **Extract** one entry per claim, with the lane's prefix and the next free
    number. A claim is `grounded` only once its source has been opened and says
    it, qualifiers included. Until then it is `unverified`. An absence without
-   its searches is `unverified` too.
+   its searches is `unverified` too, and something not searched at all is a
+   gap to note in step 4, not an entry.
 2. **File the entries.** In chat, under a heading per lane inside the one
    dossier artifact. In a repository, in `scout/<lane>.md`, plus one index line
    per load-bearing entry in the dossier's Evidence section. Create and edit
