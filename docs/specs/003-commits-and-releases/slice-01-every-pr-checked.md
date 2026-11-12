@@ -1,5 +1,5 @@
 ---
-status: IN_PROGRESS
+status: REVIEWED
 dependencies: [001-02]
 last_verified:
 frame_review: true
@@ -217,7 +217,9 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
      all pass. `validate` logged `✔ Validation passed` for the package and the
      marketplace on the Ubuntu runner, signed out, which settles A1.
      `subjects` was skipped, as it runs only on pushes to `main`.
-   - **PR Title run `43132629005`:** passes on the conventional title.
+   - **PR Title run `43132629005`:** passes on the conventional title,
+     `ci(release): check every PR and release from main with release-please`,
+     which is the baseline for AC 7's squash-subject check.
    - **Title test, with Julien's OK:** the title was changed to `Update stuff.`
      as `ramboz`. Run `43132861588` failed with "No release type found in pull
      request title". The title was restored, and run `43132923618` passes.
@@ -246,7 +248,10 @@ The acceptance criteria above are kept as written. Implementation notes, 2026-11
      together.
    - **Not applied.** Pinning Node with `actions/setup-node`: the runner's Node
      only installs the pinned CLI. Pinning actions by SHA: the spec mirrors
-     jig's tags.
+     jig's tags. `pipefail` on the byte-compile line (fourth compliance run):
+     a `git ls-files` failure would let it pass with nothing compiled, but
+     that cannot happen in a fresh checkout, and changing `ci.yml` again
+     would void the runs recorded on the final workflow code.
    - **Compliance rerun (needs-changes, evidence only).** Three findings:
      - AC 5's runs were on `a258006`, before item 9 changed `ci.yml`; the
        final head's runs are recorded in item 10.
