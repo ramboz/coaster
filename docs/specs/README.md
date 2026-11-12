@@ -21,6 +21,8 @@
 | [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-01 — scout to handoff, installed | READY_FOR_IMPLEMENTATION |  |
 | [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-02 — the challenge round, installed | READY_FOR_IMPLEMENTATION |  |
 | [002-whole-loop-installed](002-whole-loop-installed/spec.md) | 002-03 — the next real idea | READY_FOR_IMPLEMENTATION |  |
+| [003-commits-and-releases](003-commits-and-releases/spec.md) | 003-01 — every PR checked | DRAFT |  |
+| [003-commits-and-releases](003-commits-and-releases/spec.md) | 003-02 — releases from main | DRAFT |  |
 
 ## Richer-skill selection audit (spec 096-05)
 
